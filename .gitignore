@@ -1,0 +1,27 @@
+# Local source media, recoverable projects, evidence, outputs and render caches.
+/.local/
+# Vendor examples may use these roots; keep generated projects local by default.
+/videos/
+/projects/
+/renders/
+/previews/
+/outputs/
+/tmp/
+/.hyperframes/
+
+# Dependencies and OS noise; no blanket exclusion of curated fixture extensions.
+node_modules/
+.DS_Store
+__pycache__/
+*.pyc
+
+# Credentials and local runtime configuration. Examples must contain placeholders.
+.env
+.env.*
+!.env.example
+/.hermes/config.yaml
+/.hermes/auth.json
+/.hermes/.env
+/.hermes/sessions/
+/.hermes/logs/
+/.hermes/cache/
