@@ -31,14 +31,16 @@ decision is recorded in [the protocol](specs/README.md#phase-0-review-evidence).
 Raúl explicitly approved r1 for
 [F001-real-capture-fixture](specs/features/F001-real-capture-fixture/plan.md)
 and authorized its IMPLEMENT, including STUDIO calibration, not ingestion.
-The physical STUDIO RAW C0216.MP4 has arrived; F001 is HUMAN_REVIEW. Objective
+The physical STUDIO RAW C0216.MP4 is accepted; F001 is DONE. Objective
 metadata, stable hashes, full decoding and matching external recovery are retained.
 Raúl confirmed setup, playback, representativeness and source-relative content/
-movement references. V-01–V-09 pass; only explicit final acceptance in V-10 is
-pending for evidence revision e5. F001 remains HUMAN_REVIEW, not DONE.
+movement references. Raúl explicitly accepted evidence revision e5 and its exact
+source SHA-256 on 2026-10-03; V-01–V-10 and AC-01–AC-10 pass. The acceptance
+and HUMAN_REVIEW → DONE transition are recorded in plan.md/validation.md.
 Its `plan.md` owns state, approval, hashes and progress. F002, pipeline
 functionality, new dependencies, HyperFrames compositions, STT and retake
-detection remain unauthorized. Continue approved F001 after RAW arrives.
+detection remain unauthorized. F001 is complete; future feature work needs its
+own human authorization and SDD gates.
 Update this milestone only when accepted evidence changes the roadmap position.
 
 **Repository publication (2026-10-03):** Raúl explicitly authorized a public

@@ -2,7 +2,7 @@
 
 **Documento:** plan — CÓMO obtener el fixture  
 **Bundle revision:** r1  
-**Lifecycle state:** HUMAN_REVIEW  
+**Lifecycle state:** DONE  
 **Owner:** Raúl Almeida  
 **Scope:** [requirements.md](requirements.md)  
 **Proof contract:** [validation.md](validation.md)
@@ -194,11 +194,11 @@ producción final a partir de estas comprobaciones.
 ## Pasos de ejecución
 
 - [x] Confirmar aprobación explícita de r1 y resolver preparación local del repositorio conforme al protocolo, sin remoto/LFS ni servicios.
-- [ ] Raúl verifica montaje/contexto y graba la toma principal; auxiliar solo si hace falta. AC-04–09.
-- [ ] Copiar RAW sin transformación, registrar identidad y recuperación; completar notas reales. AC-01/08.
-- [ ] Ejecutar V-01–V-04 sin modificar fuentes; conservar probe/logs/versión. AC-01–03.
-- [ ] Escuchar/ver y anotar V-05–V-09 con Raúl. AC-04–09.
-- [ ] Completar V-10, presentar fixture/evidencia y obtener aceptación expresa; solo entonces DONE. AC-10.
+- [x] Raúl verifica montaje/contexto y graba la toma principal; auxiliar solo si hace falta. AC-04–09.
+- [x] Copiar RAW sin transformación, registrar identidad y recuperación; completar notas reales. AC-01/08.
+- [x] Ejecutar V-01–V-04 sin modificar fuentes; conservar probe/logs/versión. AC-01–03.
+- [x] Escuchar/ver y anotar V-05–V-09 con Raúl. AC-04–09.
+- [x] Completar V-10, presentar fixture/evidencia y obtener aceptación expresa; solo entonces DONE. AC-10.
 
 ## Auditoría de especificación y presentación del PLAN
 
@@ -369,3 +369,15 @@ Raúl respondió «mitad» a la pregunta de localizar la inclinación leve hacia
 **Estado vigente:** HUMAN_REVIEW; V-01–V-09/AC-01–AC-09 PASS, V-10/AC-10 HUMAN_REVIEW_REQUIRED solo por aceptación final. Paquete exacto e5: RAW C0216.MP4, SHA-256 68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc, reference-notes.md e5, tabla validation.md y evidence-e5.sha256. Limitaciones/UNKNOWNs finos permitidos documentados, sin modificar criterios.
 
 Se prepara/presenta la frase de aceptación concreta en validation.md; todavía NOT GRANTED para cierre definitivo. No se solicita aprobación sobre material incompleto ni se atribuye silencio como aceptación. Tras decisión expresa, registrar acta/revisión/estado DONE; hasta entonces detener aquí. No F002 ni PRODUCTION_APPROVED.
+
+## Aceptación final y cierre — e5 (2026-10-03)
+
+**Fecha de registro:** 2026-10-03 21:14:09 Europe/Malta (2026-10-03 19:14:09 UTC). **Approver:** Raúl Almeida. **Fuente:** decisión explícita del propietario en este chat, después de presentar e5 en commit c87c082.
+
+> Acepto F001, revisión de evidencia e5, conforme al bundle aprobado r1, con C0216.MP4 como fixture STUDIO autoritativo y SHA-256 `68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc`. Acepto la evidencia y las limitaciones documentadas y autorizo cerrar F001 como DONE. Esta aceptación no autoriza F002 ni declara el vídeo PRODUCTION_APPROVED.
+
+**Revisión aceptada:** e5 conforme a bundle r1. Fixture F001-studio-001, original autoritativo C0216.MP4, 2.873.163.442 bytes, SHA-256 68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc. Manifest exacto presentado: evidence-e5.sha256, SHA-256 accd69f2e0e5c70451b60f1fa6f364837e9fa03ce4bb52141003592ea0027696. Notas/validación presentadas se preservan readonly en evidence/reference-notes-e5-approved.md y validation-e5-presented.md, además del commit c87c082. Acta literal acceptance-e5.md; cambios posteriores son acta/estado/tareas, no modificaciones normativas ni de RAW.
+
+**Transición:** HUMAN_REVIEW → DONE. **Verification result:** PASS. V-01–V-10 y AC-01–AC-10 PASS; V-10/AC-10 se cierran por aceptación expresa con identidad exacta y recuperación ya verificadas. No se repiten checks de media válidos ni se cambian criterios. Pasos de ejecución completos; limitaciones/UNKNOWNs finos aceptados y retenidos.
+
+Se detiene F001 completada. F002 requiere autorización propia y no ha comenzado. No vídeo PRODUCTION_APPROVED, publicación de media, STT/pipeline/composición/audio futuro ni inclusión del MOBILE. El fixture aceptado queda disponible para una futura feature autorizada.

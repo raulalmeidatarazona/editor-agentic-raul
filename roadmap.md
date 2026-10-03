@@ -79,8 +79,9 @@ feature specification. No application scaffold or pipeline code is required.
 **Current position:** Phase 0 is OWNER_APPROVED. Raúl approved F001 bundle r1 and
 authorized only F001. The physical STUDIO RAW has arrived; objective metadata,
 integrity and full decoding evidence are retained. Recovery is hash-verified; setup, voice and representativeness are owner-confirmed.
-Content/movement references are retained; V-01–V-09 pass. Final acceptance of
-evidence e5 remains pending (HUMAN_REVIEW). [F001 plan.md](specs/features/F001-real-capture-fixture/plan.md)
+Content/movement references are retained. Raúl explicitly accepted evidence e5
+and the exact RAW identity on 2026-10-03; F001 is DONE, V-01–V-10/AC-01–AC-10
+PASS. Phase 1 is complete; Phase 2/F002 still requires its own authorization. [F001 plan.md](specs/features/F001-real-capture-fixture/plan.md)
 records approval, identity and lifecycle. F002 is not authorized.
 
 ### Phase 1 — Real Capture Fixture

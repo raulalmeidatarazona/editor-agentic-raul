@@ -119,12 +119,12 @@ DONE requiere aprobación previa del PLAN, entrega correspondiente a r1, evidenc
 recuperable y aceptación expresa de Raúl vinculada a archivo/s y SHA-256. Es
 aceptación de un fixture de desarrollo, no PRODUCTION_APPROVED de un vídeo.
 
-## Evidencia de ejecución — entrega e5 lista para aceptación (2026-10-03)
+## Evidencia de ejecución — entrega e5 aceptada (2026-10-03)
 
-**Verification result:** HUMAN_REVIEW_REQUIRED — V-01–V-09 PASS; V-10 requiere únicamente aceptación final expresa de e5.  
-**Lifecycle:** HUMAN_REVIEW, según plan.md.  
+**Verification result:** PASS — V-01–V-10 y AC-01–AC-10 completos; aceptación expresa de Raúl registrada abajo.  
+**Lifecycle:** DONE, según plan.md.  
 **Decisión humana recibida:** Raúl confirma C0216.MP4 representativo y adecuado como fixture STUDIO para F001. Esta confirmación se registra y satisface el juicio de adecuación; no convierte checks UNKNOWN en PASS ni completa la feature.  
-**Verificación/aceptación final de la entrega completa:** pendiente; no DONE.  
+**Verificación/aceptación final de la entrega completa:** GRANTED — Raúl Almeida acepta e5 y autoriza F001 DONE; acta literal al final.  
 **Operador objetivo:** Codex. **Revisor humano:** Raúl Almeida, mensajes directos del 2026-10-03; VLC a velocidad normal 1× confirmado. Hora exacta de revisión UNKNOWN.
 
 e1 conserva la inspección objetiva de 2026-10-03 15:45–15:48 Europe/Malta y su commit
@@ -144,7 +144,7 @@ se conserva. Su entrada para notas corresponde a esa copia e1, no a las notas e2
 | Duración / vídeo | MEASURED: 232,800 s; stream 0 H.264 3840×2160, 25/1 reportados, SAR 1:1, DAR almacenado 16:9, matriz rotation −90 |
 | Audio | MEASURED: stream 1 PCM 16-bit BE, 48 kHz, 2 canales; USER-REPORTED: DJI Mic Mini conectado a cámara y voz comprensible de principio a fin |
 | Vista | OBSERVED: FFmpeg muestra vertical 9:16 erguido; USER-REPORTED: Raúl confirma visualización vertical correcta |
-| Notes e5 | `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/reference-notes.md`; SHA-256 `006878ef45c81c82df4f1a29e5426736f8cab7f56095deeb479ee2734de992d4` |
+| Notas e5 presentadas (snapshot aceptado) | `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence/reference-notes-e5-approved.md`; SHA-256 `006878ef45c81c82df4f1a29e5426736f8cab7f56095deeb479ee2734de992d4` |
 | Acta literal humana e2 | `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence/human-review-e2.md`; SHA-256 `b70bec10cf37467f53efdd90821e3755243a99deb4b2f42f2559b38ae235b91c` |
 | Manifest e5 | `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence/evidence-e5.sha256`; SHA-256 `accd69f2e0e5c70451b60f1fa6f364837e9fa03ce4bb52141003592ea0027696`; 57 artefactos, incluyendo evidencia previa/handoff/actas e4-e5 y snapshots |
 | Herramientas | FFmpeg/ffprobe 9.0.1 y shasum -a 256; versiones/comandos/exit codes en evidence/; sin instalaciones |
@@ -198,7 +198,7 @@ HUMAN EVIDENCE; solo la metadata y resultados de herramientas son MEASURED.
 | V-07 / AC-06 | Raúl confirma error intencional sobre garantía de no procesar eventos dos veces, pausa → Again aislado → pausa → corrección (01:31–01:54); confirma try again, try again como narración válida (02:14–02:26). Tabla e4 aporta referencias aproximadas de cada parte, tomadas del handoff y alineadas mediante procedencia confirmada. No se declara HEARD por el agente ni se certifican todas las citas/conteos externos. | owner-confirmation-e4.md, handoff-e3.txt, handoff-provenance-confirmed-e4.json, reference-notes.md e4 | PASS |
 | V-08 / AC-07/09 | Encuadre y cuatro movimientos leves/retornos, Elgato habitual y representatividad confirmados. Referencias izquierda 01:22.6–01:24.3, derecha 02:28.5–02:31.0, adelante candidato 02:47.1–02:49.3; Raúl ubica atrás independiente en mitad/zona media del RAW. Límites exactos desconocidos, no inventados; r1 no fija precisión de tiempos ni exige pasos corporales o tracking. | frames, human-review-e2.md, handoff-e3.txt, owner-confirmation-e4.md, movement-confirmation-e5.md, reference-notes.md e5 | PASS |
 | V-09 / AC-08/09 | Raúl confirma fecha 03/10/2026 Europe/Malta, STUDIO, Sony ZV-E10/kit lens/trípode/Elgato habitual/DJI a cámara, key/rim/2 RGB, representatividad y limitación audio. Hora exacta, focal/exposición y lecturas reales no recordadas quedan UNKNOWN, permitidas/documentadas; metadata del reloj separada de hechos. Procedencia/permiso local F001 registrados. | human-review-e2.md, reference-notes.md, sidecar.sha256 | PASS |
-| V-10 / AC-01/10 | Paquete, manifest, exclusión de media y recuperación verificada disponibles. V-01–V-09 completos, incluyendo V-08 por referencia humana en zona media. Resta aceptación final expresa de la entrega e5 y SHA autoritativo. | evidence-e5.sha256, git-exclusion.log, recovery-result-e2.json, human-review-e2.md, movement-confirmation-e5.md | HUMAN_REVIEW_REQUIRED |
+| V-10 / AC-01/10 | Paquete, manifest, exclusión de media y recuperación verificada disponibles. V-01–V-09 completos, incluyendo V-08 por referencia humana en zona media. Raúl acepta expresamente e5 y el SHA autoritativo en mensaje posterior a la presentación; V-10 completo. | evidence-e5.sha256, git-exclusion.log, recovery-result-e2.json, human-review-e2.md, movement-confirmation-e5.md, acceptance-e5.md | PASS |
 
 ### Cobertura por aceptación
 
@@ -213,7 +213,7 @@ HUMAN EVIDENCE; solo la metadata y resultados de herramientas son MEASURED.
 | AC-07 | PASS: encuadre/postura/manos, cuatro movimientos leves con retornos y referencias aproximadas, teleprompter habitual confirmados; atrás situado en zona media por Raúl, sin tiempos inventados. |
 | AC-08 | PASS: fecha/zona/equipo/ruta/idioma/luces/teleprompter/procedencia/limitaciones registrados; ajustes desconocidos explícitos. |
 | AC-09 | PASS: Raúl confirma expresamente representatividad/adecuación de imagen, voz, encuadre, iluminación, gestos y movimientos para F001; limitación de audio visible en notas. No promete crops futuros. |
-| AC-10 | HUMAN_REVIEW_REQUIRED: paquete/evidencia/recuperación y demás AC completos; falta aceptación final de e5 vinculada a C0216.MP4 y su SHA-256. |
+| AC-10 | PASS: entrega exacta e5 y SHA autoritativo aceptados expresamente por Raúl; paquete, recuperación y todos los AC completos. |
 
 No hay FAIL demostrado de integridad/decodificación. Ruido/posible eco no impiden
 la comprensión según Raúl: limitación, no fallo impeditivo inventado. UNKNOWN
@@ -235,11 +235,11 @@ metadatos, silencio, guion opcional o usos normales de again. No STT/detector.
 **Paquete:** RAW canónico + reference-notes.md e5 + esta tabla + manifest e5.  
 **Revisor:** Raúl, mensajes del 2026-10-03; VLC a velocidad normal 1× confirmado.  
 **Adecuación/representatividad:** CONFIRMED, vinculada al nombre autoritativo y SHA-256 medido arriba.  
-**Feature DONE / aceptación final de verificación completa:** pendiente; estado HUMAN_REVIEW.
+**Feature DONE / aceptación final de verificación completa:** GRANTED — Raúl Almeida; F001 DONE.
 
 Recuperación, contexto/reproducción y referencias de contenido/movimientos ya
-completados en e5. Próximo paso autorizado: recibir la aceptación final expresa y
-registrar el cierre de V-10/AC-10 y F001. Límites exactos de eventos permanecen
+completados en e5. Aceptación final recibida y registrada: V-10/AC-10 y F001 cerrados.
+No queda trabajo autorizado F001 pendiente. Límites exactos de eventos permanecen
 UNKNOWN sin inventarse; referencias aproximadas están documentadas. F002 y
 tratamiento futuro de audio siguen fuera. MOBILE permanece separado y no se
 inspecciona ni incorpora a estos resultados.
@@ -259,7 +259,7 @@ final como si toda la evidencia fuese completa. Después se presentarán tabla V
 limitaciones permitidas, nombre/SHA autoritativos y frase exacta de aceptación,
 separada del juicio de representatividad ya recibido. HUMAN_REVIEW; no DONE/F002.
 
-## Gate final — e5 (2026-10-03)
+## Presentación del gate final — e5 (historial previo a aceptación)
 
 Raúl localizó la inclinación atrás independiente mediante la respuesta «mitad»
 a la pregunta dirigida; acta movement-confirmation-e5.md. Es referencia aproximada
@@ -292,3 +292,35 @@ preparada, no firmada ni presentada como ya recibida:
 Solo después de recibir esa decisión válida se registrará V-10/AC-10 PASS,
 aceptación/fecha/revisor y transición HUMAN_REVIEW → DONE. Hasta entonces,
 HUMAN_REVIEW_REQUIRED; RAW y bundle r1 intactos, F002 no autorizado.
+
+## Decisión final recibida — e5, F001 DONE
+
+**Approver:** Raúl Almeida. **Fecha de registro:** 2026-10-03 21:14:09 Europe/Malta (2026-10-03 19:14:09 UTC). **Fuente:** mensaje directo del propietario en este chat tras revisar la presentación e5.
+**Owner acceptance of feature:** GRANTED. **Verification result:** PASS. **Lifecycle:** DONE (plan.md).
+
+Decisión literal:
+
+> Acepto F001, revisión de evidencia e5, conforme al bundle aprobado r1, con C0216.MP4 como fixture STUDIO autoritativo y SHA-256 `68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc`. Acepto la evidencia y las limitaciones documentadas y autorizo cerrar F001 como DONE. Esta aceptación no autoriza F002 ni declara el vídeo PRODUCTION_APPROVED.
+
+| Identidad de aceptación | Valor preservado |
+| --- | --- |
+| Revisión presentada | e5, commit c87c082, conforme al contrato aprobado r1 |
+| Original / fixture | C0216.MP4 / F001-studio-001 |
+| SHA-256 autoritativo | `68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc` |
+| Manifest e5 exacto | `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence/evidence-e5.sha256`, SHA-256 `accd69f2e0e5c70451b60f1fa6f364837e9fa03ce4bb52141003592ea0027696` |
+| Notas presentadas | SHA-256 `006878ef45c81c82df4f1a29e5426736f8cab7f56095deeb479ee2734de992d4`; copia exacta readonly `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence/reference-notes-e5-approved.md` |
+| Validación presentada | SHA-256 `7ad5ca4845214173ed3cccc92610aff6f614b654467deed0510f8e7d0f82bbce`; copia exacta readonly `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence/validation-e5-presented.md` |
+| Acta recibida | `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence/acceptance-e5.md` |
+
+Las entradas del manifest e5 identifican los bytes del paquete presentado; su
+entrada de notas ahora se recupera mediante la copia readonly o el commit c87c082.
+No se reescribe ese manifest ni se cambia la identidad aceptada por añadir el acta.
+El manifest closure-e5.sha256 cubre las notas administrativas y documentos de cierre.
+
+**Resultado final por check:** V-01, V-02, V-03, V-04, V-05, V-06, V-07, V-08, V-09, V-10 PASS.
+**Resultado final por AC:** AC-01, AC-02, AC-03, AC-04, AC-05, AC-06, AC-07, AC-08, AC-09, AC-10 PASS.
+
+RAW y bundle r1 preservados; limitaciones/UNKNOWNs permitidos aceptados, no borrados.
+La decisión de cierre satisface el gate humano sin repetir inspecciones válidas ni
+modificar criterios. No F002, ningún procesamiento futuro, incorporación de MOBILE
+ni PRODUCTION_APPROVED. F001 concluida; una nueva feature necesita autorización.

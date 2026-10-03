@@ -1,6 +1,6 @@
 # F001-studio-001 — Notas de referencia
 
-**Entrega de evidencia:** e5 (2026-10-03, Europe/Malta), lista para aceptación final; V-01–V-09 PASS, V-10 HUMAN_REVIEW_REQUIRED.  
+**Entrega de evidencia:** e5 (2026-10-03, Europe/Malta), OWNER_ACCEPTED; V-01–V-10 PASS. Cierre administrativo: F001 DONE.  
 **Aprobación aplicable:** bundle r1 archivado; no implica aceptación del fixture.  
 **Fuente autoritativa designada por Raúl:** `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/raw/C0216.MP4`. No se selecciona por antigüedad del archivo.
 
@@ -208,3 +208,13 @@ Fixture F001-studio-001, principal C0216.MP4, 2.873.163.442 bytes. SHA-256 autor
 UNKNOWNs permitidos: hora exacta de captura/revisión, focal/exposición/ISO/apertura/balance de blancos y lecturas físicas de luces, channel_layout no informado, límites frame-exactos y punto exacto de movimiento atrás. Otras citas o candidatos del reconocimiento suministrado permanecen UNCERTAIN; no se declara que todos los marcadores hayan sido contados/identificados ni que exista STT válido. Voz inteligible y términos/casos requeridos están confirmados por Raúl.
 
 Solo resta la aceptación final de la revisión e5 y su identidad. No se inicia F002 ni se valida la pipeline futura.
+
+## Acta de cierre — e5 aceptada
+
+**Approver:** Raúl Almeida. **Fecha de registro:** 2026-10-03 21:14:09 Europe/Malta (2026-10-03 19:14:09 UTC). **Decisión:** mensaje directo de este chat.
+
+> Acepto F001, revisión de evidencia e5, conforme al bundle aprobado r1, con C0216.MP4 como fixture STUDIO autoritativo y SHA-256 `68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc`. Acepto la evidencia y las limitaciones documentadas y autorizo cerrar F001 como DONE. Esta aceptación no autoriza F002 ni declara el vídeo PRODUCTION_APPROVED.
+
+V-10/AC-10 PASS; todos los checks/AC PASS. F001 DONE. El paquete presentado pertenece al commit c87c082 y manifest evidence-e5.sha256 (SHA-256 accd69f2e0e5c70451b60f1fa6f364837e9fa03ce4bb52141003592ea0027696). Estas notas antes del acta se preservan exactamente en evidence/reference-notes-e5-approved.md (SHA-256 006878ef45c81c82df4f1a29e5426736f8cab7f56095deeb479ee2734de992d4). Las anotaciones actuales son administrativas, no una nueva revisión de media ni modificación del contrato. El manifest original e5 conserva sus bytes; su entrada reference-notes.md identifica la copia presentada/archivada, no los bytes posteriores al acta.
+
+Acta literal y fechas: evidence/acceptance-e5.md. Manifest de documentación de cierre: evidence/closure-e5.sha256. RAW, copia recuperable y r1 sin cambios; limitaciones/UNKNOWNs permitidos retenidos. No F002 ni PRODUCTION_APPROVED.

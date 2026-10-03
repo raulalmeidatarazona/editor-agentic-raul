@@ -390,8 +390,10 @@ real-footage slice on the 16 GB Mac. Those checks remain unperformed, not PASS.
 
 Raúl subsequently approved F001 r1 and explicitly authorized its IMPLEMENT;
 the [plan](features/F001-real-capture-fixture/plan.md) preserves the approval,
-reviewed hashes and snapshot. The STUDIO RAW has arrived; F001 is HUMAN_REVIEW with
-objective evidence, matching external recovery and owner context/playback review
-retained. Required content/movement references are complete (e5); V-01–V-09 pass,
-and only explicit final feature acceptance in V-10 remains pending. Phase 0 acceptance alone never authorized it.
+reviewed hashes and snapshot. The STUDIO RAW, objective evidence, matching external
+recovery and owner context/playback/content/movement review are retained. Raúl
+explicitly accepted e5 and its exact source SHA-256 on 2026-10-03; F001 is DONE,
+V-01–V-10 and AC-01–AC-10 PASS. Presented snapshots and the actual acceptance are
+preserved; final acceptance does not change the approved r1 contract. Phase 0
+acceptance alone never authorized F001 implementation or completion.
 F002 and future pipeline functionality remain outside the current authorization.
