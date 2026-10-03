@@ -31,8 +31,10 @@ decision is recorded in [the protocol](specs/README.md#phase-0-review-evidence).
 Raúl explicitly approved r1 for
 [F001-real-capture-fixture](specs/features/F001-real-capture-fixture/plan.md)
 and authorized its IMPLEMENT, including STUDIO calibration, not ingestion.
-Minimal recording preparation is complete; further work awaits Raúl's physical
-RAW. Its `plan.md` owns state, approval, hashes and progress. F002, pipeline
+The physical STUDIO RAW C0216.MP4 has arrived; F001 is VERIFYING. Objective
+metadata, stable hashes and full video/audio decoding are retained. Recovery
+location/hash and required human judgments remain pending; no fixture acceptance.
+Its `plan.md` owns state, approval, hashes and progress. F002, pipeline
 functionality, new dependencies, HyperFrames compositions, STT and retake
 detection remain unauthorized. Continue approved F001 after RAW arrives.
 Update this milestone only when accepted evidence changes the roadmap position.

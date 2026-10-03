@@ -10,8 +10,8 @@ y los criterios de aceptación se desarrollan mediante Spec-Driven Development.
 ## Estado actual
 
 - Fase 0: base documental y convenciones `OWNER_APPROVED`.
-- F001: bundle r1 aprobado; `IMPLEMENTING`, preparación local completada y
-  pendiente de la grabación física de Raúl.
+- F001: bundle r1 aprobado; `VERIFYING`, RAW STUDIO recibido e inspección
+  objetiva completada. Pendientes copia de recuperación verificable y revisión humana.
 - La aceptación de F001 depende de su contrato de validación y revisión humana.
 
 El propietario autorizó publicar todo el trabajo actual en un repositorio público
@@ -35,12 +35,12 @@ vigente y la evidencia de F001 están en su plan y validación.
 - [Plan, instrucciones de grabación y aprobación de r1](specs/features/F001-real-capture-fixture/plan.md)
 - [Contrato de validación](specs/features/F001-real-capture-fixture/validation.md)
 - [Bundle r1 exacto y hashes aprobados](.local/spec-approvals/F001/r1/SHA256SUMS)
-- [Notas de referencia preparadas](.local/fixtures/F001-studio-001/reference-notes.md)
+- [Notas de referencia y evidencia](.local/fixtures/F001-studio-001/reference-notes.md)
 
-Los originales de cámara vivirán en
-`.local/fixtures/F001-studio-001/raw/`. Las carpetas vacías RAW/evidence no se
-representan en Git; se preparan localmente según el plan. Conservar originales,
-hashes y una copia recuperable antes de validar.
+El original STUDIO `C0216.MP4` y su sidecar se conservan sin cambios en
+`.local/fixtures/F001-studio-001/raw/`; metadata, hashes, logs y frames pequeños
+están en `evidence/`, fuera de Git. La recuperación y aceptación siguen pendientes.
+El RAW MOBILE permanece separado como candidato futuro, fuera de F001.
 
 ## Skills y archivos locales
 
@@ -50,7 +50,7 @@ Las 28 skills HyperFrames están instaladas dentro del proyecto en `.agents/skil
 La auditoría y las reglas para usarlas están en el protocolo SDD.
 
 Por decisión expresa del propietario se versionan los cinco documentos pequeños
-actuales bajo `.local/`: el bundle r1, su manifest y las notas pendientes de
-grabación. RAW, previews, outputs, caches y credenciales siguen excluidos por
+actuales bajo `.local/`: el bundle r1, su manifest y las notas de
+referencia. RAW, previews, outputs, caches y credenciales siguen excluidos por
 [.gitignore](.gitignore). Los assets incluidos en las skills forman parte de su
 snapshot de terceros y conservan los avisos/licencias suministrados.

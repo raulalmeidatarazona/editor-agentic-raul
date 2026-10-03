@@ -2,7 +2,7 @@
 
 **Documento:** plan — CÓMO obtener el fixture  
 **Bundle revision:** r1  
-**Lifecycle state:** IMPLEMENTING  
+**Lifecycle state:** VERIFYING  
 **Owner:** Raúl Almeida  
 **Scope:** [requirements.md](requirements.md)  
 **Proof contract:** [validation.md](validation.md)
@@ -297,7 +297,7 @@ recibir la grabación física de Raúl.
 - requirements.md y validation.md permanecen idénticos a los aprobados. No se
   modificó criterio, procedimiento, umbral ni alcance normativo del plan.
 
-**Dependencia pendiente:** Raúl debe realizar y proporcionar la grabación física,
+**Dependencia histórica al concluir la preparación:** Raúl debía realizar y proporcionar la grabación física,
 con nombre original, contexto y copia recuperable. V-01–V-10 siguen NOT RUN.
 Se detiene el trabajo dependiente de media aquí, sin declarar FAIL/PASS/DONE ni
 iniciar F002. La autorización existente permite continuar F001 al recibir RAW;
@@ -313,3 +313,17 @@ notas pendientes) se seleccionan explícitamente para Git. Los originales RAW y
 los resultados futuros conservan sus exclusiones; hoy no existe media grabada.
 Este registro no modifica el contrato r1 ni declara el fixture DONE. La aprobación
 y su identidad archivada siguen siendo las registradas arriba.
+
+## Continuación autorizada — RAW recibido y VERIFY (2026-10-03)
+
+Raúl declaró «F001 physical capture is complete» y ordenó «Proceed now with F001 IMPLEMENT and VERIFY using only the authoritative STUDIO fixture according to the approved r1 bundle». La aprobación existente sigue vigente. Su designación se resolvió en C0216.MP4 y su sidecar C0216M01.XML; el mensaje aún contiene `<LOCATION>` para el backup. El MOBILE está expresamente fuera de F001: preservado separado, sin validación ni incorporación al fixture.
+
+La continuación pide parar para juicios humanos V-01–V-10 y que el agente mida/redacte los campos objetivos, sin inventar contexto físico. Se completaron bytes, hashes, probe, versiones, decodificación completa, tres pequeños frames de orientación y notas clasificadas MEASURED/OBSERVED/USER-REPORTED/UNKNOWN. Son evidencia F001 autorizada, sin software de ingestión, scripts persistentes, dependencias, STT, detector, composiciones ni cambio de RAW.
+
+**Transición:** IMPLEMENTING → VERIFYING, 2026-10-03. V-03 PASS; integridad local y probe objetivos completados. V-01/V-10 BLOCKED por recuperación no localizable; V-02 y V-04–V-09 HUMAN_REVIEW_REQUIRED según tabla de validation.md. VERIFYING permanece en su gate: faltan comprobación técnica de backup y juicios del propietario. No hay aceptación final, DONE ni F002.
+
+**Identidad principal:** C0216.MP4, 2.873.163.442 bytes; SHA-256 `68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc`, idéntico antes/después. Bundle r1 archivado intacto; requirements y contrato previo de validation sin cambios normativos.
+
+**Progreso de los pasos existentes:** captura recibida USER-REPORTED; contexto físico pendiente. Copia local presente e identidad estable, recuperación pendiente. V-01–V-04 ejecutados hasta sus dependencias, V-05–V-09 requieren las respuestas solicitadas; V-10 y aceptación permanecen abiertos. No se marca completada una casilla compuesta hasta disponer de toda su evidencia.
+
+**Próximo paso autorizado:** recibir ubicación/acceso del original recuperable y respuestas humanas; registrar evidencia y comparar hashes, actualizar revisión/manifest, presentar fixture exacto para aceptación. El agente rellena documentación/mediciones; Raúl aporta únicamente hechos y juicios que no son observables de manera fiable con las comprobaciones disponibles.

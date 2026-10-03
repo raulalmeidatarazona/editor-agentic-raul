@@ -77,8 +77,9 @@ have an assigned validation point. Conventions are sufficient to begin the first
 feature specification. No application scaffold or pipeline code is required.
 
 **Current position:** Phase 0 is OWNER_APPROVED. Raúl approved F001 bundle r1 and
-authorized only its IMPLEMENT. Recording preparation is complete; delivery and
-validation await his physical RAW. [F001 plan.md](specs/features/F001-real-capture-fixture/plan.md)
+authorized only F001. The physical STUDIO RAW has arrived; objective metadata,
+integrity and full decoding evidence are retained. Recovery verification and
+required human review remain pending; F001 is not accepted. [F001 plan.md](specs/features/F001-real-capture-fixture/plan.md)
 records approval, identity and lifecycle. F002 is not authorized.
 
 ### Phase 1 — Real Capture Fixture
