@@ -37,10 +37,13 @@ Raúl confirmed setup, playback, representativeness and source-relative content/
 movement references. Raúl explicitly accepted evidence revision e5 and its exact
 source SHA-256 on 2026-10-03; V-01–V-10 and AC-01–AC-10 pass. The acceptance
 and HUMAN_REVIEW → DONE transition are recorded in plan.md/validation.md.
-Its `plan.md` owns state, approval, hashes and progress. F002, pipeline
-functionality, new dependencies, HyperFrames compositions, STT and retake
-detection remain unauthorized. F001 is complete; future feature work needs its
-own human authorization and SDD gates.
+Its `plan.md` owns state, approval, hashes and progress. Raúl now explicitly
+approved F002 r1 at ae36327, accepted D001 and its limited tech-stack resolution,
+and authorized IMPLEMENT/VERIFY only F002. Its
+[plan.md](specs/features/F002-content-project-ingestion/plan.md) records that
+approval and owns its lifecycle. F001 remains immutable/DONE. F003, new
+dependencies, STT, editing, retake detection, HyperFrames and rendering remain
+unauthorized. No feature or video completion is implied by plan approval.
 Update this milestone only when accepted evidence changes the roadmap position.
 
 **Repository publication (2026-10-03):** Raúl explicitly authorized a public

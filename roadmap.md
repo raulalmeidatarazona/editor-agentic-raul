@@ -406,3 +406,10 @@ then approved Phase 0 and F001 r1 and authorized only F001 IMPLEMENT. The agent
 has prepared the local recording workspace; Raúl provides the physical RAW before
 validation can continue. No F002, pipeline functionality, dependency installation,
 agent/skill creation, STT, retake detection or video composition is authorized.
+
+## Current authorization after F001 closure
+
+Raúl approved F002 r1 at ae36327 and D001, authorizing IMPLEMENT/VERIFY of Phase 2
+only. [F002 plan](specs/features/F002-content-project-ingestion/plan.md) owns its
+actual lifecycle. Phase 1/F001 remains DONE; the earlier unapproved F002 statements
+are historical. Phase 3 and all later implementation require their own human gates.

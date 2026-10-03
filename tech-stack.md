@@ -295,6 +295,16 @@ Store enough input/output and configuration context to investigate a production
 and resume it; do not promise identical AI outputs on reruns. Deterministic
 render execution and preservation of the approved source revision are the goals.
 
+F002 uses Python 3.14.7 with the standard library and the existing FFmpeg/ffprobe
+9.0.1 tools for local ingestion and inspection. Its versioned JSON source and
+inspection contracts, owned byte-identical source copy, and source-presentation-v1
+clock are defined by the accepted F002 bundle and D001. This does not select a
+universal pipeline language, STT provider, normalization policy or renderer API.
+
+Owner acceptance: F002 r1 / ae36327, explicitly including
+[D001](specs/decisions/D001-local-source-contract.md); recorded in
+[the F002 plan](specs/features/F002-content-project-ingestion/plan.md).
+
 ## 12. Local resources, security, and cost
 
 The baseline Mac has approximately 16 GB RAM. Local work includes orchestration,
@@ -330,7 +340,7 @@ unbounded retry cost.
 Pending technology choices are not blockers to reviewing these root documents.
 They become blockers when an implementation depends on them. Deferred decisions
 include STT vendor, model IDs and benchmarks, eligible production API billing,
-runtime/version pins, programming language for glue code, transcript/edit schemas,
+runtime/version pins, programming language for later glue code beyond F002, transcript/edit schemas,
 codecs/frame rate/loudness targets, brand typography and safe-zone values,
 component APIs, QA tolerances, reviewer access mechanism, and platform variants.
 

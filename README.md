@@ -13,11 +13,13 @@ y los criterios de aceptación se desarrollan mediante Spec-Driven Development.
 - F001: `DONE`; evidencia e5 aceptada expresamente por Raúl el 2026-10-03
   conforme al bundle r1. V-01–V-10 y AC-01–AC-10 PASS; identidad del RAW,
   recuperación, revisión humana y limitaciones retenidas.
-- F002 no está autorizada; F001 no declara el vídeo PRODUCTION_APPROVED.
+- F002 r1 del commit `ae36327` y D001 aprobados expresamente; IMPLEMENT/VERIFY
+  de ingestión e inspección local autorizados. Estado vigente en su plan.
+- F003 permanece sin autorización. Ninguna aceptación declara un vídeo PRODUCTION_APPROVED.
 
 El propietario autorizó publicar todo el trabajo actual en un repositorio público
 y mantenerlo en `main`. Los documentos describen capacidades futuras; el estado
-vigente y la evidencia de F001 están en su plan y validación.
+vigente y la evidencia de cada feature están en su plan y validación.
 
 ## Documentos de entrada
 
@@ -42,6 +44,19 @@ El original STUDIO `C0216.MP4` y su sidecar se conservan sin cambios en
 `.local/fixtures/F001-studio-001/raw/`; metadata, hashes, logs y frames pequeños
 están en `evidence/`, fuera de Git. La recuperación y referencias están verificadas; e5 aceptada y F001 DONE.
 El RAW MOBILE permanece separado como candidato futuro, fuera de F001.
+
+## F002 — Ingestión e inspección local
+
+- [Requisitos y contrato v1](specs/features/F002-content-project-ingestion/requirements.md)
+- [Plan, aprobación y estado](specs/features/F002-content-project-ingestion/plan.md)
+- [Validación](specs/features/F002-content-project-ingestion/validation.md)
+- [D001 aceptada](specs/decisions/D001-local-source-contract.md)
+- [Comandos y recuperación](docs/F002-ingestion.md)
+
+Python estándar y FFmpeg/ffprobe existentes. Copia íntegra, inventario audiovisual,
+orientación de presentación y reloj basado en PTS. Proyectos y evidencia generada
+en `.local/`, sin transcripción ni edición. READY del input no es aceptación de
+feature ni aprobación de producción.
 
 ## Skills y archivos locales
 

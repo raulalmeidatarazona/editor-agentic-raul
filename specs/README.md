@@ -397,3 +397,13 @@ V-01–V-10 and AC-01–AC-10 PASS. Presented snapshots and the actual acceptanc
 preserved; final acceptance does not change the approved r1 contract. Phase 0
 acceptance alone never authorized F001 implementation or completion.
 F002 and future pipeline functionality remain outside the current authorization.
+
+## Current authorization — F002 r1
+
+Raúl explicitly approved F002 r1 at commit ae36327, accepted D001 and the limited
+tech-stack resolution, and authorized IMPLEMENT/VERIFY only F002. The
+[F002 plan](features/F002-content-project-ingestion/plan.md) owns its state and
+exact pre-approval identity. Earlier F002 exclusions above record historical gates.
+F001 remains DONE and unchanged; F003 and future production functionality remain
+unauthorized. No new dependencies, STT, editing, retake detection, composition or
+rendering. Feature acceptance and PRODUCTION_APPROVED remain separate gates.

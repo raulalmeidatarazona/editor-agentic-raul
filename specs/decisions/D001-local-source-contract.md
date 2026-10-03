@@ -1,6 +1,6 @@
 # D001 — Fuente local, contrato de ingestión y reloj de fuente
 
-**Status:** Proposed — NOT ACCEPTED\
+**Status:** Accepted — aprobación explícita registrada abajo\
 **Fecha:** 2026-10-03\
 **Feature:** [F002 r1](../features/F002-content-project-ingestion/plan.md)\
 **Autoridad:** [Constitución](../../constitution.md), [misión](../../mission.md),
@@ -74,3 +74,11 @@ de este contrato requieren revisión de PLAN/ADR y evaluación de consumidores.
 
 **Owner acceptance:** NOT GRANTED. Approver, fecha y palabras reales: pendientes.
 Aceptar F002 r1 debe mencionar explícitamente D001; no se infiere de silencio.
+
+## Acta de aceptación del propietario
+
+**Owner acceptance:** GRANTED. Raúl Almeida, 2026-10-03T19:40:26.578743Z, mensaje directo del chat.
+Revisión aceptada: `ae36327768a4186009a92619ef8e4b1bf379d8a8`, SHA-256 49535e195f9ba6b5f36fa9e99f3b7782d8b6889ab256e7e71a0864715fa29bfc.
+La sección anterior describe la propuesta histórica. Decisión normativa sin cambios.
+
+> Apruebo F002, bundle r1 del commit ae36327, compuesto por requirements.md, plan.md y validation.md. Acepto expresamente D001 del mismo commit y la resolución limitada de tech-stack descrita en plan.md. Autorizo PLAN_READY → PLAN_APPROVED e IMPLEMENT únicamente de F002 conforme a ese contrato y validación. No autorizo F003, dependencias nuevas, STT, edición, detección de retomas, HyperFrames ni render. F001 permanece intacto. Esta aprobación no declara ningún vídeo PRODUCTION_APPROVED.

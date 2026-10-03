@@ -2,7 +2,7 @@
 
 **Documento:** plan — CÓMO entregar la frontera de ingestión\
 **Bundle revision:** r1\
-**Lifecycle state:** PLAN_READY\
+**Lifecycle state:** VERIFYING\
 **Owner:** Raúl Almeida\
 **Scope:** [requirements.md](requirements.md)\
 **Proof contract:** [validation.md](validation.md)\
@@ -186,11 +186,11 @@ aceptada es comparación/procedencia, no sustituto de validar F002 real.
 
 ## Pasos incrementales — pendientes, no ejecutar durante PLAN
 
-- [ ] Registrar aprobación real de r1 + D001, commit/hashes previos y snapshot; solo entonces PLAN_APPROVED. Actualizar resolución raíz limitada.
-- [ ] Implementar tipos v1/serialización y guard con casos inválidos independientes. AC-06/10, V-06/12.
-- [ ] Implementar copy/hash/provenance/lock/atomic publication y CLI sin sobrescritura. AC-01/02/07/09, V-01/02/07/09/13.
-- [ ] Implementar inspector/selección/rotación/reloj/scan/decode y límites. AC-03–05/09, V-03–05/10/11.
-- [ ] Crear solo muestras sintéticas necesarias y ejecutar negativos/failure injection definidos; corregir defectos dentro de r1, no redefinir criterios.
+- [x] Registrar aprobación real de r1 + D001, commit/hashes previos y snapshot; solo entonces PLAN_APPROVED. Actualizar resolución raíz limitada.
+- [x] Implementar tipos v1/serialización y guard con casos inválidos independientes. AC-06/10, V-06/12.
+- [x] Implementar copy/hash/provenance/lock/atomic publication y CLI sin sobrescritura. AC-01/02/07/09, V-01/02/07/09/13.
+- [x] Implementar inspector/selección/rotación/reloj/scan/decode y límites. AC-03–05/09, V-03–05/10/11.
+- [x] Crear solo muestras sintéticas necesarias y ejecutar negativos/failure injection definidos; corregir defectos dentro de r1, no redefinir criterios.
 - [ ] Ingerir RAW F001 real, inspeccionar independientemente y ejecutar V-01–V-14, incluyendo regeneración/guard/consumer. Conservar fuente/evidencia.
 - [ ] Presentar reporte/frames y revisar display con Raúl; añadir resultados/limitaciones, esperar aceptación exacta de entrega antes de DONE. Sin F003.
 
@@ -244,3 +244,45 @@ no equivale a DONE; requiere ejecución y aceptación humana de evidencia poster
 | --- | --- | --- |
 | 2026-10-03 | DRAFT, r1 | Petición adjunta del propietario: PLAN ONLY F002 tras cierre F001 7e0bc22. |
 | 2026-10-03 | DRAFT → PLAN_READY | Tres documentos + D001 propuesto preparados para presentación. No código, instalaciones, proyecto/media ni checks F002 ejecutados. |
+
+## Aprobación real de r1 y D001 — acta administrativa
+
+**Approval:** GRANTED. Raúl Almeida, mensaje directo en este chat.
+
+Fecha de registro UTC: 2026-10-03T19:40:26.578743Z. Commit aprobado: `ae36327768a4186009a92619ef8e4b1bf379d8a8`.
+Los campos anteriores NOT GRANTED pertenecen a la presentación histórica; este
+registro los sustituye administrativamente, sin cambiar la normativa aprobada.
+
+> Apruebo F002, bundle r1 del commit ae36327, compuesto por requirements.md, plan.md y validation.md. Acepto expresamente D001 del mismo commit y la resolución limitada de tech-stack descrita en plan.md. Autorizo PLAN_READY → PLAN_APPROVED e IMPLEMENT únicamente de F002 conforme a ese contrato y validación. No autorizo F003, dependencias nuevas, STT, edición, detección de retomas, HyperFrames ni render. F001 permanece intacto. Esta aprobación no declara ningún vídeo PRODUCTION_APPROVED.
+
+Identidad exacta pre-aprobación:
+
+```text
+cc2469e1fcdf2b6ccbfcb42ad0c26bea9bad203e9e228c8f4f918122cc1be6ce  requirements.md
+df6bbb5bc76611ec05cfccab03a226e11ce22e5ccceaca6b282d6ae3ef292b54  plan.md
+a2ab20714962d9f67a023099ac793cdb603f0051f0de92abba93f45e41611753  validation.md
+49535e195f9ba6b5f36fa9e99f3b7782d8b6889ab256e7e71a0864715fa29bfc  D001-local-source-contract.md
+```
+
+Snapshot readonly: `.local/spec-approvals/F002/r1/`, además del commit Git.
+Transición: PLAN_READY → PLAN_APPROVED. Alcance: IMPLEMENT/VERIFY solo F002.
+D001 y la resolución limitada raíz están aceptados explícitamente; F003 continúa
+fuera de autorización. Aceptación final F002 y PRODUCTION_APPROVED no concedidas.
+
+## Inicio de IMPLEMENT y corrección tipográfica
+
+Aprobación r1/D001 registrada antes de código. PLAN_APPROVED → IMPLEMENTING.
+Se crean únicamente los ocho archivos de código/pruebas/procedimiento previstos.
+
+Errata de ejemplo: `F002-studio-001` en plan/validación es el rótulo de feature;
+el ID de proyecto ejecutable es `f002-studio-001`, conforme a la gramática normativa
+minúscula de requirements.md. No cambiar esa gramática ni añadir normalización
+silenciosa de IDs. Es corrección de capitalización del ejemplo, no cambio de
+comportamiento, scope, criterios o tolerancias; originales presentados preservados.
+
+## Inicio de VERIFY
+
+IMPLEMENTING → VERIFYING. Código y procedimiento previstos implementados;
+42 pruebas pasan con salida retenida en `.local/validation/F002/e1/unittest.log`.
+La validación real F001 y el gate humano se ejecutan a continuación; todavía
+no hay aceptación de evidencia ni DONE.
