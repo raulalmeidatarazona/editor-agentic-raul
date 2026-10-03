@@ -10,8 +10,9 @@ y los criterios de aceptación se desarrollan mediante Spec-Driven Development.
 ## Estado actual
 
 - Fase 0: base documental y convenciones `OWNER_APPROVED`.
-- F001: bundle r1 aprobado; `VERIFYING`, RAW STUDIO recibido e inspección
-  objetiva completada. Pendientes copia de recuperación verificable y revisión humana.
+- F001: bundle r1 aprobado; `HUMAN_REVIEW`, RAW STUDIO, inspección objetiva,
+  copia recuperable verificada y revisión de contexto/voz completados. Pendientes
+  referencias de contenido/movimientos y aceptación final.
 - La aceptación de F001 depende de su contrato de validación y revisión humana.
 
 El propietario autorizó publicar todo el trabajo actual en un repositorio público
@@ -39,7 +40,7 @@ vigente y la evidencia de F001 están en su plan y validación.
 
 El original STUDIO `C0216.MP4` y su sidecar se conservan sin cambios en
 `.local/fixtures/F001-studio-001/raw/`; metadata, hashes, logs y frames pequeños
-están en `evidence/`, fuera de Git. La recuperación y aceptación siguen pendientes.
+están en `evidence/`, fuera de Git. La recuperación está verificada; referencias y aceptación final siguen pendientes.
 El RAW MOBILE permanece separado como candidato futuro, fuera de F001.
 
 ## Skills y archivos locales

@@ -2,7 +2,7 @@
 
 **Documento:** plan — CÓMO obtener el fixture  
 **Bundle revision:** r1  
-**Lifecycle state:** VERIFYING  
+**Lifecycle state:** HUMAN_REVIEW  
 **Owner:** Raúl Almeida  
 **Scope:** [requirements.md](requirements.md)  
 **Proof contract:** [validation.md](validation.md)
@@ -327,3 +327,25 @@ La continuación pide parar para juicios humanos V-01–V-10 y que el agente mid
 **Progreso de los pasos existentes:** captura recibida USER-REPORTED; contexto físico pendiente. Copia local presente e identidad estable, recuperación pendiente. V-01–V-04 ejecutados hasta sus dependencias, V-05–V-09 requieren las respuestas solicitadas; V-10 y aceptación permanecen abiertos. No se marca completada una casilla compuesta hasta disponer de toda su evidencia.
 
 **Próximo paso autorizado:** recibir ubicación/acceso del original recuperable y respuestas humanas; registrar evidencia y comparar hashes, actualizar revisión/manifest, presentar fixture exacto para aceptación. El agente rellena documentación/mediciones; Raúl aporta únicamente hechos y juicios que no son observables de manera fiable con las comprobaciones disponibles.
+
+## Respuesta humana y recuperación — evidencia e2 (2026-10-03)
+
+Raúl aportó contexto real y revisión: Sony ZV-E10/trípode/Elgato/DJI Mic Mini a cámara, key/rim/2 RGB, español, arquitectura/modernización, monolito/microservicios/eventos/idempotencia; visualización vertical y voz comprensible de principio a fin. Movimientos naturales izquierda/derecha/adelante/atrás declarados; imagen/voz/encuadre/iluminación/gestos/movimientos representativos. Ruido ambiente/posible eco no impeditivos se conservan como limitación para producción futura, sin procesamiento F001.
+
+Decisión real recibida: «Confirmo que C0216.MP4 es representativo y adecuado como fixture STUDIO para F001». Se registra adecuación/representatividad confirmada; no se vuelve a pedir ese juicio. El acta literal está en evidence/human-review-e2.md y vinculada a la identidad ya medida.
+
+Raúl localiza el original en `videos/raw/C0216.MP4` del disco duro externo. Inspección acotada de /Volumes y diskutil no encontró el dispositivo externo conectado ni ese archivo en el volumen Recovery. V-01/V-10 siguen BLOCKED hasta montaje/ruta absoluta y lectura/hash comparables; se solicitó conectarlo. No se modifica ni copia sobre RAW.
+
+Raúl permite dejar UNKNOWN los timestamps que necesiten identificación manual. Se respeta en notas; no es permiso para eliminar las referencias aproximadas exigidas por AC-05/06/07 y V-06/07/08 ni para dar PASS a un evento desconocido. Se conservan UNKNOWN palabras del error/corrección, frases válidas concretas, intervalos y hechos no confirmados. Estado VERIFYING sin transición a DONE/PLAN revisado: V-02/V-03/V-04 PASS, restantes pendientes/bloqueados según validation.md. AC-03 y juicio AC-09 satisfechos. No F002 ni procesamiento de audio.
+
+La entrega de evidencia e2 conserva la copia de notas e1, su commit a50c702 y manifest original; añade acta humana y comprobación de ubicación. Se solicitaron solo detalles humanos restantes del procedimiento (player/velocidad, zona, objetivo, teleprompter habitual, pausa/bordes/retorno); ajustes no recordados permanecen UNKNOWN. Las referencias de contenido podrán aportarse después; no se exige editar Markdown ni medir propiedades manualmente.
+
+## Revisión adicional y recuperación resuelta — e2 (2026-10-03)
+
+Raúl confirma VLC a velocidad normal 1×, zona Europe/Malta, Sony kit lens (focal UNKNOWN), Elgato habitual, pausa normal NO RETOMA, palabras completas/margen al inicio/final y movimientos con retorno al centro. Respuestas conservadas literalmente en human-review-e2.md. Se cierra V-05/V-09 sin exigir nuevos ajustes ni procesamiento.
+
+PortableSSD quedó montado durante la sesión; el agente localizó `/Volumes/PortableSSD/videos/raw/C0216.MP4` y leyó su hash: 2.873.163.442 bytes y SHA-256 68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc, idénticos al RAW local. Lectura finalizada 2026-10-03 16:05:28 Europe/Malta, salida 0; original externo estable. V-01 PASS; el bloqueo histórico de recuperación está resuelto, con intentos/resultados retenidos.
+
+**Transición:** VERIFYING → HUMAN_REVIEW, 2026-10-03. Verificación global HUMAN_REVIEW_REQUIRED: V-01–V-05 y V-09 PASS. V-06–V-08 siguen pendientes de referencias humanas del contenido/movimientos; V-10 pendiente de cierre del paquete completo. Timestamps exactos no se exigen por r1: referencias aproximadas siguen UNKNOWN, y palabras del error/corrección/frase válida aún no establecidas. No se marcan PASS ni se cambian criterios por esa ausencia.
+
+RAW y r1 intactos; adecuación/representatividad ya confirmadas, sin volver a preguntar ese juicio. Restan referencias exigidas y aceptación final de la verificación completa antes de DONE. No se inicia F002 ni procesamiento de audio.

@@ -119,94 +119,95 @@ DONE requiere aprobación previa del PLAN, entrega correspondiente a r1, evidenc
 recuperable y aceptación expresa de Raúl vinculada a archivo/s y SHA-256. Es
 aceptación de un fixture de desarrollo, no PRODUCTION_APPROVED de un vídeo.
 
-## Evidencia de ejecución — entrega e1 abierta (2026-10-03)
+## Evidencia de ejecución — entrega e2 abierta (2026-10-03)
 
-**Verification result:** BLOCKED — ubicación/hash de recuperación pendientes (V-01/V-10).  
-**Juicios humanos pendientes:** V-02 (voz/origen), V-04–V-09 y aceptación de V-10.  
-**Owner acceptance of feature:** NOT GRANTED.  
-**Operador:** Codex; inspección objetiva 2026-10-03 15:45–15:48 Europe/Malta (13:45–13:48 UTC).  
-**Contrato:** bundle r1 archivado sin cambios; la sección normativa anterior conserva sus bytes. e1 identifica esta evidencia parcial, no una modificación del PLAN ni DONE.
+**Verification result:** HUMAN_REVIEW_REQUIRED — recuperación/inspección completas; referencias humanas de V-06–V-08 y cierre de V-10 pendientes.  
+**Lifecycle:** HUMAN_REVIEW, según plan.md.  
+**Decisión humana recibida:** Raúl confirma C0216.MP4 representativo y adecuado como fixture STUDIO para F001. Esta confirmación se registra y satisface el juicio de adecuación; no convierte checks UNKNOWN en PASS ni completa la feature.  
+**Verificación/aceptación final de la entrega completa:** pendiente; no DONE.  
+**Operador objetivo:** Codex. **Revisor humano:** Raúl Almeida, mensajes directos del 2026-10-03; VLC a velocidad normal 1× confirmado. Hora exacta de revisión UNKNOWN.
 
-Raúl informó que la captura física estaba completa, designó el STUDIO autoritativo
-y autorizó continuar IMPLEMENT/VERIFY. Las rutas concretas se resolvieron por
-inventario del directorio indicado: un MP4 Sony y su sidecar; no hay toma auxiliar.
-El MOBILE fue excluido explícitamente por el propietario y no se usa en ningún check.
-Su mensaje conserva `<LOCATION>` para recuperación; no es una ruta válida.
+e1 conserva la inspección objetiva de 2026-10-03 15:45–15:48 Europe/Malta y su commit
+`a50c702`. e2 añade la respuesta humana y la búsqueda acotada de la recuperación.
+No cambian RAW, selección de streams, requisitos ni contrato r1. No se repiten
+probe/decode sin un cambio del material. La copia de notas e1 se conserva en
+`/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence/reference-notes-e1.md` y en Git; el manifest original evidence.sha256
+se conserva. Su entrada para notas corresponde a esa copia e1, no a las notas e2.
 
-| Campo de identidad | Valor real / clasificación |
+| Identidad / evidencia | Valor real |
 | --- | --- |
-| Fixture / revisión / rol | F001-studio-001 / e1 abierta / principal; USER-REPORTED designación autoritativa de Raúl |
-| Nombre original / RAW absoluto | C0216.MP4 / `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/raw/C0216.MP4` |
-| Bytes | MEASURED: 2.873.163.442 |
-| SHA-256 inicial y posterior | MEASURED, ambos `68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc`; bytes y mtime estables |
-| Sidecar | `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/raw/C0216M01.XML`; 1.933 bytes; SHA-256 155550ef95eaf6e885e6e5be67667c8089e4060c774023cbfa0f34ad14c1bde5, inicial/posterior coincidentes |
-| Backup / hash / acceso | UNKNOWN; copia declarada USER-REPORTED pero sin ubicación concreta ni lectura; no se acepta por declaración sola |
-| Duración / propiedades | MEASURED: 232,800 s; H.264 3840×2160, 25/1 reportados, SAR 1:1, DAR almacenado 16:9, rotation −90; audio stream 1 PCM 16-bit BE, 48 kHz, 2 canales |
-| Orientación de evidencia | OBSERVED: autorrotación FFmpeg produce sujeto erguido en frame 360×640 9:16; confirmación/player de Raúl UNKNOWN |
-| Notes / identidad | `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/reference-notes.md`; SHA-256 `25d337319c2a0049bead43a4b311e1ffbb839e9f40c881b1feb31ff3aec71a38` |
-| Evidencia / manifest | `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence` / `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence/evidence.sha256`; SHA-256 del manifest `abf2c1b4404172b060082237f2238239d9f0ed6e51164b908a90b7718bd099f3`; 29 artefactos cubiertos, incluyendo notas |
-| Herramientas | /opt/homebrew/bin/ffmpeg y ffprobe 9.0.1; /usr/bin/shasum -a 256; versiones completas y comandos/exit codes retenidos; sin instalación |
+| Fixture / rol / original | F001-studio-001 / principal / C0216.MP4, designado por Raúl |
+| RAW absoluto | `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/raw/C0216.MP4` |
+| Bytes / SHA-256 antes y después | MEASURED: 2.873.163.442 / `68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc`, estable; bytes y mtime iguales |
+| Sidecar original | `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/raw/C0216M01.XML` / 1.933 bytes / `155550ef95eaf6e885e6e5be67667c8089e4060c774023cbfa0f34ad14c1bde5`, estable |
+| Recuperación | MEASURED: `/Volumes/PortableSSD/videos/raw/C0216.MP4`, 2.873.163.442 bytes, SHA-256 `68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc`, coincide. Lectura completada 2026-10-03 16:05:28 Europe/Malta (14:05:28 UTC), salida 0; original externo estable. Acceso: conectar/montar PortableSSD y leer esa ruta. |
+| Duración / vídeo | MEASURED: 232,800 s; stream 0 H.264 3840×2160, 25/1 reportados, SAR 1:1, DAR almacenado 16:9, matriz rotation −90 |
+| Audio | MEASURED: stream 1 PCM 16-bit BE, 48 kHz, 2 canales; USER-REPORTED: DJI Mic Mini conectado a cámara y voz comprensible de principio a fin |
+| Vista | OBSERVED: FFmpeg muestra vertical 9:16 erguido; USER-REPORTED: Raúl confirma visualización vertical correcta |
+| Notes e2 | `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/reference-notes.md`; SHA-256 `2a165d193115050f013afa0c54df7f098cf6fc83046484dfeed0f1d6b9ba6492` |
+| Acta literal humana e2 | `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence/human-review-e2.md`; SHA-256 `b70bec10cf37467f53efdd90821e3755243a99deb4b2f42f2559b38ae235b91c` |
+| Manifest e2 | `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence/evidence-e2.sha256`; SHA-256 `a0caa60d63ebf48e0f6fb7ca514bf6d6566badd3eaa5c52ab6f2501a790acc6d`; 37 artefactos cubiertos incluyendo notas, acta, evidencia objetiva y copia e1 |
+| Herramientas | FFmpeg/ffprobe 9.0.1 y shasum -a 256; versiones/comandos/exit codes en evidence/; sin instalaciones |
 
 ### Resultados por check
 
-Todos los resultados se vinculan al SHA-256 principal arriba. Las rutas de
-artefactos que siguen se resuelven dentro del directorio absoluto de evidencia.
-El manifest permite verificar los hashes individuales. No se equipara decode
-sin errores con una escucha humana ni se presume el origen DJI del stream 1.
+Las evidencias relativas siguientes se resuelven en `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence` y se vinculan al
+SHA-256 del RAW indicado. Las respuestas humanas se clasifican USER-REPORTED /
+HUMAN EVIDENCE; solo la metadata y resultados de herramientas son MEASURED.
 
-| Check / AC | Procedimiento real / esperado vs observado | Evidencia | Resultado |
+| Check / AC | Resultado y cobertura real | Evidencia | Estado |
 | --- | --- | --- | --- |
-| V-01 / AC-01 | Fuente regular no vacía, bytes/hash inicial y posterior iguales; copia recuperable no localizable con el placeholder proporcionado. | initial-file-stat.json, source.sha256, source-after.sha256, integrity-result.json; backup pendiente | BLOCKED |
-| V-02 / AC-02/03 | Probe salida 0, stderr vacío; vídeo real visible en frames, duración/dimensiones positivas, una pista audio integrada con propiedades conocidas. Identificarla como voz y verificar su procedencia requiere V-05. Metadata objetiva satisfecha; voz UNKNOWN. | ffprobe.json, ffprobe.stderr.log, commands.json; frames | HUMAN_REVIEW_REQUIRED |
-| V-03 / AC-02 | Decodificación completa streams 0 y 1, -xerror -err_detect explode; salida 0, decode.log vacío (0 bytes). Stream 2 es metadata fuera de la selección audiovisual; origen de audio se mantiene pendiente. | decode-result.json, decode.log, decode.stdout.log, versiones; SHA estable | PASS — solo decodificación completa de vídeo/audio integrado |
-| V-04 / AC-03 | Matriz −90 y píxeles 3840×2160; frames autorrotados verticales 9:16 erguido. Falta contraste con montaje y comportamiento del player de Raúl. | ffprobe.json, frame-030s.png, frame-150s.png, frame-220s.png, frame-observations-procedure.json; confirmación pendiente | HUMAN_REVIEW_REQUIRED |
-| V-05 / AC-02/04 | No se ha registrado escucha completa normal con Raúl; inteligibilidad, palabras críticas, distorsión/dropouts y origen conocido de voz UNKNOWN. No hay umbral numérico inventado ni sustituto por metadata. | reference-notes.md; respuesta de revisión solicitada, pendiente | HUMAN_REVIEW_REQUIRED |
-| V-06 / AC-05 | Idea/idioma, pausa normal, tres términos y palabras completas al inicio/final pendientes de escucha humana; no copiar el guion opcional. | reference-notes.md, referencias habladas UNKNOWN | HUMAN_REVIEW_REQUIRED |
-| V-07 / AC-06 | Error, pausa, Again aislado, pausa, corrección y frase válida NO RETOMA: palabras/intervalos UNKNOWN; no STT ni detector. | reference-notes.md; revisión solicitada | HUMAN_REVIEW_REQUIRED |
-| V-08 / AC-07/09 | Tres muestras muestran cabeza/hombros/torso/manos y postura aproximadamente centrada. No prueban todos los movimientos, continuidad, habitualidad de teleprompter ni representatividad. | Frames en 00:30, 02:30, 03:40; notes; revisión de Raúl pendiente | HUMAN_REVIEW_REQUIRED |
-| V-09 / AC-08/09 | Notas objetivas completas y separadas MEASURED/OBSERVED/USER-REPORTED/UNKNOWN; fecha real/zona, montaje, mic/ruta, teleprompter, ajustes/luces, intención, limitaciones y juicio pendientes. XML declara reloj/modelo, no confirma hecho físico. | reference-notes.md, sidecar.sha256; preguntas al propietario pendientes | HUMAN_REVIEW_REQUIRED |
-| V-10 / AC-01/10 | Paquete identificado, manifest y exclusión RAW/evidencia de Git comprobados. Falta hash/lectura de recuperación y aceptación expresa de e1; futuras funciones NOT YET VALIDATED. | evidence.sha256, git-exclusion.log, RAW/notas/tabla; backup y aceptación pendientes | BLOCKED; además requiere revisión/aceptación humana |
+| V-01 / AC-01 | Fuente regular no vacía, bytes/hash locales estables; original externo localizado y leído, bytes/hash iguales y original externo estable tras lectura. Intento inicial sin disco conservado como historial, bloqueo resuelto. | source.sha256, source-after.sha256, integrity-result.json, recovery.sha256, recovery-result-e2.json, recovery-location-check-mounted-e2.json | PASS |
+| V-02 / AC-02/03 | Probe salida 0, stderr vacío, vídeo real, duración/dimensiones positivas y una pista audio; Raúl confirma voz y DJI conectado a cámara. Stream seleccionado de voz: 1, único audio integrado. | ffprobe.json, commands.json, frames, human-review-e2.md | PASS |
+| V-03 / AC-02 | Decodificación completa streams 0/1 salida 0, decode.log vacío; identidad local estable. No se exige decodificar el stream 2 de metadata como audiovisual. | decode-result.json, decode.log, decode.stdout.log, integrity-result.json | PASS |
+| V-04 / AC-03 | Matriz −90 y píxeles almacenados horizontales; frames autorrotados 9:16 y Raúl confirma visualización vertical correcta. Nombre de player UNKNOWN, no inventado. Vista vertical inequívoca establecida por evidencia + confirmación. | ffprobe.json, frame-030s.png, frame-150s.png, frame-220s.png, human-review-e2.md | PASS |
+| V-05 / AC-02/04 | Raúl confirma escucha completa con VLC a 1×, voz comprensible de principio a fin, DJI a cámara; ruido ambiente/posible eco no impeditivos. Limitación anotada; no se procesa audio ni se añade umbral no aprobado. | human-review-e2.md, reference-notes.md, ffprobe.json stream 1 | PASS |
+| V-06 / AC-05 | Español, arquitectura/modernización; cuatro términos USER-REPORTED: monolito, microservicios, eventos, idempotencia. Pausa normal NO RETOMA y palabras completas/margen al inicio/final confirmados. Resumen específico de una idea e intervalos aproximados de referencia pendientes; no se inventan. | human-review-e2.md, reference-notes.md | HUMAN_REVIEW_REQUIRED |
+| V-07 / AC-06 | Raúl confirma Again de retoma y varias apariciones normales. Palabras del error/corrección, secuencia de pausas/aislamiento, frases válidas completas e intervalos aproximados UNKNOWN. Su autorización para registrarlos UNKNOWN se respeta sin cambiar AC-06 ni declarar PASS. | human-review-e2.md, reference-notes.md | HUMAN_REVIEW_REQUIRED |
+| V-08 / AC-07/09 | Frames muestran cabeza/hombros/torso/manos y postura centrada. Raúl confirma movimientos izquierda/derecha/adelante/atrás con retorno al centro, Elgato habitual y representatividad. Intervalos por movimiento/lectura UNKNOWN; referencias pendientes. | frames, human-review-e2.md, reference-notes.md | HUMAN_REVIEW_REQUIRED |
+| V-09 / AC-08/09 | Raúl confirma fecha 03/10/2026 Europe/Malta, STUDIO, Sony ZV-E10/kit lens/trípode/Elgato habitual/DJI a cámara, key/rim/2 RGB, representatividad y limitación audio. Hora exacta, focal/exposición y lecturas reales no recordadas quedan UNKNOWN, permitidas/documentadas; metadata del reloj separada de hechos. Procedencia/permiso local F001 registrados. | human-review-e2.md, reference-notes.md, sidecar.sha256 | PASS |
+| V-10 / AC-01/10 | Paquete, manifest, exclusión de media y recuperación verificada disponibles. Adecuación/representatividad confirmadas; V-06–V-08 y aceptación final de verificación completa pendientes. | evidence-e2.sha256, git-exclusion.log, recovery-result-e2.json, human-review-e2.md | HUMAN_REVIEW_REQUIRED |
 
 ### Cobertura por aceptación
 
-| AC | Resultado actual / evidencia que falta |
+| AC | Estado actual |
 | --- | --- |
-| AC-01 | BLOCKED: recuperación verificable con SHA coincidente; integridad local satisfecha. |
-| AC-02 | HUMAN_REVIEW_REQUIRED: V-03 pasa; reproducibilidad/voz/escucha completa aún sin evidencia humana. |
-| AC-03 | HUMAN_REVIEW_REQUIRED: metadata y vista FFmpeg disponibles; confirmación de orientación/player pendiente. |
-| AC-04 | HUMAN_REVIEW_REQUIRED: escucha completa. |
-| AC-05 | HUMAN_REVIEW_REQUIRED: idea, términos, pausas y bordes de palabras. |
-| AC-06 | HUMAN_REVIEW_REQUIRED: contraste retoma/NO RETOMA con referencias reales. |
-| AC-07 | HUMAN_REVIEW_REQUIRED: movimientos, continuidad y teleprompter habitual. |
-| AC-08 | HUMAN_REVIEW_REQUIRED: contexto humano no observable, separado de mediciones. |
-| AC-09 | HUMAN_REVIEW_REQUIRED: representatividad y limitaciones juzgadas por Raúl. |
-| AC-10 | BLOCKED: recuperación; revisión exacta/aceptación aún no otorgada. |
+| AC-01 | PASS: integridad local estable y original externo leído con bytes/hash coincidentes y ruta/acceso registrados. |
+| AC-02 | PASS: V-02/V-03/V-05 pasan; vídeo/audio decodifican completos y revisión normal VLC confirmada. |
+| AC-03 | PASS: propiedades conocidas, duración positiva y vista vertical identificada/confirmada (V-02/V-04). |
+| AC-04 | PASS: voz inteligible completa a 1× con Raúl; ruido/posible eco no impeditivos documentados. |
+| AC-05 | HUMAN_REVIEW_REQUIRED: idioma/términos/pausa/bordes completos confirmados; resumen específico y referencias pendientes. |
+| AC-06 | HUMAN_REVIEW_REQUIRED: usos de Again confirmados, contraste concreto/error/corrección e intervalos UNKNOWN. |
+| AC-07 | HUMAN_REVIEW_REQUIRED: postura/movimientos/retornos/teleprompter habitual confirmados; referencias por movimiento pendientes. |
+| AC-08 | PASS: fecha/zona/equipo/ruta/idioma/luces/teleprompter/procedencia/limitaciones registrados; ajustes desconocidos explícitos. |
+| AC-09 | PASS: Raúl confirma expresamente representatividad/adecuación de imagen, voz, encuadre, iluminación, gestos y movimientos para F001; limitación de audio visible en notas. No promete crops futuros. |
+| AC-10 | HUMAN_REVIEW_REQUIRED: recuperación y paquete identificados; faltan referencias V-06–V-08 y cierre humano de la verificación completa. |
 
-No se han observado errores de decodificación ni cambios de integridad. Esto no
-demuestra que no existan fallos de voz/contenido/movimientos. UNKNOWN no es PASS.
-No hay indicio que obligue hoy a cambiar r1: se esperan sus evidencias faltantes.
+No hay FAIL demostrado de integridad/decodificación. Ruido/posible eco no impiden
+la comprensión según Raúl: limitación, no fallo impeditivo inventado. UNKNOWN
+sigue sin ser PASS. No se implementa mezcla/audio correctivo ni ninguna función
+futura. No hay revisión material de r1: sus pendientes quedan explícitos.
 
 ## Revisión humana y aceptación final
 
-**Paquete mínimo:** `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/raw/C0216.MP4` + `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/reference-notes.md` + esta tabla.  
-**Revisor requerido:** Raúl; reproductor, escucha completa, fecha y observaciones pendientes.  
-**Revisor adicional:** no designado; opcional, sin sustituir juicio de Raúl.  
-**Owner acceptance of feature:** NOT GRANTED.  
-**Frase de aceptación / fixture ID / SHA / revisión:** pendiente después de completar evidencia.
+**Confirmación literal recibida de Raúl:**
 
-Preguntas enviadas en este chat el 2026-10-03: ruta/acceso del backup; contexto físico
-no observable y exactitud del reloj Sony; revisión completa V-04–V-08 con referencias
-habladas/movimientos y juicio representativo. El agente escribirá las respuestas en
-las notas; Raúl no debe medir propiedades ni editar Markdown manualmente.
+> Confirmo que C0216.MP4 es representativo y adecuado como fixture STUDIO para F001.
 
-Al recibir la ruta recuperable, leer/hash y comparar contra la identidad indicada.
-Al recibir juicios, registrarlos como USER-REPORTED/HUMAN EVIDENCE con fecha y
-revisor, actualizar resultados sin relajar AC y regenerar manifest/revisión de
-evidencia afectada. Luego presentar el paquete exacto para aceptación de F001.
-Si hay ausencia de contenido requerido, señalarla y seguir la recuperación r1;
-no corregir mediante edición ni inventar observaciones.
+Se registra su juicio sin pedir de nuevo confirmación de representatividad. No
+es una renuncia a AC-01/05/06/07/08/10. Los intervalos pueden permanecer UNKNOWN
+en las notas actuales, como pidió; r1 no permite cerrar los checks que los exigen
+hasta que exista su referencia. No se fabrican intervalos ni frases a partir de
+metadatos, silencio, guion opcional o usos normales de again. No STT/detector.
 
-El MOBILE se conserva separado en
-`/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/mobile-candidate-001/raw/PXL_20261003_092220543.mp4`:
-candidato futuro de Mobile Capture Validation, sin probe/decode/hash/contenido
-revisados aquí y sin inclusión en AC/V de F001. No se autoriza F002 ni pipeline.
+**Paquete:** RAW canónico + reference-notes.md e2 + esta tabla + manifest e2.  
+**Revisor:** Raúl, mensajes del 2026-10-03; VLC a velocidad normal 1× confirmado.  
+**Adecuación/representatividad:** CONFIRMED, vinculada al nombre autoritativo y SHA-256 medido arriba.  
+**Feature DONE / aceptación final de verificación completa:** pendiente; estado HUMAN_REVIEW.
+
+Recuperación y contexto/reproducción ya comprobados. Próximo paso autorizado:
+registrar las referencias humanas de contenido/movimientos cuando estén disponibles
+y cerrar revisión del paquete completo, sin modificar r1. No se necesitan tiempos
+exactos de corte: r1 exige referencias aproximadas, aún UNKNOWN. F002 y tratamiento
+futuro de audio permanecen fuera. MOBILE sigue preservado separadamente y no entra
+en ninguno de estos resultados.

@@ -1,6 +1,6 @@
 # F001-studio-001 — Notas de referencia
 
-**Entrega de evidencia:** e1 (2026-10-03, Europe/Malta), abierta; revisión pendiente.  
+**Entrega de evidencia:** e2 (2026-10-03, Europe/Malta), abierta; revisión humana parcial registrada.  
 **Aprobación aplicable:** bundle r1 archivado; no implica aceptación del fixture.  
 **Fuente autoritativa designada por Raúl:** `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/raw/C0216.MP4`. No se selecciona por antigüedad del archivo.
 
@@ -19,8 +19,8 @@
 | Sidecar Sony asociado por nombre — MEASURED; no es toma auxiliar | `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/raw/C0216M01.XML` | 1.933 | `155550ef95eaf6e885e6e5be67667c8089e4060c774023cbfa0f34ad14c1bde5` |
 
 - **MEASURED:** fuente regular no vacía; hash inicial en `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence/source.sha256`. Hash posterior en source-after.sha256: coincide con el inicial; bytes y mtime permanecen idénticos. Sidecar igualmente estable. Decodificación completa de streams 0/1: salida 0, decode.log vacío (0 bytes). Véanse decode-result.json e integrity-result.json.
-- **USER-REPORTED:** Raúl declara una copia/original recuperable en su mensaje de continuación del 2026-10-03, pero el valor comunicado es el placeholder `<LOCATION>`.
-- **UNKNOWN:** ubicación real, instrucciones de acceso y hash de recuperación. V-01/V-10 permanecen BLOCKED hasta leer una copia situada fuera del directorio de trabajo y comprobar coincidencia.
+- **USER-REPORTED:** Raúl declara el original recuperable en `videos/raw/C0216.MP4` de su disco duro externo y acceso disponible; mensaje de revisión humana del 2026-10-03.
+- **MEASURED:** tras el montaje se localizó y leyó `/Volumes/PortableSSD/videos/raw/C0216.MP4`, 2.873.163.442 bytes; SHA-256 `68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc`, idéntico al RAW local. Lectura/hash finalizó 2026-10-03 16:05:28 Europe/Malta (14:05:28 UTC); resultado PASS, bytes/mtime del original externo estables. Acceso: conectar/montar PortableSSD y abrir esa ruta, sin sobrescribir/borrar originales. Evidencia: recovery.sha256 y recovery-result-e2.json. El intento inicial sin disco se conserva en recovery-location-check-e2.json; la localización posterior en recovery-location-check-mounted-e2.json.
 - **MEASURED:** espacio disponible antes de crear evidencia: 113,259,212,800 bytes, según statvfs. No se ha vuelto a copiar ni recomprimido el RAW.
 - **MEASURED:** RAW, sidecar, evidencia y MOBILE están excluidos por `/.local/`; solo las notas ya seleccionadas están versionadas. Media permanece local.
 
@@ -36,21 +36,21 @@
 | FPS reportados | r_frame_rate 25/1; avg_frame_rate 25/1; no se declara CFR probado |
 | Frames reportados / base temporal | 5.820; 1/25.000 |
 | Display Matrix | rotation −90; matriz íntegra en ffprobe.json |
-| Audio seleccionado para decodificar | stream 1, única pista audio integrada; origen físico UNKNOWN |
+| Audio seleccionado para decodificar | stream 1, única pista audio integrada; USER-REPORTED: voz comprensible y DJI Mic Mini conectado a cámara; detalle físico de conexión UNKNOWN |
 | Codec / frecuencia / canales | pcm_s16be, 16 bits, 48.000 Hz, 2 canales |
 | Channel layout | UNKNOWN: no informado por ffprobe; no asignar etiquetas de canal |
-| Idioma en tags | und; idioma hablado UNKNOWN hasta escucha humana |
+| Idioma en tags | und (MEASURED tag); español hablado USER-REPORTED por Raúl |
 | Metadata adicional | stream 2 rtmd, timecode declarado 03:22:25:23; no es tiempo de fuente mm:ss |
 | Fecha del contenedor / streams | creation_time 2026-10-03T14:02:10.000000Z |
-| Fecha/zona declarada por XML | 2026-10-03T15:02:10+01:00; exactitud del reloj y zona física UNKNOWN |
-| Dispositivo declarado por XML | manufacturer Sony; modelName ZV-E10; uso físico pendiente de confirmación |
+| Fecha/zona declarada por XML | 2026-10-03T15:02:10+01:00; exactitud del reloj y hora física UNKNOWN; zona Europe/Malta USER-REPORTED |
+| Dispositivo declarado por XML | manufacturer Sony; modelName ZV-E10 (MEASURED metadata); cuerpo Sony ZV-E10 confirmado USER-REPORTED |
 | Gamma/color declarados | XML rec709-xvycc / rec709; ffprobe bt709, transfer iec61966-2-4 |
 
 No convertir creation_time en fecha real confirmada, ni metadatos de codificación en ajustes elegidos por Raúl. Focal, exposición, ISO, apertura, balance de blancos y lecturas de luces: **UNKNOWN** en las evidencias disponibles.
 
 ## Orientación y encuadre — OBSERVED
 
-FFmpeg autorrota la imagen según su matriz al extraer estos tres pequeños frames. Las imágenes resultantes son 360 × 640, verticales 9:16 y con el sujeto erguido. Es vista de evidencia, no un nuevo RAW, crop, proxy de producción ni normalización F002. El comportamiento de un reproductor usado por Raúl y su confirmación de orientación siguen **UNKNOWN** (V-04).
+FFmpeg autorrota la imagen según su matriz al extraer estos tres pequeños frames. Las imágenes resultantes son 360 × 640, verticales 9:16 y con el sujeto erguido. Es vista de evidencia, no un nuevo RAW, crop, proxy de producción ni normalización F002. **USER-REPORTED:** Raúl confirma que se visualiza correctamente como vídeo vertical; concuerda con la vista de evidencia 9:16. **USER-REPORTED:** revisión con VLC a velocidad normal 1×.
 
 | Archivo / tiempo de fuente conocido | Evidencia visual | Observación limitada |
 | --- | --- | --- |
@@ -66,34 +66,34 @@ FFmpeg autorrota la imagen según su matriz al extraer estos tres pequeños fram
 | --- | --- |
 | Perfil / captura física / designación | USER-REPORTED: Raúl declara STUDIO físico completo y designa este fixture autoritativo en el mensaje del 2026-10-03. |
 | Procedencia y uso | USER-REPORTED: Raúl aporta su grabación y autoriza inspección/validación local F001. No es permiso para publicar media ni subirla a un servicio. |
-| Fecha/hora real y zona física | UNKNOWN; valores de reloj arriba son MEASURED metadata, pendientes de confirmación. |
-| Idea, idioma hablado e intención | UNKNOWN; no se presume que se recitó el guion Go. |
-| Objetivo, trípode y montaje | UNKNOWN; metadata solo declara el cuerpo de cámara. |
-| Micrófono / ruta y voz original | UNKNOWN; confirmar dispositivo/conexión y escuchar la pista 1 completa. |
-| Teleprompter / habitualidad / motivo si no usado | UNKNOWN; no observable en estos frames. |
-| Luces reales y ajustes elegidos | UNKNOWN; separar del color observado del fondo. |
-| Limitaciones advertidas por Raúl | UNKNOWN; no confundir con límites del muestreo visual del agente. |
-| Representatividad del STUDIO | UNKNOWN; juicio de Raúl requerido por V-08/V-09. |
+| Fecha/hora real y zona física | USER-REPORTED: 03/10/2026, Europe/Malta. Hora exacta y exactitud del reloj Sony UNKNOWN; conservar metadata separada. |
+| Idea, idioma hablado e intención | USER-REPORTED: conversación en español sobre arquitectura/modernización de sistemas, fixture STUDIO F001. Formulación de una única idea central e intervalos específicos UNKNOWN; no es el guion Go. |
+| Objetivo, trípode y montaje | USER-REPORTED: Sony ZV-E10 + Sony kit lens + trípode + Elgato Teleprompter. Focal exacta/modelo de trípode y orientación física exacta UNKNOWN. |
+| Micrófono / ruta y voz original | USER-REPORTED: DJI Mic Mini conectado a cámara; voz comprensible de principio a fin. Cable/receptor/ajustes de ganancia UNKNOWN; no deducidos de PCM ni del dispositivo visible. |
+| Teleprompter / habitualidad / motivo si no usado | USER-REPORTED: Elgato Teleprompter usado y parte habitual de su STUDIO. Intervalo concreto de lectura UNKNOWN; no inferido de la mirada. |
+| Luces reales y ajustes elegidos | USER-REPORTED: key light + rim light + 2 RGB al fondo. Modelos y ajustes reales UNKNOWN; no sustituirlos por targets iniciales del tech stack. |
+| Limitaciones advertidas por Raúl | USER-REPORTED: ruido ambiente y posible ligero eco, sin impedir comprender la voz; tratamiento futuro conveniente. No se aplica procesamiento en F001. |
+| Representatividad del STUDIO | USER-REPORTED: imagen, voz, encuadre, iluminación, gestos y movimientos representan razonablemente su STUDIO; confirma C0216.MP4 representativo y adecuado para F001. |
 
 ## Contenido: referencias aproximadas, sin STT ni detector
 
 | Archivo | Intervalo de fuente | Tipo requerido | Estado |
 | --- | --- | --- | --- |
-| C0216.MP4 | UNKNOWN | Idea / narración natural / pausa normal | UNKNOWN; V-06 requiere escucha/revisión humana. |
+| C0216.MP4 | UNKNOWN | Idea / narración natural / pausa normal | USER-REPORTED: arquitectura/modernización; al menos una pausa natural NO RETOMA, inicio/final con palabras completas y buffers de grabación. Referencias temporales y resumen concreto de una idea central UNKNOWN. |
 | C0216.MP4 | UNKNOWN | Error intencional | UNKNOWN; no importar palabras del guion opcional. |
-| C0216.MP4 | UNKNOWN | Pausa → Again aislado → pausa | UNKNOWN; V-07 requiere identificar el hecho escuchado. |
+| C0216.MP4 | UNKNOWN | Pausa → Again aislado → pausa | USER-REPORTED: utilizó Again como marcador de retoma; aislamiento/secuencia de pausas y palabras del error/corrección UNKNOWN. |
 | C0216.MP4 | UNKNOWN | Corrección | UNKNOWN; palabras reales pendientes de revisión humana. |
-| C0216.MP4 | UNKNOWN | NARRACIÓN VÁLIDA — NO RETOMA con again | UNKNOWN; frase real e intervalo pendientes de revisión humana. |
+| C0216.MP4 | UNKNOWN | NARRACIÓN VÁLIDA — NO RETOMA con again | USER-REPORTED: again más de una vez en narración normal. Frases completas/intervalos UNKNOWN; no identificar automáticamente como retoma. |
 | C0216.MP4 | 00:30, 02:30, 03:40 (instantes muestreados) | Manos / postura visible | OBSERVED en frames; no son límites de una acción ni prueba de izquierda/derecha/adelante/atrás. |
-| C0216.MP4 | UNKNOWN | Izquierda / centro / derecha / centro / adelante / atrás / teleprompter | UNKNOWN; V-08 requiere reproducción y referencia humana. |
+| C0216.MP4 | UNKNOWN | Izquierda / centro / derecha / centro / adelante / atrás / teleprompter | USER-REPORTED: movimientos naturales izquierda/derecha y adelante/atrás con retorno al centro, teleprompter habitual y representatividad confirmados. Intervalos/segmento de lectura UNKNOWN. |
 
-Términos técnicos realmente pronunciados: **UNKNOWN** hasta V-06. No hay transcript, etiquetado automático de retomas ni corte. El agente redactará las referencias a partir de las respuestas de Raúl; no se le pide rellenar propiedades, hashes ni documentos manualmente.
+Términos técnicos realmente pronunciados: **USER-REPORTED:** monolito, microservicios, eventos, idempotencia. Grafía de referencia aportada por Raúl, sin STT ni atribución de timestamps. No hay transcript, etiquetado automático de retomas ni corte. El agente redactará las referencias a partir de las respuestas de Raúl; no se le pide rellenar propiedades, hashes ni documentos manualmente.
 
 ## Evidencia y revisión
 
-Directorio recuperable de evidencia: `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence`. Probe y versiones: ffprobe.json, ffprobe.stderr.log, ffmpeg-version.txt, ffprobe-version.txt. Procedimientos: commands.json, decode-result.json, frame-observations-procedure.json. Integridad: source.sha256, sidecar.sha256 y comprobaciones posteriores; manifest de evidencia al cerrar esta revisión.
+Directorio recuperable de evidencia: `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/F001-studio-001/evidence`. Probe y versiones: ffprobe.json, ffprobe.stderr.log, ffmpeg-version.txt, ffprobe-version.txt. Procedimientos: commands.json, decode-result.json, frame-observations-procedure.json. Integridad: source.sha256, sidecar.sha256 y comprobaciones posteriores; manifest e2: evidence/evidence-e2.sha256, que incluye el acta humana y prueba de recuperación.
 
-**Revisión completa de imagen/voz por Raúl:** UNKNOWN; no se ha registrado reproductor, fecha ni observaciones V-04–V-09.  
-**Aceptación expresa e1 del fixture:** NOT GRANTED.  
+**Revisión de imagen/voz por Raúl:** USER-REPORTED, respuesta en este chat del 2026-10-03. Orientación vertical y voz comprensible de principio a fin, ruido/posible eco y representatividad registrados en human-review-e2.md. USER-REPORTED: VLC, velocidad normal 1×. Hora exacta de revisión UNKNOWN.  
+**Confirmación humana:** «Confirmo que C0216.MP4 es representativo y adecuado como fixture STUDIO para F001». Adecuación/representatividad confirmadas; aceptación final de toda la evidencia/verificación de F001 aún pendiente. La fuente/hash no cambian. Se conserva e1 en Git (commit a50c702); e2 incorpora esta respuesta sin modificar r1.  
 **Funciones futuras:** NOT YET VALIDATED conforme al contrato r1.  
 **MOBILE:** Raúl declara grabación caminando al aire libre en `/Users/raulalmeida/Workspace/editor-agentic-raul/.local/fixtures/mobile-candidate-001/raw/PXL_20261003_092220543.mp4`; candidato conservado separadamente, sin inspección de contenido y fuera de F001/V-01–V-10.

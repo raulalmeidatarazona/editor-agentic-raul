@@ -31,9 +31,10 @@ decision is recorded in [the protocol](specs/README.md#phase-0-review-evidence).
 Raúl explicitly approved r1 for
 [F001-real-capture-fixture](specs/features/F001-real-capture-fixture/plan.md)
 and authorized its IMPLEMENT, including STUDIO calibration, not ingestion.
-The physical STUDIO RAW C0216.MP4 has arrived; F001 is VERIFYING. Objective
-metadata, stable hashes and full video/audio decoding are retained. Recovery
-location/hash and required human judgments remain pending; no fixture acceptance.
+The physical STUDIO RAW C0216.MP4 has arrived; F001 is HUMAN_REVIEW. Objective
+metadata, stable hashes, full decoding and matching external recovery are retained.
+Raúl confirmed setup, playback and representativeness; content/movement references
+and final feature acceptance remain pending.
 Its `plan.md` owns state, approval, hashes and progress. F002, pipeline
 functionality, new dependencies, HyperFrames compositions, STT and retake
 detection remain unauthorized. Continue approved F001 after RAW arrives.
