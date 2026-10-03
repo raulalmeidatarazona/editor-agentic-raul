@@ -392,5 +392,6 @@ Raúl subsequently approved F001 r1 and explicitly authorized its IMPLEMENT;
 the [plan](features/F001-real-capture-fixture/plan.md) preserves the approval,
 reviewed hashes and snapshot. The STUDIO RAW has arrived; F001 is HUMAN_REVIEW with
 objective evidence, matching external recovery and owner context/playback review
-retained; required content/movement references and final acceptance remain pending. Phase 0 acceptance alone never authorized it.
+retained. Required content/movement references are complete (e5); V-01–V-09 pass,
+and only explicit final feature acceptance in V-10 remains pending. Phase 0 acceptance alone never authorized it.
 F002 and future pipeline functionality remain outside the current authorization.

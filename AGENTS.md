@@ -33,8 +33,9 @@ Raúl explicitly approved r1 for
 and authorized its IMPLEMENT, including STUDIO calibration, not ingestion.
 The physical STUDIO RAW C0216.MP4 has arrived; F001 is HUMAN_REVIEW. Objective
 metadata, stable hashes, full decoding and matching external recovery are retained.
-Raúl confirmed setup, playback and representativeness; content/movement references
-and final feature acceptance remain pending.
+Raúl confirmed setup, playback, representativeness and source-relative content/
+movement references. V-01–V-09 pass; only explicit final acceptance in V-10 is
+pending for evidence revision e5. F001 remains HUMAN_REVIEW, not DONE.
 Its `plan.md` owns state, approval, hashes and progress. F002, pipeline
 functionality, new dependencies, HyperFrames compositions, STT and retake
 detection remain unauthorized. Continue approved F001 after RAW arrives.

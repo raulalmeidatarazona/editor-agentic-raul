@@ -349,3 +349,23 @@ PortableSSD quedó montado durante la sesión; el agente localizó `/Volumes/Por
 **Transición:** VERIFYING → HUMAN_REVIEW, 2026-10-03. Verificación global HUMAN_REVIEW_REQUIRED: V-01–V-05 y V-09 PASS. V-06–V-08 siguen pendientes de referencias humanas del contenido/movimientos; V-10 pendiente de cierre del paquete completo. Timestamps exactos no se exigen por r1: referencias aproximadas siguen UNKNOWN, y palabras del error/corrección/frase válida aún no establecidas. No se marcan PASS ni se cambian criterios por esa ausencia.
 
 RAW y r1 intactos; adecuación/representatividad ya confirmadas, sin volver a preguntar ese juicio. Restan referencias exigidas y aceptación final de la verificación completa antes de DONE. No se inicia F002 ni procesamiento de audio.
+
+## Handoff de revisión y confirmación dirigida — e4 (2026-10-03)
+
+Raúl adjuntó handoff 8663a4f6-52c8-4779-87f1-14c2679614b5 y pidió continuar F001 HUMAN_REVIEW bajo r1. Documento conservado literalmente en evidence/handoff-e3.txt, con limitación explícita: reconocimiento externo sin escucha directa; no se ejecutan nuevas pasadas STT ni detector. El handoff usa WhatsApp Video 2026-10-03 at 16.14.01.mp4, distinto en bytes al RAW. Solo se midió su identidad/metadata y se compararon tres stills con evidencia RAW existente; no se repitió V-01–V-05/V-09.
+
+Raúl confirmó directamente que es copia comprimida completa de C0216.MP4 sin cortes/cambios de velocidad/desplazamiento inicial; confirmó idea central (modernizar restricción de negocio, no sustituir por viejo), error intencional sobre eventos, pausa/Again aislado/pausa/corrección y try again repetido como narración válida, tras consulta de 01:31–01:54 y 02:14–02:26. Acta literal owner-confirmation-e4.md. La confirmación valida esos casos, no el transcript completo ni el conteo de candidatos. No afirmar HEARD por el agente ni borrar UNCERTAIN de citas no confirmadas.
+
+**Resultado vigente:** V-01–V-07 y V-09 PASS; V-08/V-10 HUMAN_REVIEW_REQUIRED. AC-01–AC-06 y AC-08/09 PASS; AC-07/10 pendientes. Referencias aproximadas e4 alineadas por procedencia confirmada, sin EDL/límites de corte ni cambio del contrato. El RAW y bundle r1 permanecen intactos; notas e2 y borrador e3 preservados, evidencia e4 con manifest propio.
+
+Raúl aclara que las inclinaciones son muy sutiles y permanece centrado en STUDIO. r1 admite movimientos leves; no se añaden pasos de cuerpo entero ni prueba de seguimiento editorial. La referencia independiente hacia atrás no fue establecida en el handoff ni en su respuesta: sigue UNKNOWN. Se solicitó solo localizarla aproximadamente, sin pedir regrabación ni eliminar el criterio V-08.
+
+El estado sigue HUMAN_REVIEW. Tras resolver V-08 se presentará V-10 con todos los resultados, limitaciones permitidas y aceptación exacta del archivo/SHA de la entrega; no se declara DONE antes. No F002, MOBILE, dependencias, edición de audio, composiciones ni implementación futura.
+
+## Referencia final de movimiento y gate V-10 — e5 (2026-10-03)
+
+Raúl respondió «mitad» a la pregunta de localizar la inclinación leve hacia atrás, independiente del retorno desde delante. Referencia cualitativa en tiempo de fuente: zona media de C0216.MP4. No se inventa evento a 01:56 ni inicio/final precisos. El contrato r1 pide referencias aproximadas sin granularidad numérica; este juicio del propietario localiza el movimiento antes confirmado, con retorno. Acta movement-confirmation-e5.md. V-08/AC-07 PASS. La revisión e5 conserva snapshot e4 previo y todos los actos/manifest previos.
+
+**Estado vigente:** HUMAN_REVIEW; V-01–V-09/AC-01–AC-09 PASS, V-10/AC-10 HUMAN_REVIEW_REQUIRED solo por aceptación final. Paquete exacto e5: RAW C0216.MP4, SHA-256 68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc, reference-notes.md e5, tabla validation.md y evidence-e5.sha256. Limitaciones/UNKNOWNs finos permitidos documentados, sin modificar criterios.
+
+Se prepara/presenta la frase de aceptación concreta en validation.md; todavía NOT GRANTED para cierre definitivo. No se solicita aprobación sobre material incompleto ni se atribuye silencio como aceptación. Tras decisión expresa, registrar acta/revisión/estado DONE; hasta entonces detener aquí. No F002 ni PRODUCTION_APPROVED.
