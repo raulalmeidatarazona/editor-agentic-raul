@@ -125,6 +125,34 @@ class AdapterTests(unittest.TestCase):
         with self.assertRaises(ContractError): v.object_url(good,True,now=4000)
         self.assertIsNone(v.NoRedirect().redirect_request(None,None,302,'',{},'https://evil'))
 
+    def test_p7c_auth_host_allowlist_recovery_intl_only(self):
+        """p7c: intl recovery host admitted for GET; ws-host intact; Beijing/others rejected."""
+        self.assertEqual(v.recovery_endpoint(), 'https://dashscope-intl.aliyuncs.com/api/v1')
+        calls = []
+        def ok(req, timeout):
+            calls.append(req.full_url)
+            class R(io.BytesIO):
+                status = 200
+            return R(canonical_bytes({'request_id':'r','output':{'task_id':'j','task_status':'SUCCEEDED','results':[]}}))
+        h = v.HTTP('KEY_CANARY', opener=ok, sleep=lambda _: None, clock=lambda: 0)
+        # intl recovery host GET is authorized (no AUTH_HOST_UNAUTHORIZED)
+        h.request('GET', 'https://dashscope-intl.aliyuncs.com/api/v1/tasks/j', authenticated=True)
+        self.assertEqual(calls, ['https://dashscope-intl.aliyuncs.com/api/v1/tasks/j'])
+        # ws-host still authorized
+        calls.clear()
+        h.request('GET', 'https://test-workspace.ap-southeast-1.maas.aliyuncs.com/api/v1/tasks/j', authenticated=True)
+        self.assertEqual(len(calls), 1)
+        # Beijing and lookalike hosts never receive the Bearer key
+        for bad in ('https://dashscope.aliyuncs.com/api/v1/tasks/j',          # Beijing native
+                    'https://evil-dashscope-intl.aliyuncs.com/api/v1/tasks/j',
+                    'https://dashscope-intl.aliyuncs.com.evil.com/api/v1/tasks/j',
+                    'https://dashscope-intlXaliyuncs.com/api/v1/tasks/j'):
+            calls.clear()
+            with self.assertRaises(ContractError) as e:
+                h.request('GET', bad, authenticated=True)
+            self.assertEqual(e.exception.code, 'AUTH_HOST_UNAUTHORIZED')
+            self.assertEqual(calls, [])
+
     def test_get_bounded_retries_auth_fail_and_post_never_retries(self):
         calls=[]; sleeps=[]
         def broken(req,timeout):

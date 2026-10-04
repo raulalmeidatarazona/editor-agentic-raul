@@ -564,7 +564,10 @@ def collect(root, attempt, http, secrets=(), hook=None):
     history = list(exe.get('query_payloads', [])); redactions = list(exe.get('redaction_records', []))
     try:
         while True:
-            raw = http.request('GET', vendor.endpoint(settings) + '/tasks/' + job_id, authenticated=True, deadline=deadline)
+            # p7c OWNER-AUTHORIZED: task-status GET goes to the International
+            # recovery host (ws-host returns 403 Unpurchased for GET tasks on
+            # this account; the job itself is served here). POST never changes.
+            raw = http.request('GET', vendor.recovery_endpoint() + '/tasks/' + job_id, authenticated=True, deadline=deadline)
             parsed = vendor.parse_json(raw)
             clean, record = vendor.safe_payload(raw, secrets)
             _, rid, status = vendor.job(parsed, job_id)

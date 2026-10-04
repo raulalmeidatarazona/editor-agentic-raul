@@ -84,6 +84,18 @@ def endpoint(settings):
     return 'https://' + settings['workspace'] + '.ap-southeast-1.maas.aliyuncs.com/api/v1'
 
 
+# p7c OWNER-AUTHORIZED transport-boundary fix (plan.md preflight-p7/p7b, literal
+# owner approval 2026-10-04): the ws-host serves task creation but returns 403
+# AccessDenied.Unpurchased for GET task status on this account. The job state is
+# served by the official Alibaba International host (ap-southeast-1 scope, NOT
+# Beijing). Recovery GET ONLY; the approved POST endpoint above is unchanged.
+RECOVERY_ENDPOINT = 'https://dashscope-intl.aliyuncs.com/api/v1'
+
+
+def recovery_endpoint():
+    return RECOVERY_ENDPOINT
+
+
 def request_body(settings, audio_url):
     config(settings)
     body = {'model': settings['model'], 'input': {'file_urls': [audio_url]},
@@ -212,7 +224,11 @@ class HTTP:
         if authenticated:
             if not self.key or '\n' in self.key or '\r' in self.key: fail('CREDENTIAL_UNAVAILABLE')
             host = urllib.parse.urlsplit(url).hostname or ''
-            if not re.fullmatch(r'[a-z0-9][a-z0-9-]*\.ap-southeast-1\.maas\.aliyuncs\.com', host): fail('AUTH_HOST_UNAUTHORIZED')
+            # p7c OWNER-AUTHORIZED: the official International task-status host is
+            # admitted for authenticated GETs alongside the ws-host. Exact match;
+            # no wildcards, no Beijing host, no other domain.
+            if not (re.fullmatch(r'[a-z0-9][a-z0-9-]*\.ap-southeast-1\.maas\.aliyuncs\.com', host) or
+                    host == 'dashscope-intl.aliyuncs.com'): fail('AUTH_HOST_UNAUTHORIZED')
             headers['Authorization'] = 'Bearer ' + self.key
         else:
             object_url(url)

@@ -590,3 +590,67 @@ firmada ni clave). current.json BLOCKED HTTP_403 administrativo; journal del
 intento preservado; ningún reenvío automático (PAID_ATTEMPT_ALREADY_CONSUMED
 activo). Lifecycle VERIFYING; resultado real obtenido pero NO normalizado ni
 evaluado; V-16 pendiente; F001/F002 intactos; sin F004 ni PRODUCTION_APPROVED.
+
+## Preflight-p7c — recuperación autorizada ejecutada; hallazgo de calidad real del candidato (2026-10-04)
+
+Raúl autorizó literalmente p7c (clarify 2026-10-04): «Autorizar p7c: corrijo el
+host del GET de recuperación a dashscope-intl (International, ap-southeast-1; NO
+Beijing) y amplio el allowlist Bearer a ese host oficial de Alibaba, manteniendo
+el POST donde ya fue aceptado. Sin re-POST ni segundo cargo. Registro el cambio
+de frontera en acta + validación. Luego resume→normalize→derive→evaluate y te
+presento el paquete HUMAN_REVIEW.»
+
+**Cambio de frontera ejecutado (mínimo, GET de recuperación únicamente):**
+`recovery_endpoint()` = `https://dashscope-intl.aliyuncs.com/api/v1` (host
+oficial International ap-southeast-1); allowlist Bearer ampliado con match
+exacto de ese host; POST sigue en el ws-host aprobado. Test nuevo de allowlist
+(intl admitido; Beijing/lookalikes rechazados sin recibir la clave). Suite
+**79/79 OK**. Pre-chequeos read-only antes del fix: `file_url` echo exacto
+(guard RESULT_INPUT_MISMATCH satisfecho), `transcription_url` en
+`dashscope-result-sgp.oss-ap-southeast-1.aliyuncs.com` (compatible con
+object_url), `vendor.job()` acepta el payload.
+
+**Recuperación real:** `resume` → GET tasks intl 200 → SUCCEEDED/subtask
+SUCCEEDED → descarga del resultado → respuesta vendor saneada retenida
+(5 redacciones; canarios de clave/URL firmada: AUSENTES en todos los
+artefactos) → **normalize READY**:
+transcript_id `sha256:eff3ff0b7cb3921a8a540bd483da27ccddcf8002799639138c084d118cd4a30e`,
+550 palabras, binding intacto. Usage real: duration 178 s, input 5654 / output
+602 / total 6256 tokens; coste de lista calculado USD 0.00113104 (techo r1);
+conciliación de facturación real V-13 PENDIENTE. STT sigue 1/1 (GET-only, sin
+segundo cargo).
+
+**Hallazgo de calidad real (evidencia: `preflight-p7/candidate-quality-finding.json`):**
+1. **Fragmentación sub-palabra**: los word-timestamps del vendor vienen
+   fragmentados (254/550 rows ≤3 chars: 'mon'/'ol'/'ito'); el texto a nivel de
+   frase es limpio y correcto («si tienes un monolito … en cincuenta
+   microservicios»). Quirk de representación del proveedor que rompe la
+   evaluación r1 a nivel de palabra (controles de timing/WER por palabra léxica).
+2. **`idempotencia` NO reconocido**: el candidato transcribió «…duplicados,
+   reintentos y **en potencia** y fallos parciales». El hotword (vocabulary
+   peso 1) fue enviado en la solicitud real (request.json lo contiene) y aun así
+   el ASR produjo la variante «en potencia» — exactamente una de las variantes
+   UNCERTAIN que el handoff F001 ya predijo. 3/4 términos presentes
+   (monolito, microservicios a nivel de frase; eventos ×4); idempotencia ausente
+   en el texto completo del candidato.
+
+**Consecuencia en gates (resultado real, no inventado):** `derive` se detuvo con
+`DERIVATION_EVENT_MISSING` — una referencia candidate-derived no puede contener
+un término que el candidato no tiene, y fabricarlo violaría el contrato y la
+honestidad de la evidencia. Por tanto V-08 (término técnico) = **FAIL real**;
+V-09/V-10 = BLOCKED (la evaluación numérica r1 no puede ejecutarse sin
+referencia válida; y la fragmentación rompería además los controles por
+palabra); V-04 = PASS (solicitud/respuesta reales retenidas); V-05/V-12 = replay
+local pendiente; V-13 = coste real registrado, conciliación de facturación
+pendiente. La creencia previa «100% idéntica» (p5) queda corregida por la
+evidencia real: el candidato NO es idéntico al habla en al menos un término
+crítico.
+
+**PARADA obligatoria ante el owner:** el fallo de V-08 es un resultado FAIL real
+contra criterios r1. No se «arregla» con código (retrofit prohibido), ni con
+otro submit (1/1 consumido; un segundo gasto exige autorización puntual nueva y
+cambiar vocabulary/contexto cambiaría el fingerprint → NEW_PAID_AUTHORIZATION).
+La decisión es del owner: aceptar el FAIL registrado, autorizar una revisión de
+criterios vía change-control, o autorizar puntualmente una segunda ejecución con
+configuración mejorada. Lifecycle VERIFYING; global BLOCKED por V-08 FAIL real;
+F001/F002 intactos; sin DONE, sin F004, sin PRODUCTION_APPROVED.
