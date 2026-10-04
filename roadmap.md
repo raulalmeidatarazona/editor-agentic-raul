@@ -423,3 +423,12 @@ confirmed view/raster/display/clock and limits, and authorized HUMAN_REVIEW → 
 V-01–V-14 and AC-01–AC-10 PASS; Phase 2/F002 is DONE. e1 remains frozen with its
 exact hashes; the final human act and closure are retained separately. F001 stays
 DONE and intact; Phase 3/F003 and PRODUCTION_APPROVED remain unauthorized.
+
+## Subsequent authorization — Phase 3 PLAN ONLY
+
+On 2026-10-04 Raúl authorized PLAN ONLY for
+[F003 — Provider-Independent Time-Aligned Transcription](specs/features/F003-time-aligned-transcription/plan.md).
+The r1 bundle and Proposed D002 await explicit approval; no implementation,
+paid STT, media upload, dependencies or Phase 4/F004 is authorized. This advances
+planning only, not the accepted roadmap exit position. F001/F002 stay DONE and
+their artifacts/evidence remain unchanged. No video is PRODUCTION_APPROVED.

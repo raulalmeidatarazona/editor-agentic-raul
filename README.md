@@ -17,7 +17,9 @@ y los criterios de aceptación se desarrollan mediante Spec-Driven Development.
   de ingestión e inspección local completados. `DONE`: evidencia e1 aceptada
   por Raúl el 2026-10-04, implementación `3e53205`; V-01–V-14 y AC-01–AC-10
   PASS. Estado, acta y hashes exactos en su plan/validación.
-- F003 permanece sin autorización. Ninguna aceptación declara un vídeo PRODUCTION_APPROVED.
+- F003: PLAN ONLY autorizado; bundle r1 en `PLAN_READY`, pendiente de aprobación.
+  D002 propuesto; ninguna implementación, llamada STT ni upload autorizados.
+  Ninguna aceptación declara un vídeo PRODUCTION_APPROVED.
 
 El propietario autorizó publicar todo el trabajo actual en un repositorio público
 y mantenerlo en `main`. Los documentos describen capacidades futuras; el estado
@@ -33,6 +35,18 @@ vigente y la evidencia de cada feature están en su plan y validación.
 | [tech-stack.md](tech-stack.md) | Tecnologías, límites y gates de validación. |
 | [roadmap.md](roadmap.md) | Dependencias y secuencia de desarrollo. |
 | [specs/README.md](specs/README.md) | Protocolo PLAN → aprobación → IMPLEMENT → VERIFY → HUMAN REVIEW → DONE. |
+
+## F003 — PLAN de transcripción alineada
+
+- [Requisitos y contrato canónico v1](specs/features/F003-time-aligned-transcription/requirements.md)
+- [Plan, investigación oficial y gate de aprobación](specs/features/F003-time-aligned-transcription/plan.md)
+- [Validación predefinida de texto, tiempo, fallos y coste](specs/features/F003-time-aligned-transcription/validation.md)
+- [D002 — proveedor inicial, propuesta pendiente](specs/decisions/D002-initial-f003-stt-provider.md)
+
+Qwen Filetrans Singapore/International es candidato documentado; la precisión
+en el fixture sigue sin validar. Respuesta saneada retenida, replay local, una
+solicitud real propuesta y transporte privado gestionado por el propietario.
+F001/F002 permanecen intactos; F004 no autorizado.
 
 ## F001 — Captura real y calibración STUDIO
 

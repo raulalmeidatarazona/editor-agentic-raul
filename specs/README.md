@@ -415,3 +415,14 @@ Its plan/validation record the literal decision, final matrix and exact hashes.
 The e1 snapshot stays frozen; `.local/validation/F002/closure-e1/` retains the
 separate owner act, presentation snapshots and integrity confirmation. F001 stays
 intact; this acceptance explicitly excludes F003 and PRODUCTION_APPROVED.
+
+## Current authorization — F003 PLAN ONLY
+
+Raúl subsequently authorized planning F003 in attachment
+45cab433-bc96-45c7-a63b-d033726c64fa on 2026-10-04. The
+[F003 plan](features/F003-time-aligned-transcription/plan.md) owns its lifecycle;
+the three r1 files and Proposed D002 require explicit revision approval before
+IMPLEMENT. Read-only official provider research and this documentation are within
+PLAN. No STT request/upload, dependency installation, modification of F001/F002
+or F004 is authorized. Prior exclusions are historical gates, superseded only
+for F003 planning. F001/F002 DONE and their accepted evidence remain immutable.

@@ -55,6 +55,14 @@ the owner act and closure snapshots are separate. Phase 2 is complete, F001
 unchanged. F003 and PRODUCTION_APPROVED are explicitly unauthorized. Recover
 these approvals; do not reopen the completed gate or automatically start F003.
 
+**F003 PLAN authorization (2026-10-04):** Raúl subsequently requested PLAN ONLY
+for [F003 — Provider-Independent Time-Aligned Transcription](specs/features/F003-time-aligned-transcription/plan.md),
+in attachment 45cab433-bc96-45c7-a63b-d033726c64fa. Its plan owns lifecycle and
+approval; D002 is Proposed. F001/F002 remain DONE and immutable. This supersedes
+earlier F003 exclusions only for planning/documentary research. Implementation,
+STT calls/uploads, dependencies and F004 remain unauthorized until explicit
+approval of the presented revision. No production approval is implied.
+
 **Repository publication (2026-10-03):** Raúl explicitly authorized a public
 GitHub repository and committing/pushing all current project work on `main`.
 This includes the five current text-only files under `.local/` (the preserved
