@@ -161,6 +161,19 @@ class TranscriptionTests(unittest.TestCase):
         with self.assertRaises(ContractError):self.run_submit(h)
         self.assertEqual(h.calls,[])
 
+    def test_directed_original_comparison_remains_required_before_payment(self):
+        prep=audio.prepare(self.root,0);bound=prep['binding'];reference=self.base/'reference.json'
+        atomic_json(reference,{'generated_test_data':True})
+        review={'schema_version':1,'kind':'f003-owner-preflight','owner':'Raúl Almeida','source':'direct-human-message',
+                'owner_words':'GENERATED TEST DATA','binding':bound,'preparation_id':prep['preparation_id'],'channel_index':0,
+                'full_playback_1x':True,'both_channels_reviewed':True,'voice_complete':True,
+                'reference_path':str(reference),'reference_sha256':hash_file(reference)}
+        atomic_json(self.review,review)
+        self.human.stop()
+        with patch.object(t,'validate_reference',return_value={}):
+            with self.assertRaises(ContractError) as error:t.human_gate(self.root,bound,prep,self.s,self.review)
+        self.assertEqual(error.exception.code,'DIRECTED_SOURCE_COMPARISON_REQUIRED')
+
     def test_io_failure_before_intent_and_before_normalize_not_ready(self):
         h=FakeHTTP()
         original=t.atomic_json

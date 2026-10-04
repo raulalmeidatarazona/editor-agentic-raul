@@ -119,6 +119,8 @@ def human_gate(root, bound, preparation, settings, review_path):
     if hash_file(review['reference_path']) != review['reference_sha256']:
         vendor.fail('REFERENCE_CHANGED')
     validate_reference(refs, bound)
+    if review.get('directed_original_comparison') is not True:
+        vendor.fail('DIRECTED_SOURCE_COMPARISON_REQUIRED', 'review')
     account = review.get('account', {})
     if (account.get('workspace') != settings['workspace'] or account.get('region') != 'ap-southeast-1' or
             account.get('scope') != 'International' or account.get('metered_api_eligible') is not True or
