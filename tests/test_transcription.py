@@ -185,4 +185,45 @@ class TranscriptionTests(unittest.TestCase):
         self.assertNotIn('POST',h.calls)
         with self.assertRaises(ContractError):self.run_submit(FakeHTTP()) # damaged attempt conservatively consumes intent
 
+    def test_derived_reference_gate_order_and_content_never_fabricated(self):
+        """p7 OWNER_OVERRIDE: pending pre-POST, derived post-POST, markers mandatory."""
+        prep=audio.prepare(self.root,0);bound=prep['binding']
+        pending_path=self.base/'derived-reference.json'
+        pending={'schema_version':1,'kind':'f003-human-reference','binding':bound,
+                 'derivation':'CANDIDATE_DERIVED','owner_override':True,'derivation_pending':True,
+                 'candidate_seen':False,'status':'HUMAN_REVIEW_REQUIRED','reviewer':'Raúl Almeida',
+                 'method':'candidate-derived','windows':[],'controls':[],'pauses':[],
+                 'incorrect_statement':None,'corrected_statement':None,
+                 'terms':{'monolito':'term-monolito','microservicios':'term-microservicios','eventos':'term-eventos','idempotencia':'term-idempotencia'},
+                 'unknowns':{}}
+        atomic_json(pending_path,pending)
+        # Without markers the r1 independence requirement is untouched.
+        with self.assertRaises(ContractError):t.validate_reference(dict(pending,candidate_seen=True),bound)
+        # A pending derived reference is NOT a valid full reference pre-POST content check.
+        self.assertTrue(t.pending_derived_reference(pending,bound))
+        with self.assertRaises(ContractError):t.validate_reference(pending,bound)
+        # Wrong binding never derives.
+        wrong=dict(pending);wrong['binding']=dict(bound,project_id='other')
+        self.assertFalse(t.pending_derived_reference(wrong,bound))
+        # Derivation without a READY transcript fails; nothing is written.
+        with self.assertRaises(ContractError):t.derive_operation(self.root,pending_path)
+
+    def test_derive_from_synthetic_candidate_fails_on_missing_events_never_invents(self):
+        """A candidate lacking required events must FAIL, not be padded."""
+        out=self.run_submit()  # synthetic fixture: only 'try again, try again.' words
+        doc=domain.verify_transcript(self.root)
+        pending_path=self.base/'derived2.json'
+        pending={'schema_version':1,'kind':'f003-human-reference','binding':doc['binding'],
+                 'derivation':'CANDIDATE_DERIVED','owner_override':True,'derivation_pending':True,
+                 'candidate_seen':False,'status':'HUMAN_REVIEW_REQUIRED','reviewer':'Raúl Almeida',
+                 'method':'candidate-derived','windows':[],'controls':[],'pauses':[],
+                 'incorrect_statement':None,'corrected_statement':None,
+                 'terms':{'monolito':'term-monolito','microservicios':'term-microservicios','eventos':'term-eventos','idempotencia':'term-idempotencia'},
+                 'unknowns':{}}
+        atomic_json(pending_path,pending)
+        with self.assertRaises(ContractError) as e:t.derive_reference(doc,pending)
+        self.assertIn(e.exception.code,('DERIVATION_WINDOW_TOO_SPARSE','DERIVATION_WORD_COUNT','DERIVATION_EVENT_MISSING'))
+        self.assertEqual(load_json(pending_path),pending)  # pending file untouched by the pure function
+        self.assertEqual(out['status'],'READY')
+
 if __name__=='__main__':unittest.main()

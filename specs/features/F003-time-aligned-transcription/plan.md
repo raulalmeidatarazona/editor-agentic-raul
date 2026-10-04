@@ -491,3 +491,102 @@ comprimir el WAV de 22,3 MB a ≤10 MB (mp3/opus), lo que cambia el binding r1
 
 **Lifecycle VERIFYING; global BLOCKED por transporte; STT 0/1 sin consumir.**
 F001/F002 DONE intactos; sin F004 ni PRODUCTION_APPROVED.
+
+## Preflight-p7 — transporte OSS resuelto; revisión material autorizada del gate de referencia (2026-10-04)
+
+**Transporte resuelto (gates a–d de la instrucción del owner, hechos medidos):**
+OSS quedó activado en la cuenta 5787891059913905: `ossutil ls` responde exit 0,
+sin UserDisable. Bucket privado `arsd-f003-transit` creado en ap-southeast-1
+(ACL private, Standard) bajo autorización explícita del owner en su mensaje de
+hoy («Crear el bucket de tránsito una vez OSS esté activo: arsd-f003-transit,
+privado, ap-southeast-1»). Subido SOLO el WAV canal 1
+(SHA-256 `4c71d1689fdec2fb419ec6b91cb6ca0317a0b172b594e3b6ab7532cbe00645f3`,
+22.348.844 bytes); round-trip de verificación (descarga del bucket → SHA idéntico).
+El bucket contiene exactamente 1 objeto; ningún RAW/clip/sidecar. URL firmada GET
+TTL 2h escrita en `F003.env` (0600) sin imprimirla; validada con el parser del
+adaptador (https, host `arsd-f003-transit.oss-ap-southeast-1.aliyuncs.com`,
+7199 s restantes, dentro de 1800–7200). Evidencia: `.local/validation/F003/preflight-p7/`.
+
+**Estado local verificado:** suite 76/76 OK con Python 3.14.7 exacto (el guard
+`require_runtime` rechaza 3.9/3.13; el `python3` del PATH debe ser 3.14.7).
+`prepare` exit 2 NEEDS_REVIEW (comportamiento documentado), `verify` BLOCKED
+TRANSCRIPT_NOT_READY (esperado). Sonda de submit con red bloqueada y referencia
+UNKNOWN: STOPPED `INDEPENDENT_REFERENCE_REQUIRED` ANTES de cualquier POST;
+0 intentos creados; STT 0/1 sin consumir. Precio de lista revalidado hoy por
+sondeo documental: input ¥0.02/M, output ¥0.06/M — dentro del techo aprobado
+USD 0.15/1M input y 0.47/1M output (`preflight-p7/pricing-revalidation.json`).
+
+**Conflicto estructural detectado y decisión del owner (revisión material autorizada):**
+`validate_reference` (r1) exige la referencia humana completa ANTES del POST,
+pero el OWNER OVERRIDE registrado en p5 y reafirmado hoy deriva la referencia
+DEL candidato STT (existe solo DESPUÉS del POST). Son incompatibles sin cambiar
+el orden del gate. Presentado a Raúl con tres opciones; su respuesta literal
+(2026-10-04, clarify): «Revisión material de plan: me autorizas explícitamente a
+ajustar el orden del gate para que la referencia se derive del candidato STT
+DESPUÉS del POST (marcada CANDIDATE_DERIVED/OWNER_OVERRIDE), actualizando
+plan.md/validation.md y registrando tu aprobación literal. Luego ejecuto el
+submit 1/1 y sigo con normalize/evaluate.» Su instrucción de sesión añade:
+«V-08–V-10: la referencia humana se deriva del propio candidato STT. Es un OWNER
+OVERRIDE registrado en acta; márcalo CANDIDATE_DERIVED, nunca como referencia
+independiente limpia.»
+
+**Alcance exacto de la revisión autorizada (implementación p7):**
+1. `validate_reference` gana una rama explícita: solo con marcadores
+   `derivation='CANDIDATE_DERIVED'` + `owner_override=true` + `candidate_seen=true`
+   + `derivation_pending=false` se admite la referencia derivada; sin marcadores,
+   la exigencia de independencia (`candidate_seen=false`) permanece intacta.
+   NINGUNA tolerancia de contenido se relaja: ≥200 palabras, ≥30 controles,
+   grupos 10+10+10, críticos again/try/again/try/again, 4 términos, bounds
+   ≤50 ms, 3 pausas con núcleo >0.3 s y frases incorrecta/corregida siguen
+   siendo obligatorios también en modo derivado.
+2. `human_gate` pre-POST admite el estado PENDIENTE de la referencia derivada
+   (marcadores + binding + `derivation_pending=true`, sin contenido todavía).
+3. Nueva operación determinista `derive`: construye la referencia desde el
+   transcript normalizado (ventanas fijas r1, primeros 10 léxicos, críticos,
+   términos, bounds de candidato con incertidumbre 0, pausas desde gaps
+   observados, frases desde runs entre pausas). Si el candidato no contiene los
+   eventos exigidos (Again aislado, try again ×2, términos, ≥200 palabras),
+   la derivación FALLA y se registra HUMAN_REVIEW_REQUIRED; nunca se fabrican
+   palabras ni bordes.
+4. Consecuencia aceptada por el owner y registrada: WER y errores de timing
+   contra referencia candidate-derived son triviales (0 por construcción); su
+   valor probatorio es de integridad estructural, NO de exactitud independiente.
+   V-08/V-09/V-10 se marcarán CANDIDATE_DERIVED/OWNER_OVERRIDE en validation.md,
+   nunca como referencia independiente limpia. V-16 sigue siendo juicio real de
+   Raúl sobre el paquete completo.
+
+Fuera de este alcance: nada de F004/semántica/edición/captions/HyperFrames/render;
+F001/F002 y el bundle r1 aprobado (74aaa0b) intactos; sin retries de POST;
+máximo 1 solicitud STT.
+
+**Implementación p7 ejecutada:** `pending_derived_reference` + rama derivada en
+`validate_reference` (marcadores `derivation=CANDIDATE_DERIVED` +
+`owner_override=true` obligatorios; sin marcadores la independencia r1 queda
+intacta) + operación determinista `derive` (falla si el candidato carece de los
+eventos exigidos; nunca fabrica palabras/bordes) + 2 tests negativos nuevos.
+Suite 78/78 OK (python3.14.7). `reference.json` pasado al estado PENDIENTE con
+marcadores (snapshot previo readonly en preflight-p7/); `review.json` completado
+con hechos de cuenta (p4/p5 + quota owner-reported), storage (p7, hechos OSS
+medidos) y pricing revalidado hoy.
+
+**Submit real ejecutado (intentos r1: 1/1 CONSUMIDO):** todos los gates locales
+pasaron (approval 74aaa0b + bundle hashes, human_gate, TTL 7199 s, transport
+streaming SHA exacto VERIFIED, sanitize clean). POST aceptado en el ws-host:
+task_id `8d1951e0-e2be-44d2-a5fc-1540fb56d3fa`, request_id
+`88aeafa9-8c3a-9867-b494-aa14ee0b605c`, PENDING, usage final reportado
+duration=178 s, input 5654 / output 602 / total 6256 tokens.
+
+**p7b — defecto de recuperación detectado, PARADA obligatoria:** el GET de
+estado del adaptador r1 va al ws-host y devuelve 403 `AccessDenied.Unpurchased`
+(el mismo quirk registrado en p5 para GET tasks). El job real está
+**SUCCEEDED/subtask SUCCEEDED y es recuperable vía GET en `dashscope-intl`
+(host International, NO Beijing)**: probe read-only HTTP 200, sin re-POST, sin
+segundo cargo. Clave viva confirmada (chat compatible-mode 200). Corregir el
+host del GET de recuperación es un cambio de frontera de transporte del bundle
+aprobado, FUERA de la revisión material p7 autorizada: requiere autorización
+explícita del owner antes de tocarlo. Evidencia completa:
+`.local/validation/F003/preflight-p7/submit-and-recovery-finding.json` (sin URL
+firmada ni clave). current.json BLOCKED HTTP_403 administrativo; journal del
+intento preservado; ningún reenvío automático (PAID_ATTEMPT_ALREADY_CONSUMED
+activo). Lifecycle VERIFYING; resultado real obtenido pero NO normalizado ni
+evaluado; V-16 pendiente; F001/F002 intactos; sin F004 ni PRODUCTION_APPROVED.
