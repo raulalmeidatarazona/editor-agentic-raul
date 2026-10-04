@@ -760,3 +760,51 @@ Ninguna llamada STT adicional (1/1 consumido). Ninguna instalación nueva.
 Objeto de tránsito OSS borrado (cleanup r1 ≤24 h ejecutado: bucket 0 objetos);
 transcript y respuesta vendor siguen retenidos localmente. F001/F002 intactos;
 sin DONE, sin F004, sin PRODUCTION_APPROVED.
+
+## Spike-p9 — preview de revisión autorizado por el owner (2026-10-04)
+
+Raúl autorizó literalmente un spike desechable («spike desechable me gusta eso,
+el spike autorizado») con el objetivo de ver el vídeo con el texto al mismo
+tiempo para corregir, sin render final, validando en Studio/navegador y dando
+correcciones en lenguaje natural con tiempo aproximado. Aclaró además que 006
+(MotionGraphics) y C0216 (F003) son el MISMO discurso: uno ya editado, el otro
+raw.
+
+**Vínculo de fuente verificado (medido, no asumido):** mismo discurso, distinta
+captura. La fuente de 006 es `WhatsApp Video 2026-10-03 at 16.14.01.mp4`
+(SHA `e72d69b6…`, 37 MB, h264 848×480 rotación −90, 25 fps, re-encode de
+WhatsApp); la nuestra es `C0216.MP4` (SHA `68addbf3…`, 2.873.163.442 bytes,
+Sony ZV-E10 4K portrait). Ambos duran exactamente **232,800000 s**. El vídeo
+006 se montó sobre una copia comprimida de WhatsApp, no sobre el raw de
+estudio; eso abarató decodificación y explica parte de su velocidad. El spike
+usa nuestro WAV canal 1 real + proxy vertical ligero, nunca el 4K de 2,87 GB.
+
+**Spike construido en `.local/spike/f003-preview/` (ignorado por git, fuera del
+bundle, sin tocar F001/F002/F003 ni el RAW):**
+- `build_captions.py`: reconstrucción determinista del transcript REAL F003
+  (550 rows → 466 palabras; regla de continuación sub-palabra sin cruzar
+  `segment_id` ni puntuación) + 149 páginas + tabla de correcciones
+  terminológicas (forma D003). Cero llamadas nuevas; STT sigue 1/1.
+- `build_composition.py`: composición HyperFrames de solo revisión (proxy +
+  karaoke por palabra `#94a3b8`/`#f59e0b`/`#f8fafc`, `tl.set` sobre spans
+  hijos, nunca sobre `.clip`).
+- Proxy 540×960 25 fps con el audio del WAV canal 1 (`4c71d168…`), 60 s de
+  ffmpeg local. HyperFrames 0.8.78 y gsap reutilizados de MotionGraphics:
+  nada instalado.
+
+**Validación real ejecutada:** `hyperframes lint` 0 errores; `hyperframes check`
+PASS (runtime 0, layout 0/9, motion 0, contraste 26/26 WCAG AA); `snapshot` 4
+fotogramas con GPU hardware. Karaoke medido por píxeles en la banda de
+subtítulos: a 111,5 s → 5190 px ámbar + 7626 gris; a 112,0 s → 5486 blanco +
+7158 ámbar + 158 gris. Lectura visual del fotograma 112,0 s: «reintentos y
+idempotencia», con `idempotencia` en ámbar y subrayado punteado (corrección
+D003 aplicada en ~111,95 s; original y timing conservados). Studio servido en
+`http://localhost:3002/#project/composition`, HTTP 200, vivo en background.
+
+**Límites honestos:** proxy CRF 30 (solo leer/escuchar, no juzgar imagen); sin
+gráficos/PiP/marca/safe-zones; tiempos del vendor con su incertidumbre
+(revisión de texto, no certificación de sincronía). Desechable: no es
+entregable ni F004. RAW C0216 intacto (bytes y mtime sin cambios); el proxy es
+copia derivada. Flujo 006 y adaptaciones propuestas:
+`docs/F003-vs-MotionGraphics-diagnostico.md`. Sin DONE, sin F004, sin
+PRODUCTION_APPROVED.

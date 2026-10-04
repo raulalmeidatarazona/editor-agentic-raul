@@ -1,10 +1,30 @@
 # D003 — Deterministic terminology-correction layer for transcripts
 
-**Status:** Proposed\\\
+**Status:** Proposed (v2 — owner feedback 2026-10-04)\\\
 **Date:** 2026-10-04\\\
 **Related features / root documents:** [F003](../features/F003-time-aligned-transcription/plan.md),
 [tech-stack §7](../../tech-stack.md), [Constitution §22/§29](../../constitution.md),
-[D002 accepted](D002-initial-f003-stt-provider.md)
+[D002 accepted](D002-initial-f003-stt-provider.md),
+[diagnóstico 006](../../docs/F003-vs-MotionGraphics-diagnostico.md)
+
+## Owner feedback that reshapes this decision (literal, 2026-10-04)
+
+> «prefiero corregir viendo y escuchando el video con los subtitulos ya puestos
+> para leer y escuchar a la vez, nisiquiera tiene que estar el video renderizado
+> con que pueda validarlo en el studio en el navegador en el timeline sin
+> problema le doy al play y en lenguaje natural digo lo que se debe correr y el
+> tiempo aproximado»
+
+Consequence: the correction table is the OUTPUT of a visual review over an
+assembled preview, never a pre-condition for assembling it. The text is not
+finalized before montage. This inverts the r1 assumption that a literal human
+reference must exist before the provider call.
+
+The validated mechanism for that review already runs as the p9 spike:
+HyperFrames Studio over a proxy, karaoke per word, corrected words visually
+marked. The owner plays it, reads and listens at once, and dictates corrections
+in natural language with approximate time ("son estas palabras en lugar de estas
+en más o menos este segundo"). The agent turns that into table entries.
 
 ## Context
 
@@ -54,9 +74,19 @@ before any consumer (captions, semantic analysis, editing):
 1. Corrections live in configuration/data, never in provider or editorial code.
    Each entry carries: source interval, recognized text, corrected text, reason,
    and the human who approved it.
+
+   Proven schema (verbatim from `MotionGraphics/specs/006-arquitectura/edit.json`,
+   three real entries): `sourceStart` (seconds in the SOURCE clock), `original`
+   (exact recognized token), `replacement`, `reason`. Proven match rule
+   (`build_006.py:211-214`): `abs(w['start'] - corr['sourceStart']) < 0.2 and
+   text == corr['original']` — a time window plus exact text, never an index or
+   a position. This project adds `reviewer` and keeps both source and output
+   clocks, per `source-presentation-v1`.
 2. The layer preserves what was spoken: the original recognition and its timing
    remain recoverable alongside the correction. It rewrites text for display and
-   downstream consumers; it never alters retained provider responses.
+   downstream consumers; it never alters retained provider responses. Matching
+   the proven implementation, a correction changes text ONLY; it never moves a
+   boundary.
 3. It never invents speech and never conceals uncertain timing. A correction
    requires an existing recognized token at a known interval; it cannot add words
    or move boundaries.
@@ -65,6 +95,10 @@ before any consumer (captions, semantic analysis, editing):
 5. Provider selection stays replaceable (D002). This layer is what makes the
    provider choice non-critical for terminology, instead of hunting for a model
    that gets rare terms right unaided.
+6. The review that produces the table is VISUAL, over an assembled preview with
+   per-word karaoke in a browser timeline (HyperFrames Studio). No final render
+   is required for the owner to review. Corrected words are visibly marked so the
+   owner sees what the layer already changed.
 
 Ownership and feature boundary must be assigned by the owner: the layer is
 arguably part of F003's normalization surface or a new feature preceding
