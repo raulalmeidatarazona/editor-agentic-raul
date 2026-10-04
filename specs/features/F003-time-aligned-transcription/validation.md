@@ -329,3 +329,43 @@ transcripción generada atribuida al revisor ni cambio de aceptación/tolerancia
 R1 ya autoriza la única ejecución condicionada; aún faltan datos de referencia y
 cuenta/transporte, no una nueva autorización genérica. V-16 requiere evidencia
 real congelada y aceptación distinta antes de DONE; todavía no corresponde pedirla.
+
+## Checkpoint preflight-p7c — STT real ejecutado; V-08 FAIL real (2026-10-04)
+
+La única solicitud STT r1 fue consumida (POST aceptado, 1/1). Transporte OSS
+resuelto (bucket privado `arsd-f003-transit`, WAV canal 1 SHA `4c71d168…`,
+URL firmada TTL 2h). Recuperación vía host International autorizado por el owner
+(p7c). Transcript real normalizado READY:
+`sha256:eff3ff0b7cb3921a8a540bd483da27ccddcf8002799639138c084d118cd4a30e`,
+550 palabras, usage 6256 tokens (duration 178 s), coste de lista USD 0.00113104.
+Respuesta vendor saneada retenida; canarios de clave/URL firmada AUSENTES.
+Estado completo y hallazgo de calidad en plan.md preflight-p7/p7b/p7c y
+`.local/validation/F003/preflight-p7/candidate-quality-finding.json`.
+
+| Check | Resultado real | Límite / evidencia |
+| --- | --- | --- |
+| V-03 | PASS (transporte) | OSS activo; bucket privado Singapore; URL firmada TTL 2h verificada por el parser (1800–7200 s); transport streaming SHA exacto VERIFIED. Elegibilidad cuenta: auth 200 (p5), quota owner-reported. |
+| V-04 | PASS | Solicitud/respuesta reales retenidas (request.json, provider-response.json, execution.json). POST aceptado; job SUCCEEDED/subtask SUCCEEDED recuperado por GET intl. |
+| V-05 | PASS | Replay real ejecutado: normalize repetido con red bloqueada desde la respuesta retenida → transcript byte-idéntico (SHA `8251cdda…` antes y después). Sin segunda llamada ni cargo. |
+| V-08 | **FAIL real** | 3/4 términos técnicos presentes a nivel de frase (monolito, microservicios, eventos×4); **idempotencia NO reconocido** → candidato dice «en potencia» (variante ya predicha UNCERTAIN por el handoff F001). WER independiente no aplicable: la referencia candidate-derived no puede contener un término ausente en el candidato. |
+| V-09 | BLOCKED | Sin referencia válida no se ejecuta la evaluación numérica; además los word-timestamps vienen fragmentados (254/550 ≤3 chars), lo que rompe los controles por palabra léxica. Again aislado SÍ presente (~100.7 s). |
+| V-10 | BLOCKED | try again ×2 presentes (~137.5/138.6 s); misma limitación de fragmentación/controles que V-09. |
+| V-12 | PASS (propiedad de seguridad) | Re-submit con red bloqueada → PAID_ATTEMPT_ALREADY_CONSUMED, cero llamadas de red: nunca un segundo POST. El NO_OP por fingerprint idéntico no aplica tras la revisión p7c (adapter_version cambió); la suite offline cubre esa ruta. |
+| V-13 | PARTIAL | Usage/coste real registrados (Decimal, techo r1). Conciliación de facturación real (invoice/billing) PENDIENTE; no USD0 por intención. |
+| V-16 | BLOCKED | Sin aceptación humana final; V-08 FAIL real requiere decisión del owner antes de cualquier DONE. |
+
+V-01/02/06/07/11/14/15 conservan sus PASS previos (guard/preservación/suite/
+contracto/runtime). Suite 79/79 OK en Python 3.14.7.
+
+**Corrección de creencia previa:** el acta p5 citaba «100% idéntica la respuesta
+a lo que digo en el video» (owner-reported). La evidencia real la corrige: el
+candidato difiere del habla en al menos un término crítico (idempotencia →
+«en potencia»). No se declara PASS sobre esa base.
+
+**Global BLOCKED por V-08 FAIL real; lifecycle VERIFYING; owner acceptance NOT
+GRANTED.** Un FAIL real contra r1 no se corrige con código (retrofit prohibido)
+ni con otro submit (1/1 consumido; nueva configuración cambiaría el fingerprint
+→ NEW_PAID_AUTHORIZATION). Decisión del owner: (i) aceptar el FAIL registrado,
+(ii) revisión de criterios vía change-control, o (iii) autorización puntual de
+una segunda ejecución con configuración mejorada. Sin DONE, sin F004, sin
+PRODUCTION_APPROVED; F001/F002 intactos.
