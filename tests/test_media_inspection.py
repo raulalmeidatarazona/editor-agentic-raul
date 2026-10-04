@@ -135,9 +135,11 @@ class MediaTests(unittest.TestCase):
 
     def test_vfr_and_offset_independent_timing(self):
         evidence = []
-        for kind in ("vfr", "offset", "bframes"):
+        for kind in ("vfr", "offset", "audio_lag", "bframes"):
             out, doc = self.run_fixture(kind)
             raw = fresh_probe(fixture(kind))
+            self.assertGreaterEqual(Fraction(raw["format"]["duration"]), 1)
+            self.assertLessEqual(Fraction(raw["format"]["duration"]), 3)
             starts, ends, deltas = {}, {}, []
             for typ in ("video", "audio"):
                 s = next(s for s in raw["streams"] if s["codec_type"] == typ)
@@ -157,6 +159,11 @@ class MediaTests(unittest.TestCase):
             if kind == "offset":
                 self.assertGreater(starts["video"], 0)
                 self.assertLess(Fraction(doc["timing"]["audio_start_s"]), 0)
+                self.assertEqual(out["status"], "NEEDS_REVIEW")
+                self.assertIn("DURATION_DISCREPANCY", [r["code"] for r in out["reasons"]])
+            if kind == "audio_lag":
+                self.assertGreater(Fraction(doc["timing"]["audio_start_s"]), 0)
+                self.assertEqual(out["status"], "READY")
             if kind == "bframes":
                 packets = json.loads(subprocess.check_output(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_packets", "-show_entries", "packet=pts,dts", "-of", "json", str(fixture(kind))]))["packets"]
                 self.assertTrue(any(p["pts"] != p["dts"] for p in packets if "dts" in p))

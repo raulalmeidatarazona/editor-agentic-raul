@@ -36,7 +36,7 @@ def generate(name, arguments):
 def fixture(kind="portrait"):
     if kind in CACHE:
         return CACHE[kind]
-    if kind in {"portrait", "landscape", "vfr", "bframes", "offset"}:
+    if kind in {"portrait", "landscape", "vfr", "bframes", "offset", "audio_lag"}:
         size = "160x90" if kind == "landscape" else "90x160"
         args = ["-f", "lavfi", "-i", f"testsrc2=size={size}:rate=10:duration=2", "-f", "lavfi", "-i", "sine=frequency=660:sample_rate=32000:duration=2"]
         codec, extra, suffix = "mpeg4", [], ".mp4"
@@ -45,8 +45,10 @@ def fixture(kind="portrait"):
         elif kind == "bframes":
             codec, extra = "libx264", ["-bf", "2", "-g", "10", "-pix_fmt", "yuv420p"]
         elif kind == "offset":
-            codec, suffix, extra = "ffv1", ".mkv", ["-vf", "setpts=PTS+2/TB", "-af", "asetpts=PTS+1/TB", "-copyts", "-avoid_negative_ts", "disabled", "-fps_mode", "passthrough"]
-        args += extra + ["-c:v", codec, "-c:a", "pcm_s16le" if kind == "offset" else "aac"]
+            codec, suffix, extra = "ffv1", ".mkv", ["-vf", "setpts=PTS+1/TB", "-af", "asetpts=PTS+0.5/TB", "-copyts", "-avoid_negative_ts", "disabled", "-fps_mode", "passthrough"]
+        elif kind == "audio_lag":
+            codec, suffix, extra = "ffv1", ".mkv", ["-af", "asetpts=PTS+1/TB", "-copyts", "-avoid_negative_ts", "disabled", "-fps_mode", "passthrough"]
+        args += extra + ["-c:v", codec, "-c:a", "pcm_s16le" if kind in {"offset", "audio_lag"} else "aac"]
         path = generate(kind + suffix, args)
     elif kind == "audio_only":
         path = generate("audio-only.m4a", ["-f", "lavfi", "-i", "sine=sample_rate=32000:duration=2", "-c:a", "aac"])
