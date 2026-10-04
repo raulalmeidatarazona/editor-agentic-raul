@@ -386,3 +386,74 @@ Snapshot p3 readonly, manifest SHA
 la única llamada si pasan todos los gates; no nuevo permiso inmediato requerido.
 V-16 final todavía no procede: falta resultado/evidencia real. Sin DONE/F004/
 PRODUCTION_APPROVED; F001/F002 permanecen intactos.
+
+## Preflight-p4 — sonda de cuenta y gate de clave (2026-10-04)
+
+El propietario (Raúl) aprobó en chat el uso del workspace free-trial `ws-tdkdn4d3hvt4t7r1`
+(Singapore) para F003, verificado, y autorizó rellenar `F003.env` con los valores ya
+presentes en `~/.hermes/.env`, además de obtener la referencia humana V-08–V-10 desde la
+propia salida STT (listen-and-compare, no como oráculo independiente). Se registran esas
+decisiones humanas; no reabren la aprobación r1 ni cambian sus criterios.
+
+Se escribió `~/.config/editor-agentic-raul/F003.env` (0600) con `F003_QWEN_WORKSPACE`,
+`DASHSCOPE_API_KEY` y `F003_AUDIO_URL` vacío (el upload OSS sigue siendo gate del propietario).
+Ninguna clave se imprimió ni entró en Git; `F003.env` es externo al proyecto.
+
+**Sonda de elegibilidad V-03 (GET, sin audio, sin coste, POST STT NO consumido):**
+`GET https://{ws}.ap-southeast-1.maas.aliyuncs.com/api/v1/tasks/{dummy}` con la clave
+`DASHSCOPE_API_KEY` de `~/.hermes/.env` → **HTTP 401 `InvalidApiKey`**. Confirmado también
+en compatible-mode `/models` del host del workspace y en los endpoints nativos
+`dashscope-intl` y `dashscope` (Beijing): 401 en los tres. Evidencia saneada en
+`.local/validation/F003/preflight-p4/account-probe.json` (request_id, host, key_sha8; sin Bearer ni URL firmada).
+
+Diagnóstico de la clave almacenada (sin exponerla): valor de 115 caracteres, prefijo `sk-w`,
+contiene puntos/guiones/guiones bajos — forma atípica de una DashScope API key (que suele ser
+`sk-`+32 hex, ~35 chars). Rechazada por Alibaba en todas las regiones. Conclusión: la clave
+free-trial actualmente en `~/.hermes/.env` **no es válida** (expirada, revocada o mal copiada).
+
+**Resultado: V-03 BLOCKED por credencial; STT 0/1 sin consumir.** No se ejecuta el POST
+autorizado porque fallaría autenticación y consumiría el único intento, exigiendo nueva
+autorización puntual. Se detiene aquí y se requiere del propietario una clave DashScope
+free-trial válida del workspace Singapore (Model Studio console). F001/F002 DONE intactos;
+sin F004 ni PRODUCTION_APPROVED.
+
+## Preflight-p5 — CORRECCIÓN del gate de clave (2026-10-04)
+
+**El acta p4 es FALSA y queda corregida aquí.** La conclusión "clave free-trial no
+válida" fue un error del agente operador: sus sondas enviaron literalmente el prefijo
+`***` en la cabecera Authorization (bug de auto-enmascarado en el script de prueba),
+produciendo 401 espurios. Con `Bearer <key>` limpia la clave FreeTrailv2 del workspace
+`ws-tdkdn4d3hvt4t7r1` es VÁLIDA: HTTP 200 en compatible-mode chat y en nativo
+`/api/v1/services/aigc/text-generation/generation` (qwen-flash-character, usage real).
+Evidencia corregida: `.local/validation/F003/preflight-p5/account-probe-corrected.json`.
+POST STT sigue 0/1 sin consumir.
+
+Hechos de cuenta verificados (probes GET/POST sin audio del fixture + log de auditoría
+externo del propietario):
+- La clave free-trial autentica en ws-host compatible-mode y nativo `/api/v1`.
+- Modelos fuera de la cuota free → 403 `AccessDenied.Unpurchased` (no 401).
+- `qwen-audio-3.1-asr-flash-filetrans` figura en la cuota habilitada del propietario
+  (1M tokens, expira 2027-01-02) — tabla aportada por Raúl; elegibilidad de inferencia
+  del modelo filetrans concreto queda confirmada por su acta, no por probe propio (el
+  probe GET tasks dummy en ws-host devuelve 403 Unpurchased como quirk de task
+  inexistente; el host intl devuelve 200 UNKNOWN para el mismo dummy).
+- Limitación de transporte verificada por el log externo: la política de subida de
+  DashScope rechaza claves de workspace (401) → el WAV NO puede subirse con esta clave
+  por el File API/upload endpoint. El transporte aprobado r1 (OSS privado Singapore
+  gestionado por el propietario, URL firmada) sigue siendo el único camino, intacto.
+- `~/.config/editor-agentic-raul/F003.env` actualizado con workspace + clave válida
+  (0600, fuera de Git). `F003_AUDIO_URL` sigue vacía: gate del propietario.
+
+**Decisión del propietario sobre V-08–V-10 (registro literal, 2026-10-04):** ante la
+objeción del agente de que derivar la referencia literal del propio candidato STT
+invalida la independencia del WER (referencia == candidato, WER trivialmente 0),
+Raúl respondió: «esto que dices ... lo vamos a hacer asi. nos va a dar mas velocidad y
+realmente ya lo comprobe, creeme», citando además su comprobación previa de que la
+respuesta STT es «100% identica la respuesta a lo que digo en el video». Se ejecuta
+por orden expresa del owner; la referencia resultante quedará marcada
+CANDIDATE_DERIVED / OWNER_OVERRIDE con la limitación registrada, nunca como
+referencia independiente limpia. V-16 (aceptación humana final) sigue siendo juicio
+real de Raúl sobre el paquete de evidencia.
+
+**Estado: VERIFYING; global BLOCKED solo por transporte (F003_AUDIO_URL).**
+F001/F002 DONE intactos; sin F004 ni PRODUCTION_APPROVED.
