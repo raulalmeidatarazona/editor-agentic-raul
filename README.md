@@ -14,7 +14,9 @@ y los criterios de aceptación se desarrollan mediante Spec-Driven Development.
   conforme al bundle r1. V-01–V-10 y AC-01–AC-10 PASS; identidad del RAW,
   recuperación, revisión humana y limitaciones retenidas.
 - F002 r1 del commit `ae36327` y D001 aprobados expresamente; IMPLEMENT/VERIFY
-  de ingestión e inspección local autorizados. Estado vigente en su plan.
+  de ingestión e inspección local completados técnicamente. `HUMAN_REVIEW`:
+  evidencia e1, 43 tests y 15 casos de fallo PASS; V-04/V-14 pendientes de
+  juicio/aceptación de Raúl. Estado e identidad exacta en su plan/validación.
 - F003 permanece sin autorización. Ninguna aceptación declara un vídeo PRODUCTION_APPROVED.
 
 El propietario autorizó publicar todo el trabajo actual en un repositorio público

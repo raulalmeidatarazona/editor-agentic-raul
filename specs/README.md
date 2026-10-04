@@ -407,3 +407,8 @@ exact pre-approval identity. Earlier F002 exclusions above record historical gat
 F001 remains DONE and unchanged; F003 and future production functionality remain
 unauthorized. No new dependencies, STT, editing, retake detection, composition or
 rendering. Feature acceptance and PRODUCTION_APPROVED remain separate gates.
+
+F002 technical verification completed on 2026-10-04; evidence e1 is frozen and
+F002 is HUMAN_REVIEW. Its validation records the exact manifest and V/AC matrix.
+V-04/V-14 still require owner view judgment and explicit feature acceptance.
+Plan approval, input READY and passing tests do not satisfy that gate.

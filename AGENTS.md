@@ -46,6 +46,13 @@ dependencies, STT, editing, retake detection, HyperFrames and rendering remain
 unauthorized. No feature or video completion is implied by plan approval.
 Update this milestone only when accepted evidence changes the roadmap position.
 
+**F002 verification (2026-10-04):** Technical delivery/evidence e1 is complete;
+F002 is HUMAN_REVIEW, not DONE. V-04/V-14 require Raúl's current view judgment
+and acceptance of the exact e1 manifest recorded in its plan/validation. Code
+revision 3e53205, 43 passing tests and 15 retained failure cases; F001 unchanged.
+Recover the recorded r1/D001 approval; do not ask for plan approval again. Stop
+at this owner gate and do not advance the roadmap or start F003.
+
 **Repository publication (2026-10-03):** Raúl explicitly authorized a public
 GitHub repository and committing/pushing all current project work on `main`.
 This includes the five current text-only files under `.local/` (the preserved

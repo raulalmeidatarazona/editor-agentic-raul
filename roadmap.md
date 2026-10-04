@@ -413,3 +413,7 @@ Raúl approved F002 r1 at ae36327 and D001, authorizing IMPLEMENT/VERIFY of Phas
 only. [F002 plan](specs/features/F002-content-project-ingestion/plan.md) owns its
 actual lifecycle. Phase 1/F001 remains DONE; the earlier unapproved F002 statements
 are historical. Phase 3 and all later implementation require their own human gates.
+
+F002 technical delivery e1 is in HUMAN_REVIEW (2026-10-04), with 43 passing tests
+and 15 retained failure cases. Phase 2 is not marked DONE: V-04/V-14 and final
+owner acceptance remain pending. F001 stays DONE; Phase 3 remains unauthorized.

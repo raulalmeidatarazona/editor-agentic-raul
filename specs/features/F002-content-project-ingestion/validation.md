@@ -178,3 +178,67 @@ esa revisión específica. No pedir aprobación de feature por anticipado. Conse
 revisiones anteriores y sus hash; cambios materiales requieren PLAN nuevo, cambios
 de output invalidan QA/aceptación afectadas. Ni r1 ni F002 DONE autoriza F003 o
 PRODUCTION_APPROVED.
+
+## Ejecución e1 — acta administrativa actual (2026-10-04)
+
+Los campos NOT RUN y gate futuro anteriores pertenecen a r1 presentado. Este
+registro los sustituye administrativamente sin cambiar contrato/criterios/tolerancias.
+
+**Verification result:** HUMAN_REVIEW_REQUIRED.
+**Approved bundle:** r1 / ae36327768a4186009a92619ef8e4b1bf379d8a8; D001 aceptada.
+**Implementation commit:** `3e53205bcfd55570968f891a5bd972d5fe6bc621`. Python 3.14.7 stdlib y FFmpeg/ffprobe 9.0.1.
+**Evidencia:** `.local/validation/F002/e1/`, fecha UTC 2026-10-04T05:11:54.432452+00:00.
+**Manifest SHA-256:** `3dd9201577a3e23cae128760a6ad217e48e24bb46d1e0acaf82d1fc93f71d35c` (`evidence-e1.sha256`, 394 artefactos/referencias).
+**Revisión real final:** `inspections/d48b0e46-af7e-405e-a5ee-0d703d53bcb0/inspection.json`; SHA-256 `d08658c3542e2a7d10b1093a0de5e464752fd6cbca14588cc816b323478b428f`.
+**Manifest source SHA-256:** `7350428f4c3b7f5ffbf685c4d39a7fad52aae527a4ae08070189442c6aefa3ce`.
+**Input state:** READY; no equivale a DONE.
+
+| Check | Resultado | Evidencia / alcance |
+| --- | --- | --- |
+| V-01 | PASS | Copia real READY; identidad/refs e5, runtime y preflight. `ingest-execution.json, preflight-capacity.json, consumer-result.json` |
+| V-02 | PASS | Bytes/mtime/hash originales y 64 archivos protegidos sin cambios; 6 frames e5 idénticos, inode independiente; decode completo sin errores. `baseline.json, preservation-comparison.json, F001-accepted-frame-preservation.json, external-decode-execution.json` |
+| V-03 | PASS | Metadata normalizada/UNKNOWN comparada campo a campo con probe externo y e5; data 2 rtmd en probe, no seleccionado. `metadata-comparison.json, environment.json, synthetic-inventory.json` |
+| V-04 | HUMAN_REVIEW_REQUIRED | Geometría técnica/frame byte-idéntico PASS; confirmación actual de vista por Raúl pendiente en V-14. `frame-comparison.json, frame-030s.png, metadata-comparison.json` |
+| V-05 | PASS | Recorridos completos independientes y TSV idéntico; vídeo 5820/audio 11155, origin/audio offset 0, ends1164/5, clock exacto. `timing-comparison.json, external-frames.tsv` |
+| V-06 | PASS | Versiones/keys/UNKNOWN/ratios/canonical JSON/paths/bindings/extensiones y guard. `unittest.log, test-case-mapping.json` |
+| V-07 | PASS | Segundo ingest con versión final NO_OP; todos hashes/tamaños/mtime intactos; alias/conflictos/hash erróneo en suite. `repeat-before.json, repeat-after.json, repeat-comparison.json, unittest.log` |
+| V-08 | PASS | Reinspección nueva con mismas opciones/versiones: JSON byte-idéntico; fuente/manifest/previas intactos; pérdida/move/origen ausente en sintético. `regeneration-comparison.json, unittest.log` |
+| V-09 | PASS | Entradas inválidas/fallos herramientas/JSON/timeout/cap/IO/rename/disco; códigos y preservación de fuentes según contrato. `failure-matrix.json, negative/, unittest.log` |
+| V-10 | PASS | Giros reales contrastados con píxeles/SAR; VFR/B-frames/audio lead/lag/inicio no cero; negatives/fallback con doubles identificados. `environment.json, synthetic-inventory.json, test-case-mapping.json, unittest.log` |
+| V-11 | PASS | Sin AV/múltiples/selección explícita/attached pic y metadata desconocida requerida/opcional. `test-case-mapping.json, unittest.log` |
+| V-12 | PASS | Consumidor stdlib independiente tras guard fresco; binding/hashes/paths, cero providers/F003; proyectos/RAW/evidencia ignorados. `consumer-result.json, guard-execution.json, exclusion-result.json, implementation-scope-check.json` |
+| V-13 | PASS | Mutaciones/interrupción SIGKILL real/lock BUSY sin TTL/recuperación explícita/guard frente a fuente alterada o revisión incompleta. `failure-matrix.json, negative/, unittest.log` |
+| V-14 | HUMAN_REVIEW_REQUIRED | Paquete exacto presentado; confirmación de vista/límites y aceptación final pendiente. `review.md; acta futura fuera del e1 congelado` |
+
+| AC | Resultado |
+| --- | --- |
+| AC-01 | PASS |
+| AC-02 | PASS |
+| AC-03 | PASS |
+| AC-04 | HUMAN_REVIEW_REQUIRED |
+| AC-05 | PASS |
+| AC-06 | PASS |
+| AC-07 | PASS |
+| AC-08 | PASS |
+| AC-09 | PASS |
+| AC-10 | HUMAN_REVIEW_REQUIRED |
+
+43 tests PASS, 15 casos de fallo con snapshots/logs, geometría/timing reales
+comparados independientemente, NO_OP y regeneración byte-idéntica probados.
+RAW F001: 2.873.163.442 bytes, mtime_ns 1791032763000000000 y SHA-256
+68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc intactos.
+64 archivos protegidos y 6 frames aceptados conservan sus hashes. No nueva
+verificación del backup externo; la referencia sigue siendo la aceptada en F001.
+
+Correcciones retenidas transparentemente: copia detenida cuando source cambia
+después de cada bloque (regresión pasa); muestra temporal final 1–3 s en vez de
+span anterior 4 s; oracle independiente ajustado para comparar selection.basis
+y codec tag rtmd sin inventar codec name ausente. Historial no contado como PASS
+y ninguna normativa reducida. Ver review.md/environment.json/failure-matrix.json.
+
+**Review package:** `.local/validation/F002/e1/review.md` y frame-030s.png;
+manifest de identidad arriba. **Owner acceptance:** NOT GRANTED.
+**Human judgment:** V-04/V-14 pendientes; agente observó frame erguido y su hash
+es idéntico al frame aceptado e5, sin sustituir la confirmación actual de Raúl.
+No reabrir setup/contenido/voz F001 ni usar MOBILE real. Sin F003/dependencias/
+STT/edición/retomas/composición/render/PRODUCTION_APPROVED. Estado en plan.md.

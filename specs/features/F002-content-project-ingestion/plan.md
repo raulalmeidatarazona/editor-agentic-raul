@@ -2,7 +2,7 @@
 
 **Documento:** plan — CÓMO entregar la frontera de ingestión\
 **Bundle revision:** r1\
-**Lifecycle state:** VERIFYING\
+**Lifecycle state:** HUMAN_REVIEW\
 **Owner:** Raúl Almeida\
 **Scope:** [requirements.md](requirements.md)\
 **Proof contract:** [validation.md](validation.md)\
@@ -286,3 +286,23 @@ IMPLEMENTING → VERIFYING. Código y procedimiento previstos implementados;
 42 pruebas pasan con salida retenida en `.local/validation/F002/e1/unittest.log`.
 La validación real F001 y el gate humano se ejecutan a continuación; todavía
 no hay aceptación de evidencia ni DONE.
+
+## VERIFY → HUMAN_REVIEW — entrega e1
+
+Fecha UTC 2026-10-04T05:11:54.432452+00:00. Implementación `3e53205bcfd55570968f891a5bd972d5fe6bc621`; 43 tests y 15 escenarios
+de fallo PASS. V-01–V-13 completos técnicamente; V-04 conserva juicio humano
+pendiente y V-14 aceptación pendiente. [Matriz actual](validation.md#ejecución-e1--acta-administrativa-actual-2026-10-04).
+
+Paquete: `.local/validation/F002/e1/review.md`; manifest e1 SHA-256
+`3dd9201577a3e23cae128760a6ad217e48e24bb46d1e0acaf82d1fc93f71d35c`. Proyecto real `f002-studio-001`, inspection
+`inspections/d48b0e46-af7e-405e-a5ee-0d703d53bcb0/inspection.json`, SHA-256
+`d08658c3542e2a7d10b1093a0de5e464752fd6cbca14588cc816b323478b428f`. Input READY, feature HUMAN_REVIEW.
+
+Paso de ingestión/regeneración/consumer cumplido técnicamente; sus referencias
+a V-14 y el último checkbox humano quedan abiertos hasta decisión real del owner.
+Normativa y bundle r1 exacto intactos/recuperables. F001/RAW/evidencia aceptada
+sin cambios. La corrección de copia entra en r1 y no cambia ningún contrato;
+reinspección con versión final y repetición final verificadas.
+
+**Acceptance:** NOT GRANTED; no DONE. Se detiene para V-04/V-14 conforme al
+contrato aprobado, sin pedir aprobación otra vez del PLAN ni avanzar a F003.
