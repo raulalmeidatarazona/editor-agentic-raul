@@ -170,8 +170,18 @@ frame-rate policy, codec settings, and mappings belong in feature specifications
 ## 7. Speech-to-text
 
 Cloud STT is required for the baseline; no local Whisper installation or
-heavyweight speech model is required. The provider remains unselected and
-replaceable through a small adapter around normalized transcript artifacts.
+heavyweight speech model is required. The initial provider candidate is scoped
+by F003/D002; the provider remains replaceable through a small adapter around
+normalized transcript artifacts.
+
+F003 initially evaluates qwen-audio-3.1-asr-flash-filetrans in Alibaba Model
+Studio Singapore / International through a replaceable adapter. Selection is
+conditional on the approved F003 real-fixture validation. The source-transcript
+v1 contract and source-presentation-v1 mapping belong to F003, not to Alibaba.
+One approved fixture request, private owner-managed audio transport, retained
+sanitized provider responses, and usage/cost reconciliation are defined in the
+F003 bundle and D002. No permanent provider, correction model or F004 policy is
+selected.
 
 The future normalized format must support:
 
@@ -304,6 +314,12 @@ universal pipeline language, STT provider, normalization policy or renderer API.
 Owner acceptance: F002 r1 / ae36327, explicitly including
 [D001](specs/decisions/D001-local-source-contract.md); recorded in
 [the F002 plan](specs/features/F002-content-project-ingestion/plan.md).
+
+F003 r1 / 74aaa0b and [D002](specs/decisions/D002-initial-f003-stt-provider.md)
+extend the existing Python 3.14.7 standard-library and FFmpeg/ffprobe 9.0.1
+runtime narrowly to F003 preparation, cloud adapter and normalized transcription.
+Raúl explicitly approved this limited resolution; no universal language decision
+or new dependency installation is authorized.
 
 ## 12. Local resources, security, and cost
 

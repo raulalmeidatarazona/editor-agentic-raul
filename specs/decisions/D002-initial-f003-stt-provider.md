@@ -1,6 +1,6 @@
 # D002 — Initial F003 STT provider
 
-**Status:** Proposed, NOT ACCEPTED\
+**Status:** Accepted — acta real abajo\
 **Date:** 2026-10-04\
 **Related feature:** [F003 r1](../features/F003-time-aligned-transcription/plan.md)\
 **Authority:** [Constitution](../../constitution.md), [tech-stack §7](../../tech-stack.md),
@@ -82,3 +82,12 @@ provider/alignment revision; do not relax F003 acceptance or begin F004.
 
 This decision selects no permanent STT service, correction model, renderer,
 semantic/editorial policy or production approval. F001/F002/D001 remain intact.
+
+## Acta real de aceptación
+
+Raúl acepta expresamente D002 de `74aaa0b64254dfbf0c801e3e7a46a11fb402d357`, SHA-256
+`e38f1f935fdfd9d6493f3f2f463e89dbae04cd1fdee9a4d49c9eb036167ae9d2`, el 2026-10-04T06:26:19.776516+00:00.
+Mensaje directo literal y hashes en [acta F003](../features/F003-time-aligned-transcription/plan.md#acta-real-de-aprobación-r1)
+y `.local/spec-approvals/F003/r1/owner-message.txt`. Propuesta anterior conservada
+como historia; decisión normativa sin cambio. Aceptación no demuestra precisión
+ni autoriza servicios/dependencias/F004 fuera del contrato.

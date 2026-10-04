@@ -432,3 +432,19 @@ The r1 bundle and Proposed D002 await explicit approval; no implementation,
 paid STT, media upload, dependencies or Phase 4/F004 is authorized. This advances
 planning only, not the accepted roadmap exit position. F001/F002 stay DONE and
 their artifacts/evidence remain unchanged. No video is PRODUCTION_APPROVED.
+
+## F003 r1 — explicit implementation approval (2026-10-04)
+
+Raúl approved bundle r1 at 74aaa0b and D002, including the limited tech-stack
+resolution and one STT request for the F002 READY fixture, one channel/232.8s,
+with Singapore/International and the approved tariff/transport/privacy limits.
+[F003 plan](specs/features/F003-time-aligned-transcription/plan.md) owns lifecycle, literal approval and hashes.
+Only F003 IMPLEMENT/VERIFY is authorized; human input and account/private OSS
+transport gates precede submission. F001/F002 remain DONE and unchanged; no
+new dependencies/services, F004 or PRODUCTION_APPROVED.
+
+**F003 execution checkpoint (2026-10-04):** local implementation delivered;
+VERIFYING with required real checks BLOCKED, zero STT submissions. Channel1
+and full1× playback confirmed by Raúl. Independent reference text/acoustic bounds
+and Singapore API/private OSS prerequisites remain pending; see F003 plan/validation
+and docs/F003-transcription.md. F001/F002 remain DONE; no F004 or production approval.

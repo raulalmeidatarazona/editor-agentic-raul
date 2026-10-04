@@ -426,3 +426,19 @@ IMPLEMENT. Read-only official provider research and this documentation are withi
 PLAN. No STT request/upload, dependency installation, modification of F001/F002
 or F004 is authorized. Prior exclusions are historical gates, superseded only
 for F003 planning. F001/F002 DONE and their accepted evidence remain immutable.
+
+## F003 r1 — explicit implementation approval (2026-10-04)
+
+Raúl approved bundle r1 at 74aaa0b and D002, including the limited tech-stack
+resolution and one STT request for the F002 READY fixture, one channel/232.8s,
+with Singapore/International and the approved tariff/transport/privacy limits.
+[F003 plan](features/F003-time-aligned-transcription/plan.md) owns lifecycle, literal approval and hashes.
+Only F003 IMPLEMENT/VERIFY is authorized; human input and account/private OSS
+transport gates precede submission. F001/F002 remain DONE and unchanged; no
+new dependencies/services, F004 or PRODUCTION_APPROVED.
+
+**F003 execution checkpoint (2026-10-04):** local implementation delivered;
+VERIFYING with required real checks BLOCKED, zero STT submissions. Channel1
+and full1× playback confirmed by Raúl. Independent reference text/acoustic bounds
+and Singapore API/private OSS prerequisites remain pending; see F003 plan/validation
+and docs/F003-transcription.md. F001/F002 remain DONE; no F004 or production approval.

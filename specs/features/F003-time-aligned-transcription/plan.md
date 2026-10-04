@@ -2,7 +2,7 @@
 
 **Documento:** plan — CÓMO entregar texto y tiempo de fuente\
 **Bundle revision:** r1\
-**Lifecycle state:** PLAN_READY\
+**Lifecycle state:** VERIFYING\
 **Owner:** Raúl Almeida\
 **Scope:** [requirements.md](requirements.md)\
 **Proof contract:** [validation.md](validation.md)\
@@ -13,7 +13,7 @@
 Mensaje humano adjunto `45cab433-bc96-45c7-a63b-d033726c64fa/Pasted text.txt`:
 F002 formalmente DONE; autoriza **PLAN ONLY F003**, prohíbe implementar, STT,
 instalar, modificar F001/F002 o iniciar F004. Fecha de registro 2026-10-04.
-Esta es la autorización actual; las exclusiones históricas de F003 en raíces
+Esta fue la autorización de PLAN; las exclusiones históricas de F003 en raíces
 siguen válidas para IMPLEMENT, superadas solo para PLAN por ese mensaje.
 
 Se leyeron los cuatro specs raíz completos, AGENTS/protocolo, templates/decisiones,
@@ -206,11 +206,11 @@ estos cambios normativos durante PLAN.** No modificar Constitución ni misión.
 
 ## Pasos pendientes y validación
 
-- [ ] Registrar aprobación humana exacta r1/D002/commit+hashes y snapshot readonly antes de PLAN_APPROVED; aplicar solo resolución tech-stack autorizada.
-- [ ] Implementar contrato/guard/normalización/replay con provider doubles y oracle independiente; V-04–07/14/15.
-- [ ] Preparación/canal/sample ledger y flujo offline de requests/retries/journal/redacción/coste; V-02/03/11–13. No red en suite.
-- [ ] Revalidar runtime/input, ejecutar negativos/sintéticos y guardar salidas/hash. F001/F002 intactos, V-01/02/06/07/11/12/15.
-- [ ] Preparar paquete de escucha del fixture y referencias antes del POST; detener para juicio de Raúl donde V-02/08–10 exige escuchar/confirmar. No pedir campos medibles manuales.
+- [x] Registrar aprobación humana exacta r1/D002/commit+hashes y snapshot readonly antes de PLAN_APPROVED; aplicar solo resolución tech-stack autorizada.
+- [x] Implementar contrato/guard/normalización/replay con provider doubles y oracle independiente; V-04–07/14/15.
+- [x] Preparación/canal/sample ledger y flujo offline de requests/retries/journal/redacción/coste; V-02/03/11–13. No red en suite.
+- [x] Revalidar runtime/input, ejecutar negativos/sintéticos y guardar salidas/hash. F001/F002 intactos, V-01/02/06/07/11/12/15.
+- [x] Preparar paquete de escucha del fixture y referencias antes del POST; detener para juicio de Raúl donde V-02/08–10 exige escuchar/confirmar. No pedir campos medibles manuales.
 - [ ] Verificar cuenta/precio/storage privado/URL/eligibilidad/privacidad/pago, registrar autorización y límites; un solo submit/GET/download real V-03/04/13.
 - [ ] Replay/no-op/consumer sin nuevas llamadas; comparar palabras/timing, uso/coste y cobertura según V-05–16. No relajar tolerancias por resultado del modelo.
 - [ ] Presentar evidencia exacta, escuchar/revisar con Raúl y registrar aceptación antes de DONE. Si falta dato necesario, conservar BLOCKED/HUMAN_REVIEW_REQUIRED; sin F004.
@@ -267,3 +267,67 @@ Frase propuesta, **no firmada**; usar la identidad concreta entregada en la pres
 | --- | --- | --- |
 | 2026-10-04 | DRAFT r1 | Encargo humano PLAN ONLY F003, adjunto45cab433. |
 | 2026-10-04 | DRAFT → PLAN_READY | Tres documentos/D002 propuesto presentados para revisión; IMPLEMENT no autorizado. |
+
+## Acta real de aprobación r1
+
+**Approval:** GRANTED. Raúl Almeida; mensaje humano directo en este chat.
+Registro UTC: 2026-10-04T06:26:19.776516+00:00.
+Identidad aprobada: `74aaa0b64254dfbf0c801e3e7a46a11fb402d357`. Snapshot readonly: `.local/spec-approvals/F003/r1/`.
+
+| Documento presentado | SHA-256 pre-aprobación |
+| --- | --- |
+| requirements.md | `56fcb6a9e5b1057c5ae07366c4ee485d9f9456b505531e1d2576ab3de680f3e1` |
+| plan.md | `105d3f5925619ef7e3ed30f000414b3aacd985ab47827042f8469d40f142910e` |
+| validation.md | `0ac3c53c48ba6c50d8c74b667b3642e5309305a90a730c45afeb22a0bed8ee75` |
+| D002-initial-f003-stt-provider.md | `e38f1f935fdfd9d6493f3f2f463e89dbae04cd1fdee9a4d49c9eb036167ae9d2` |
+
+Palabras reales recibidas:
+
+> Apruebo F003, bundle r1 del commit 74aaa0b, compuesto por requirements.md, plan.md y validation.md. Acepto D002 del mismo commit y la resolución limitada de tech-stack descrita en plan.md. Autorizo PLAN_READY → PLAN_APPROVED e IMPLEMENT únicamente de F003 conforme a su contrato y validación.
+>
+> Autorizo una sola solicitud STT de C0216.MP4 a través del proyecto READY F002, un canal y 232,8 s, con qwen-audio-3.1-asr-flash-filetrans Singapore/International, tarifas de lista máximas USD0.15/1M input y USD0.47/1M output, sin reenvíos automáticos. Entiendo que el coste previo no tiene un techo USD garantizado y debe medirse o quedar UNKNOWN con conciliación.
+>
+> Autorizo ese audio derivado mediante URL firmada de un objeto OSS Singapore privado preexistente que yo gestionaré, con los límites de privacidad/retención documentados; si falta transporte/cuenta aptos, detener el envío.
+>
+> No autorizo nuevas dependencias/servicios, cambios F001/F002, F004, semántica, retomas, edición, captions, HyperFrames ni render. Esta aprobación no declara DONE ni ningún vídeo PRODUCTION_APPROVED.
+>
+
+Transición: PLAN_READY → PLAN_APPROVED. Normativa r1 intacta; se autoriza solo
+F003/D002/resolución limitada y el único intento descrito. Envío sujeto a gates
+humanos/cuenta/transporte; no nueva autorización para otras llamadas.
+
+## Inicio de IMPLEMENT
+
+2026-10-04: PLAN_APPROVED → IMPLEMENTING dentro de r1. Aprobación/snapshot
+registrados antes de desarrollo; solicitud STT no consumida. Solo F003.
+
+## Implementación local y gate de verificación (2026-10-04)
+
+IMPLEMENTING → VERIFYING: cuatro módulos, cuatro suites y procedimiento local
+previstos entregados. Sin dependencias nuevas. Configuración/lectura de key y
+workspace resueltos en el adaptador; esta preferencia posterior del propietario
+no cambia el contrato canónico ni los criterios r1. La key no va en el código.
+
+Raúl respondió «canal 1» y, ante la pregunta de comparación de ambos y escucha
+completa del WAV canal1 a1× con voz inteligible/inicio/final/pausas, «Sí, confirmo
+esa revisión completa». Acta USER-REPORTED en
+`.local/validation/F003/work-e1/channel-review.json`. Key disponible es
+USER-REPORTED; workspace/eligibilidad API metered Singapore y OSS privado
+preexistente todavía UNKNOWN. No inferirlos desde la existencia de una key.
+
+Preparación canal1: 11.174.400 muestras/48kHz/1164/5s, origen fuente0/1; WAV SHA
+`4c71d1689fdec2fb419ec6b91cb6ca0317a0b172b594e3b6ab7532cbe00645f3`.
+Dos canales guardados por separado, ledger contiguo comparado contra F002 y
+comparación independiente de payload PCM de ambos con deinterleave stdlib.
+Paquete de escucha5 ventanas/buffers/CSV/SVG medidos, sin segmentación editorial.
+
+V-08–V-10: referencia literal independiente ≥200 palabras y bordes acústicos
+≤50ms de incertidumbre pendientes, preparados con UNKNOWN; no adoptar handoff
+e5 como oracle ni fabricar respuestas humanas. Preguntas concretas enviadas.
+V-03/04/13 real también pendientes por cuenta/transporte/usage/billing.
+**Resultado global: BLOCKED; solicitud STT consumida: 0/1.** VERIFYING no DONE
+ni aceptación de evidencia completa. Continuar desde respuestas reales de esos
+gates dentro de r1; no reabrir aprobación de plan ni iniciar F004.
+
+Implementación/evidencia exactas y mapping final local en validation.md. R1
+aprobado permanece readonly en snapshot/Git74aaa0b; no cambio de criterios.
