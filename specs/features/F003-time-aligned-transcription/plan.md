@@ -210,7 +210,7 @@ estos cambios normativos durante PLAN.** No modificar Constitución ni misión.
 - [x] Implementar contrato/guard/normalización/replay con provider doubles y oracle independiente; V-04–07/14/15.
 - [x] Preparación/canal/sample ledger y flujo offline de requests/retries/journal/redacción/coste; V-02/03/11–13. No red en suite.
 - [x] Revalidar runtime/input, ejecutar negativos/sintéticos y guardar salidas/hash. F001/F002 intactos, V-01/02/06/07/11/12/15.
-- [x] Preparar paquete de escucha del fixture y referencias antes del POST; detener para juicio de Raúl donde V-02/08–10 exige escuchar/confirmar. No pedir campos medibles manuales.
+- [ ] Preparar paquete de escucha del fixture y referencias antes del POST; detener para juicio de Raúl donde V-02/08–10 exige escuchar/confirmar. No pedir campos medibles manuales.
 - [ ] Verificar cuenta/precio/storage privado/URL/eligibilidad/privacidad/pago, registrar autorización y límites; un solo submit/GET/download real V-03/04/13.
 - [ ] Replay/no-op/consumer sin nuevas llamadas; comparar palabras/timing, uso/coste y cobertura según V-05–16. No relajar tolerancias por resultado del modelo.
 - [ ] Presentar evidencia exacta, escuchar/revisar con Raúl y registrar aceptación antes de DONE. Si falta dato necesario, conservar BLOCKED/HUMAN_REVIEW_REQUIRED; sin F004.
@@ -331,3 +331,9 @@ gates dentro de r1; no reabrir aprobación de plan ni iniciar F004.
 
 Implementación/evidencia exactas y mapping final local en validation.md. R1
 aprobado permanece readonly en snapshot/Git74aaa0b; no cambio de criterios.
+
+Checkpoint vigente: implementación `be2a8233724fe4f94cfaf22aabb39bdcc0ef72fc`, evidencia parcial readonly
+`preflight-p2`,76 tests offline PASS. La tarea de referencias sigue abierta:
+paquete/plantillas entregados, contenido y bordes humanos UNKNOWN. V-02 requiere
+también comparación dirigida con original antes del envío. Resultado global
+BLOCKED/VERIFYING y0/1 solicitudes; acta/manifest/hash en validation.md.

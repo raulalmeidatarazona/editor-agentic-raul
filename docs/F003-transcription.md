@@ -81,7 +81,9 @@ puede fallar o quedar HUMAN_REVIEW_REQUIRED; nunca firma aceptación humana.
 El paquete local contiene WAV completo por canal, las cinco ventanas fijas,
 buffers de eventos y una pausa candidata, cada clip con sample offsets/SHA,
 CSV de extremos PCM cada20ms y SVG medido. SVG/energía no identifica palabras.
-La selección de canal y escucha completa1× deben provenir de Raúl. Las muestras
+La selección de canal y escucha completa1× deben provenir de Raúl. El acta
+requiere además comparación dirigida con el audio original en extremos/eventos
+antes del POST; no se infiere de elegir un canal. Las muestras
 de audio/hashes/layout no identifican por sí solos el micrófono físico.
 
 El archivo local `reference.json` empieza con **UNKNOWN**, no con una referencia

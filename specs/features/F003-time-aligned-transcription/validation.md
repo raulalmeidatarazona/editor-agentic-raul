@@ -219,3 +219,82 @@ artefactos/hash, resultado y revisor después de aprobar IMPLEMENT.\
 Auditoría documental de PLAN se registra aparte; no es suite runtime ni VERIFY.
 Cambios materiales a tolerancias/transporte/coste/contrato invalidan aprobación,
 exigen nueva revisión antes de dependientes. No empezar F004 tras crear el bundle.
+
+## Checkpoint real de IMPLEMENT/VERIFY — preflight-p1 (2026-10-04)
+
+Implementación: `62f659334c060de022ec8cbf9419b3e2f008e58f`; aprobación r1/D002 exacta en74aaa0b/snapshot readonly.
+Evidence partial frozen: `.local/validation/F003/preflight-p1/report.md`, manifest
+SHA `775d755fdf00f9dd3d417308ad53b9011e7701cd59e3d7df455e13cd436f21d2`. No es entrega final eN ni aceptación de F003.
+
+**Lifecycle: VERIFYING; global verification: BLOCKED.** Suite75 tests PASS con
+red bloqueada (socket.create_connection y OpenerDirector.open); runtime
+Python3.14.7/FFmpeg+ffprobe9.0.1 existentes. Git diff/scope/exclusion revisados,
+sin nuevas dependencias, cambios F001/F002 ni F004.
+
+Auditoría1207 archivos protegidos:0 diferencias bytes/SHA/stat, incluyendo RAW
+original/owned source, F001/F002/specs/evidencia y vendor/lock/código antecedente.
+Guard real F002 READY. Fuente SHA `68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc`.
+WAV canal1 SHA `4c71d1689fdec2fb419ec6b91cb6ca0317a0b172b594e3b6ab7532cbe00645f3`,
+11.174.400 muestras/48kHz/1164/5s, origen0/1. Ledger comparado frame por frame,
+continuidad exacta y payload de ambos canales idéntico a deinterleave independiente
+del PCM stereo original. Bits/velocidad/muestras conservados; layout/micrófono no inferidos.
+
+Raúl seleccionó «canal 1» y confirmó «Sí, confirmo esa revisión completa» ante
+comparación de ambos/canal1 completo1×/voz/inicio/final/pausas. USER-REPORTED,
+acta channel-review.json. Falta referencia literal independiente≥200 palabras,
+bordes humanos≤50ms y revisión dirigida de extremos/eventos contra source;
+plantillas UNKNOWN/paquetes preparados, preguntas enviadas. Key disponible
+USER-REPORTED; workspace/API metered Singapore/OSS privado existente/URL UNKNOWN.
+Ningún upload, transport GET o POST; **intentos consumidos0/1**.
+
+| Check | Resultado actual | Límite / evidencia |
+| --- | --- | --- |
+| V-01 | PASS | Fresh real F002 guard and 1207 protected files unchanged in bytes/hash/stat. |
+| V-02 | HUMAN_REVIEW_REQUIRED | Native samples/PTS/continuity/hash exact; independent PCM comparison and full1x selected-channel review confirmed. Directed source event/extreme comparison remains part of final reference review. |
+| V-03 | BLOCKED | Key available USER-REPORTED; metered API workspace/region eligibility and private existing OSS/URL/cleanup prerequisites UNKNOWN. No transport GET or POST. |
+| V-04 | BLOCKED | No real provider request or retained real result; 0/1 submissions. |
+| V-05 | BLOCKED | Synthetic byte-identical replay/new revision pass; real retained response absent. |
+| V-06 | PASS | Offline schema/guard/tamper/unknown/time/closed core and stale input tests pass; real transcript not created. |
+| V-07 | PASS | Retained native AV positive/negative offset, nonzero video PTS/VFR, Fraction oracle, crossing/outside-video and discontinuity negatives. |
+| V-08 | BLOCKED | Independent literal reference >=200 words before candidate and real WER/technical terms judgments pending; no candidate-derived reference. |
+| V-09 | BLOCKED | Real acoustic bounds <=50ms uncertainty and candidate Again/error/correction/pause evidence unavailable. |
+| V-10 | BLOCKED | Real try-again/control/drift evidence unavailable; numerical evaluator tested with synthetic oracle only. |
+| V-11 | PASS | Offline auth/rate/server/timeout/status/partial/malformed/caps/tool/IO/crash/locks and conservative paid intent tests pass. |
+| V-12 | BLOCKED | Synthetic NO_OP/no-network/mtime, GET-only recovery and new recognition authorization tests pass; real repetition absent. |
+| V-13 | BLOCKED | Offline secret-canaries, transport safety and Decimal/UNKNOWN usage tests pass; real usage and billing reconciliation not available. |
+| V-14 | PASS | Independent JSON/hashlib/Fraction wire consumer and second-provider decimal double; no vendor fields/editorial classifications in domain. |
+| V-15 | PASS | Existing Python3.14.7/FFmpeg9.0.1, 1207-file preservation audit, only authorized text/code changed; local artifacts/media excluded. |
+| V-16 | BLOCKED | No complete real evidence package, numerical acoustic verification, accounting or explicit final acceptance. No DONE. |
+
+El evaluator sintético prueba WER/Levenshtein, límites/p95/drift/pausas y no
+reescribe el texto. No es precisión del fixture real ni aceptación de términos/
+negaciones/Again. Double de provider distinto/consumer prueban el contrato,
+no implementan otro servicio. Usage/cost real y conciliación no disponibles:
+UNKNOWN, no USD0 ni V-13 completo por intención futura.
+
+AC-01 tiene guard/preparación/preservación demostrados y gate humano dirigido
+pendiente; AC-02/03/04/07/08/10 tienen cobertura offline local, pero entrega real
+AC-02 y replay real pendientes. AC-05/06/09 pendientes de speech/timing/accounting
+real. Ningún AC globalmente aceptado como DONE. La matriz r1 original permanece
+intacta y se completará con evidencia real sin rebajar tolerancias.
+
+Owner acceptance F003: NOT GRANTED. No transcript técnico READY real, no DONE,
+no PRODUCTION_APPROVED ni autorización F004.
+
+## Checkpoint vigente preflight-p2 (2026-10-04)
+
+Implementación vigente `be2a8233724fe4f94cfaf22aabb39bdcc0ef72fc` (incluye62f6593). Se añade el guard explícito
+de comparación dirigida contra audio original antes del POST, ya exigido por r1,
+y prueba negativa; ningún criterio/tolerancia ha cambiado. Suite final completa:
+**76 tests PASS con red bloqueada**,17,122s. Snapshot anterior p1 intacto.
+
+Snapshot vigente `.local/validation/F003/preflight-p2/`, manifest SHA
+`7c1566ecdfc8857321cab1a5ea82d37a6befd11d48f76de077851fc4cf219923`; mismo mapping V/AC y resultado **BLOCKED** de p1.
+V-02 sigue HUMAN_REVIEW_REQUIRED para la comparación dirigida original/extremos/
+eventos; canal1 y escucha completa1× están confirmados. V-03/04/05/08/09/10/12/13/16
+conservan los pendientes reales indicados, no se convierten en PASS por tests.
+Scope/Git exclusion de media, proyectos, evidencia y credenciales PASS; fixtures
+sintéticas retenidas≤2MiB por archivo y agregado845139bytes≤20MiB.
+
+**STT consumidos0/1; lifecycle VERIFYING; F001/F002 intactos; aceptación F003
+NOT GRANTED.** Esperar referencia humana/preflight de cuenta y OSS dentro de r1.
