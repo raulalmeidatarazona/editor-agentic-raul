@@ -457,3 +457,37 @@ real de Raúl sobre el paquete de evidencia.
 
 **Estado: VERIFYING; global BLOCKED solo por transporte (F003_AUDIO_URL).**
 F001/F002 DONE intactos; sin F004 ni PRODUCTION_APPROVED.
+
+## Preflight-p6 — transporte OSS investigado, gate de cuenta pendiente (2026-10-04)
+
+Owner autorizó instalar tooling y verificar capacidad de crear el transporte:
+`aliyun-cli 3.5.1` (brew) y `ossutil 2.4.0` (CDN oficial, SHA-256 verificado
+`26e51080…5a78a41d` antes de instalar). Credenciales configuradas por Raúl con
+usuario RAM `power-application-user` (cuenta 5787891059913905, ap-southeast-1);
+la clave raíz no toca el disco. `~/.ossutilconfig` 0600 generado desde
+`~/.aliyun/config.json` sin imprimir secretos.
+
+Sondas (todas read-only salvo un `mb` rechazado por el servicio):
+- `sts GetCallerIdentity` → RAMUser válido, región correcta. Auth OK.
+- `ossutil ls` / `ossutil mb oss://arsd-f003-transit --acl private` → **403
+  UserDisable EC 0003-00000801**: el servicio OSS no está activado en la cuenta.
+  No es problema de credencial ni de política RAM.
+- `bssopenapi QueryAccountBalance` → AvailableAmount **0.00 USD**. Coherente con
+  UserDisable: OSS es pay-as-you-go y requiere activación con método de pago.
+- El RAM user no puede listar sus propias políticas (403 ram:ListPoliciesForUser,
+  esperado en un usuario sin admin RAM).
+
+**Conclusión:** el transporte aprobado r1 (OSS privado Singapore) está bloqueado
+por un gate de cuenta del propietario: activar OSS en consola
+(https://oss.console.aliyun.com → Activate Now) con método de pago/saldo. El
+agente NO crea ni activa servicios de pago por su cuenta. Intento de bucket
+rechazado por el servicio, ningún recurso creado, ningún coste incurrido.
+
+Alternativa registrada para decisión del owner (NO autorizada, requeriría
+enmienda de plan): ASR síncrono free-trial (`qwen-audio-3.1-asr-flash` vía
+`bl speech recognize` o multimodal-generation) acepta audio sin OSS, pero exige
+comprimir el WAV de 22,3 MB a ≤10 MB (mp3/opus), lo que cambia el binding r1
+("transporta WAV únicamente") y necesita aprobación explícita.
+
+**Lifecycle VERIFYING; global BLOCKED por transporte; STT 0/1 sin consumir.**
+F001/F002 DONE intactos; sin F004 ni PRODUCTION_APPROVED.
