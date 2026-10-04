@@ -683,9 +683,18 @@ frases), no los datos del proveedor.
 **nada nuevo instalado, sin red, sin coste, sin consumir presupuesto STT**.
 Ejecutado sobre el MISMO WAV canal 1 (`4c71d168…`, resampleado a 16 kHz mono,
 232,8 s) en **11,6 s**: 58 segmentos / 468 palabras con timestamps y
-probabilidades por palabra. Esto entrega por primera vez una **referencia
-independiente no candidate-derived** sobre el fixture real, que es exactamente
-lo que r1 exigía y lo que el OWNER OVERRIDE de p5 intentaba suplir.
+probabilidades por palabra.
+
+**Precisión sobre su alcance (corrección de una sobre-afirmación del propio
+agente):** el oráculo es **independiente pero automático**. NO satisface el
+requisito literal de r1 para V-08 («un observador competente en español escucha
+y aporta texto literal»): sigue sin haber referencia *humana*. Su valor real es
+otro y está expresamente previsto en `tech-stack.md §7` — la **comparación de
+proveedores sobre fixture real** («real-fixture comparison of technical
+vocabulary, language accuracy, word timestamps»). Sirve para medir la exactitud
+léxica del candidato contra un motor distinto y para desmontar el motivo por el
+que se pidió el OVERRIDE p5, pero no convierte una salida de máquina en
+referencia humana. Declararlo «lo que r1 exigía» habría sido falso.
 
 **Comparación determinista medida (evidencia: `.local/validation/F003/oracle-comparison/`,
 WER con la misma función `comparison_words`/`edit_alignment` del evaluator r1):**

@@ -391,8 +391,17 @@ vía `mlx_whisper 0.4.3`, **ya instalado** en `~/Workspace/MotionGraphics/.venv`
 con modelo en caché. Nada nuevo instalado, sin red, sin coste, sin consumir
 presupuesto STT. Sobre el MISMO WAV canal 1 (`4c71d168…`, 16 kHz mono, 232,8 s)
 en **11,6 s**: 58 segmentos / 468 palabras con timestamps y probabilidad por
-palabra. Primera **referencia independiente no candidate-derived** sobre el
-fixture real.
+palabra. Primera referencia **independiente pero automática** (no humana, no
+candidate-derived) sobre el fixture real.
+
+**Precisión sobre su alcance (corrección de una sobre-afirmación del agente):**
+el oráculo NO satisface el requisito literal de r1 para V-08 («un observador
+competente en español escucha y aporta texto literal»), porque sigue sin haber
+referencia *humana*. Su valor real es el previsto en `tech-stack.md §7`:
+**comparación de proveedores sobre fixture real** («real-fixture comparison of
+technical vocabulary, language accuracy, word timestamps»). Mide la exactitud
+léxica del candidato contra un motor distinto, pero no convierte una salida de
+máquina en referencia humana.
 
 **WER medido con las funciones del evaluator r1 (`comparison_words` /
 `edit_alignment`) sobre las cinco ventanas r1:**
