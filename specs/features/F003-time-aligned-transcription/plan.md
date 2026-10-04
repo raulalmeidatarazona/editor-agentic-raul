@@ -808,3 +808,40 @@ entregable ni F004. RAW C0216 intacto (bytes y mtime sin cambios); el proxy es
 copia derivada. Flujo 006 y adaptaciones propuestas:
 `docs/F003-vs-MotionGraphics-diagnostico.md`. Sin DONE, sin F004, sin
 PRODUCTION_APPROVED.
+
+## Checkpoint p10 — D003 aceptada y aplicada (2026-10-04)
+
+El owner aceptó D003 y la enmienda de tech-stack §7 («D003 aprovado… modificar
+el tech-stck… tienes mi aprovacion YOLO»), con dirección KISS. Entregado:
+
+- `tools/terminology_correction.py` + 12 tests: capa provider-independent de
+  corrección terminológica. Garantías verificadas por tests y por corrida real:
+  no muta el transcript canónico (SHA `8251cdda…` idéntico), no mueve timing, no
+  inventa ni borra palabras (la absorbida conserva row/texto/timing marcada
+  `absorbed_by`), y una entrada que no matchea o es ambigua FALLA en vez de
+  no-op silencioso.
+- Tabla de datos del proyecto (fuente única) en
+  `.local/projects/f002-studio-001/transcription/terminology-corrections.json`.
+- `tech-stack.md` 0.1 → 0.2: §7 reescrito (ningún motor STT es requisito base;
+  el requisito es el contrato provider-independent; motor = configuración medida
+  por proyecto). Constitution intacta; §7 redactado para que ASR local siga
+  OPCIONAL y §36 no se rompa. Registro de enmienda con la aprobación literal.
+- El spike (`.local/spike`, ignorado) ahora consume la capa D003 como única
+  fuente de correcciones en vez de una tabla duplicada: `hyperframes check`
+  PASS, karaoke verificado por píxeles y leyendo el fotograma 112 s
+  («reintentos y idempotencia», término corregido en ámbar con subrayado).
+
+**V-08 terminología sobre salida corregida: los 4 términos PASS** (monolito,
+microservicios, eventos×4, idempotencia). El FAIL del proveedor crudo
+(idempotencia ausente) se conserva registrado, no se sobrescribe. WER 5,48% (p8)
+sin cambio. Detalle de honestidad para el owner: el ASR dijo «…y en potencia y
+fallos», así que la salida corregida lee «y idempotencia y»; el «y» sobrante es
+decisión editorial del owner (otra entrada de tabla), la capa no borra habla
+reconocida por su cuenta.
+
+V-09/V-10 siguen BLOCKED (referencia con bounds + decisión del owner). V-16
+sigue pendiente de aceptación humana del paquete. Suite **91/91 OK** en Python
+3.14.7 exacto (el keg de Homebrew subió a 3.14.8 a mitad de sesión; el guard de
+F002 no se toca, se corre con un binario 3.14.7 de `sys.executable` honesto).
+Lifecycle VERIFYING. Sin DONE, sin F004, sin PRODUCTION_APPROVED; F001/F002
+intactos.
