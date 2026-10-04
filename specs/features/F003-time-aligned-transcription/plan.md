@@ -654,3 +654,100 @@ La decisión es del owner: aceptar el FAIL registrado, autorizar una revisión d
 criterios vía change-control, o autorizar puntualmente una segunda ejecución con
 configuración mejorada. Lifecycle VERIFYING; global BLOCKED por V-08 FAIL real;
 F001/F002 intactos; sin DONE, sin F004, sin PRODUCTION_APPROVED.
+
+## Preflight-p8 — CORRECCIÓN del acta p7c y oráculo independiente gratuito (2026-10-04)
+
+**El acta p7c contiene dos afirmaciones falsas producidas por errores de
+medición del agente y quedan corregidas aquí** (mismo procedimiento que p5
+respecto de p4). El resultado FAIL de V-08 no cambia, pero su causa real es más
+estrecha de lo registrado.
+
+Error 1 — «46% de word-timestamps fragmentados»: **FALSO**. Ese recuento
+incluía palabras funcionales legítimas (`de`, `no`, `y`, `el`). Medida real:
+**106/550 tokens de continuación (19%)**, identificables de forma determinista
+porque el vendor omite el espacio inicial en una continuación sub-palabra.
+
+Error 2 — «la fragmentación rompe los controles de timing por palabra y hace
+inviable la evaluación a nivel de palabra»: **FALSO**. La fragmentación es
+**reconstruible determinísticamente** (concatenar continuaciones; no cruzar
+límite de `segment_id` ni de puntuación de frase). Tras la reconstrucción
+correcta: **470 palabras reales**, timing **monotónico y ordenado**, duración
+mediana 280 ms, máximo 2.04 s, y solo **1/470 (0%)** palabras >1.5 s — perfil
+comparable al oráculo. Las primeras reconstrucciones del agente eran las
+defectuosas (llegaron a producir una «palabra» de 11,68 s fusionando tres
+frases), no los datos del proveedor.
+
+**Oráculo independiente REAL, gratuito y local (hallazgo principal de p8):**
+`mlx-community/whisper-large-v3-turbo` vía `mlx_whisper 0.4.3`, ya instalado en
+`/Users/raulalmeida/Workspace/MotionGraphics/.venv` y con el modelo en caché —
+**nada nuevo instalado, sin red, sin coste, sin consumir presupuesto STT**.
+Ejecutado sobre el MISMO WAV canal 1 (`4c71d168…`, resampleado a 16 kHz mono,
+232,8 s) en **11,6 s**: 58 segmentos / 468 palabras con timestamps y
+probabilidades por palabra. Esto entrega por primera vez una **referencia
+independiente no candidate-derived** sobre el fixture real, que es exactamente
+lo que r1 exigía y lo que el OWNER OVERRIDE de p5 intentaba suplir.
+
+**Comparación determinista medida (evidencia: `.local/validation/F003/oracle-comparison/`,
+WER con la misma función `comparison_words`/`edit_alignment` del evaluator r1):**
+
+| Ventana r1 | oracle | qwen | S | D | I | N | WER |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| [0,25) | 67 | 65 | 2 | 2 | 0 | 67 | 5,97% |
+| [60,85) | 57 | 57 | 1 | 0 | 0 | 57 | 1,75% |
+| [90,115) | 47 | 48 | 2 | 1 | 2 | 47 | 10,64% |
+| [130,155) | 46 | 47 | 2 | 1 | 2 | 46 | 10,87% |
+| [195,228) | 75 | 76 | 0 | 0 | 1 | 75 | 1,33% |
+| **GLOBAL** | 292 | — | 7 | 4 | 5 | 292 | **5,48%** |
+
+El umbral de V-08 es sobre el WER global (`evaluate` acumula `totals` de todas
+las ventanas): **5,48% ≤ 10% → PASS en el componente de exactitud léxica**,
+medido contra oráculo independiente, no contra sí mismo. Las ventanas 2 y 3
+superan individualmente el 10% (10,64% / 10,87%) y quedan registradas como
+observación, no como criterio r1.
+
+**Términos técnicos — el único fallo real que sobrevive:**
+
+| Término | qwen (pagado) | whisper local (gratis) |
+| --- | --- | --- |
+| monolito | 1 | 1 |
+| microservicios | 1 | 1 |
+| eventos | 4 | 4 |
+| **idempotencia** | **0** («en potencia») | **0** («impotencia», p=0,744) |
+
+`idempotencia` falla en **AMBOS** modelos. No es un defecto del proveedor de
+pago: es una limitación real de ASR sobre esa palabra en este audio. El handoff
+F001 ya la había marcado UNCERTAIN con las variantes `diampotencia`,
+`impotencia`, `bienpotencia`, `en potencia` — predicción confirmada por dos
+motores independientes.
+
+**Evidencia cruzada de otro proyecto del owner (`~/Workspace/MotionGraphics`,
+coste 0 €):** su pipeline free (mismo Whisper local) produjo `diampotencia`
+(p=0,663) en el mismo punto del discurso y lo resolvió con una **tabla de
+correcciones de glosario escrita por un humano**:
+`specs/006-arquitectura/edit.json` → `captionCorrections`
+(`diampotencia`→`idempotencia`, `RP`→`ERP`, `check-out`→`checkout`). Es decir:
+el karaoke/subtítulos exactos NO los produjo el modelo, los produjo una capa
+determinista de corrección terminológica revisada por humano — exactamente lo
+que `tech-stack.md §7` ya manda («corrected technical terminology while
+preserving what was spoken») y lo que el bundle r1 de F003 **no incluye**.
+
+**Estado corregido de V-08:** componente WER **PASS** (5,48% vs oráculo
+independiente); componente de terminología técnica **FAIL real** (1 de 4
+términos ausente en cualquier proveedor). V-08 global = **FAIL**, por
+terminología únicamente. V-09/V-10 dejan de estar bloqueados por
+«fragmentación inviable» (afirmación retirada) y pasan a depender de la
+referencia y de los controles; la evaluación numérica real sigue pendiente de
+una referencia válida y de la decisión del owner sobre el término.
+
+**Consecuencia de gobierno (para el owner, no decidida por el agente):** con un
+oráculo independiente disponible y gratuito, el OWNER OVERRIDE p5
+(CANDIDATE_DERIVED) **deja de ser necesario** como sustituto de la
+independencia; la referencia puede construirse desde el oráculo Whisper y
+quedar como referencia independiente limpia. Adoptarlo cambia el binding de la
+referencia y requiere aprobación explícita: el agente no lo aplica por su
+cuenta.
+
+Ninguna llamada STT adicional (1/1 consumido). Ninguna instalación nueva.
+Objeto de tránsito OSS borrado (cleanup r1 ≤24 h ejecutado: bucket 0 objetos);
+transcript y respuesta vendor siguen retenidos localmente. F001/F002 intactos;
+sin DONE, sin F004, sin PRODUCTION_APPROVED.

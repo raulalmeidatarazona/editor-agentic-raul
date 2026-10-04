@@ -347,9 +347,9 @@ Estado completo y hallazgo de calidad en plan.md preflight-p7/p7b/p7c y
 | V-03 | PASS (transporte) | OSS activo; bucket privado Singapore; URL firmada TTL 2h verificada por el parser (1800–7200 s); transport streaming SHA exacto VERIFIED. Elegibilidad cuenta: auth 200 (p5), quota owner-reported. |
 | V-04 | PASS | Solicitud/respuesta reales retenidas (request.json, provider-response.json, execution.json). POST aceptado; job SUCCEEDED/subtask SUCCEEDED recuperado por GET intl. |
 | V-05 | PASS | Replay real ejecutado: normalize repetido con red bloqueada desde la respuesta retenida → transcript byte-idéntico (SHA `8251cdda…` antes y después). Sin segunda llamada ni cargo. |
-| V-08 | **FAIL real** | 3/4 términos técnicos presentes a nivel de frase (monolito, microservicios, eventos×4); **idempotencia NO reconocido** → candidato dice «en potencia» (variante ya predicha UNCERTAIN por el handoff F001). WER independiente no aplicable: la referencia candidate-derived no puede contener un término ausente en el candidato. |
-| V-09 | BLOCKED | Sin referencia válida no se ejecuta la evaluación numérica; además los word-timestamps vienen fragmentados (254/550 ≤3 chars), lo que rompe los controles por palabra léxica. Again aislado SÍ presente (~100.7 s). |
-| V-10 | BLOCKED | try again ×2 presentes (~137.5/138.6 s); misma limitación de fragmentación/controles que V-09. |
+| V-08 | **FAIL real (solo terminología)** | CORREGIDO en p8: WER global **5,48%** contra oráculo independiente Whisper local (≤10% → componente léxico PASS); 3/4 términos presentes (monolito, microservicios, eventos×4) en AMBOS motores; **idempotencia ausente en qwen («en potencia») y en Whisper («impotencia» p=0,744)**. El FAIL es de terminología, no de exactitud léxica general. |
+| V-09 | BLOCKED | CORREGIDO en p8: la afirmación «la fragmentación rompe los controles por palabra» era FALSA. La fragmentación (106/550 tokens, 19%) es reconstruible determinísticamente → 470 palabras reales, timing monotónico/ordenado, mediana 280 ms, 1/470 >1.5 s. Queda BLOCKED solo por falta de referencia válida con bounds y por la decisión del owner sobre el término. Again aislado presente (~100,7 s). |
+| V-10 | BLOCKED | CORREGIDO en p8 por la misma razón (reconstrucción viable). try again ×2 presentes (~137,5/138,6 s). Pendiente de referencia válida y controles. |
 | V-12 | PASS (propiedad de seguridad) | Re-submit con red bloqueada → PAID_ATTEMPT_ALREADY_CONSUMED, cero llamadas de red: nunca un segundo POST. El NO_OP por fingerprint idéntico no aplica tras la revisión p7c (adapter_version cambió); la suite offline cubre esa ruta. |
 | V-13 | PARTIAL | Usage/coste real registrados (Decimal, techo r1). Conciliación de facturación real (invoice/billing) PENDIENTE; no USD0 por intención. |
 | V-16 | BLOCKED | Sin aceptación humana final; V-08 FAIL real requiere decisión del owner antes de cualquier DONE. |
@@ -369,3 +369,68 @@ ni con otro submit (1/1 consumido; nueva configuración cambiaría el fingerprin
 (ii) revisión de criterios vía change-control, o (iii) autorización puntual de
 una segunda ejecución con configuración mejorada. Sin DONE, sin F004, sin
 PRODUCTION_APPROVED; F001/F002 intactos.
+
+## Checkpoint preflight-p8 — corrección del acta p7c y oráculo independiente gratuito (2026-10-04)
+
+Dos afirmaciones del acta p7c eran **FALSAS por errores de medición del agente**
+y se corrigen aquí (procedimiento idéntico al de p5 respecto de p4):
+
+1. «46% de word-timestamps fragmentados» → medida real **106/550 tokens de
+   continuación (19%)**; el recuento anterior incluía palabras funcionales
+   legítimas.
+2. «la fragmentación rompe los controles de timing y hace inviable la evaluación
+   por palabra» → **FALSO**. La fragmentación es reconstruible determinísticamente
+   (concatenar continuaciones sin cruzar `segment_id` ni puntuación de frase):
+   **470 palabras reales**, timing **monotónico y ordenado**, mediana 280 ms,
+   máximo 2.04 s, **1/470 (0%)** palabras >1.5 s. Las reconstrucciones iniciales
+   del agente eran las defectuosas (una «palabra» de 11,68 s fusionando tres
+   frases), no los datos del proveedor.
+
+**Oráculo independiente real, gratuito y local:** `mlx-community/whisper-large-v3-turbo`
+vía `mlx_whisper 0.4.3`, **ya instalado** en `~/Workspace/MotionGraphics/.venv`
+con modelo en caché. Nada nuevo instalado, sin red, sin coste, sin consumir
+presupuesto STT. Sobre el MISMO WAV canal 1 (`4c71d168…`, 16 kHz mono, 232,8 s)
+en **11,6 s**: 58 segmentos / 468 palabras con timestamps y probabilidad por
+palabra. Primera **referencia independiente no candidate-derived** sobre el
+fixture real.
+
+**WER medido con las funciones del evaluator r1 (`comparison_words` /
+`edit_alignment`) sobre las cinco ventanas r1:**
+
+| Ventana | oracle | qwen | S | D | I | N | WER |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| [0,25) | 67 | 65 | 2 | 2 | 0 | 67 | 5,97% |
+| [60,85) | 57 | 57 | 1 | 0 | 0 | 57 | 1,75% |
+| [90,115) | 47 | 48 | 2 | 1 | 2 | 47 | 10,64% |
+| [130,155) | 46 | 47 | 2 | 1 | 2 | 46 | 10,87% |
+| [195,228) | 75 | 76 | 0 | 0 | 1 | 75 | 1,33% |
+| **GLOBAL** | 292 | — | 7 | 4 | 5 | 292 | **5,48%** |
+
+`evaluate` r1 acumula `totals` sobre todas las ventanas y aplica el umbral al
+WER global: **5,48% ≤ 10% → componente léxico PASS contra oráculo
+independiente** (no contra sí mismo). Las ventanas 2 y 3 superan individualmente
+el 10% y se registran como observación, no como criterio r1.
+
+**Términos técnicos (único fallo real que sobrevive):** monolito 1/1,
+microservicios 1/1, eventos 4/4 — idénticos en ambos motores. **idempotencia 0/0**:
+qwen «en potencia», Whisper local «impotencia» (p=0,744); el pipeline free del
+owner en MotionGraphics produjo «diampotencia» (p=0,663) en el mismo punto del
+discurso. Tres ejecuciones independientes confirman la predicción UNCERTAIN del
+handoff F001. No es un defecto del proveedor de pago.
+
+**Corrección de V-08/V-09/V-10:** V-08 = **FAIL real por terminología únicamente**
+(WER PASS); V-09/V-10 = **BLOCKED** solo por falta de referencia válida con
+bounds y por la decisión pendiente del owner sobre el término — se RETIRA el
+motivo «fragmentación inviable» registrado en p7c.
+
+**Consecuencia de gobierno (decisión del owner, no del agente):** con oráculo
+independiente gratuito disponible, el OWNER OVERRIDE p5 (CANDIDATE_DERIVED)
+**deja de ser necesario** como sustituto de la independencia; la referencia puede
+construirse desde el oráculo y quedar como referencia independiente limpia.
+Adoptarlo cambia el binding de la referencia y requiere aprobación explícita.
+
+Evidencia: `.local/validation/F003/oracle-comparison/` (oracle crudo, script,
+salida y `SHA256SUMS.txt`). Cleanup r1 ejecutado: objeto de tránsito borrado,
+bucket `arsd-f003-transit` con 0 objetos; transcript y respuesta vendor
+retenidos localmente. STT sigue **1/1**; sin instalación nueva; sin DONE, sin
+F004, sin PRODUCTION_APPROVED; F001/F002 intactos.
