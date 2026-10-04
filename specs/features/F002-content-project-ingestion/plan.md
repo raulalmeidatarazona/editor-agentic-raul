@@ -2,7 +2,7 @@
 
 **Documento:** plan — CÓMO entregar la frontera de ingestión\
 **Bundle revision:** r1\
-**Lifecycle state:** HUMAN_REVIEW\
+**Lifecycle state:** DONE\
 **Owner:** Raúl Almeida\
 **Scope:** [requirements.md](requirements.md)\
 **Proof contract:** [validation.md](validation.md)\
@@ -191,8 +191,8 @@ aceptada es comparación/procedencia, no sustituto de validar F002 real.
 - [x] Implementar copy/hash/provenance/lock/atomic publication y CLI sin sobrescritura. AC-01/02/07/09, V-01/02/07/09/13.
 - [x] Implementar inspector/selección/rotación/reloj/scan/decode y límites. AC-03–05/09, V-03–05/10/11.
 - [x] Crear solo muestras sintéticas necesarias y ejecutar negativos/failure injection definidos; corregir defectos dentro de r1, no redefinir criterios.
-- [ ] Ingerir RAW F001 real, inspeccionar independientemente y ejecutar V-01–V-14, incluyendo regeneración/guard/consumer. Conservar fuente/evidencia.
-- [ ] Presentar reporte/frames y revisar display con Raúl; añadir resultados/limitaciones, esperar aceptación exacta de entrega antes de DONE. Sin F003.
+- [x] Ingerir RAW F001 real, inspeccionar independientemente y ejecutar V-01–V-14, incluyendo regeneración/guard/consumer. Conservar fuente/evidencia.
+- [x] Presentar reporte/frames y revisar display con Raúl; añadir resultados/limitaciones, esperar aceptación exacta de entrega antes de DONE. Sin F003.
 
 ## Readiness del PLAN y presentación
 
@@ -306,3 +306,25 @@ reinspección con versión final y repetición final verificadas.
 
 **Acceptance:** NOT GRANTED; no DONE. Se detiene para V-04/V-14 conforme al
 contrato aprobado, sin pedir aprobación otra vez del PLAN ni avanzar a F003.
+
+## HUMAN_REVIEW → DONE — aceptación real e1 (2026-10-04)
+
+**Acceptance:** GRANTED. Raúl Almeida confirma vista erguida/vertical,
+distingue raster 3840×2160 de display 2160×3840 y entiende el origen PTS del
+reloj source-presentation-v1. Acepta e1 y sus límites según validation.md,
+r1 ae36327 e implementación 3e53205 y autoriza expresamente el cierre.
+Fecha de registro UTC: 2026-10-04T05:58:57.210474+00:00.
+
+[Palabras reales y matriz final](validation.md#aceptación-e1-y-cierre--acta-final-2026-10-04).
+V-01–V-14 y AC-01–AC-10 PASS; no trabajo ni juicio requerido pendiente.
+Identidad e1 aceptada SHA-256 `3dd9201577a3e23cae128760a6ad217e48e24bb46d1e0acaf82d1fc93f71d35c`;
+inspection SHA-256 `d08658c3542e2a7d10b1093a0de5e464752fd6cbca14588cc816b323478b428f`.
+Acta/snapshots de presentación e integridad: `.local/validation/F002/closure-e1/`;
+manifest de cierre SHA-256 `f62462818dca0fba677d1d7aeef5c02927d6a3398e2e7a6d7c6626072e007367`. Guard fresco READY;
+394 hashes e1 y bytes de código coinciden con las identidades revisadas.
+
+Todos los pasos del plan se completan dentro de r1. Sus snapshots exactos y el
+paquete presentado permanecen intactos; los campos antiguos NOT GRANTED/HUMAN_REVIEW
+son históricos y quedan superados por esta aceptación. F001 permanece DONE/intacto.
+F003, nuevas dependencias, STT, edición/retomas/HyperFrames/render y aprobación
+PRODUCTION_APPROVED siguen fuera de autorización. Se cierra F002 y se detiene.

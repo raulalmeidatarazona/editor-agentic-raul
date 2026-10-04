@@ -408,7 +408,10 @@ F001 remains DONE and unchanged; F003 and future production functionality remain
 unauthorized. No new dependencies, STT, editing, retake detection, composition or
 rendering. Feature acceptance and PRODUCTION_APPROVED remain separate gates.
 
-F002 technical verification completed on 2026-10-04; evidence e1 is frozen and
-F002 is HUMAN_REVIEW. Its validation records the exact manifest and V/AC matrix.
-V-04/V-14 still require owner view judgment and explicit feature acceptance.
-Plan approval, input READY and passing tests do not satisfy that gate.
+Raúl explicitly accepted F002 evidence e1 on 2026-10-04, according to r1 ae36327
+and implementation 3e53205, confirmed the view/raster/display/clock and limits,
+and authorized HUMAN_REVIEW → DONE. F002 is DONE; V-01–V-14 and AC-01–AC-10 PASS.
+Its plan/validation record the literal decision, final matrix and exact hashes.
+The e1 snapshot stays frozen; `.local/validation/F002/closure-e1/` retains the
+separate owner act, presentation snapshots and integrity confirmation. F001 stays
+intact; this acceptance explicitly excludes F003 and PRODUCTION_APPROVED.

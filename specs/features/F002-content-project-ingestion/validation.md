@@ -242,3 +242,52 @@ manifest de identidad arriba. **Owner acceptance:** NOT GRANTED.
 es idéntico al frame aceptado e5, sin sustituir la confirmación actual de Raúl.
 No reabrir setup/contenido/voz F001 ni usar MOBILE real. Sin F003/dependencias/
 STT/edición/retomas/composición/render/PRODUCTION_APPROVED. Estado en plan.md.
+
+## Aceptación e1 y cierre — acta final (2026-10-04)
+
+**Verification result:** PASS. **Owner acceptance:** GRANTED, Raúl Almeida,
+mensaje directo en este chat; registro UTC 2026-10-04T05:58:57.210474+00:00.
+La evidencia e1 pendiente anterior es el snapshot presentado, sin cambios;
+este registro completa el juicio/aceptación, sin alterar r1 ni tolerancias.
+
+**Accepted bundle:** r1 `ae36327768a4186009a92619ef8e4b1bf379d8a8` / D001 aceptada.
+**Accepted implementation:** `3e53205bcfd55570968f891a5bd972d5fe6bc621`.
+**Accepted evidence:** e1; manifest SHA-256
+`3dd9201577a3e23cae128760a6ad217e48e24bb46d1e0acaf82d1fc93f71d35c` (394 artefactos/referencias).
+**Accepted inspection SHA-256:** `d08658c3542e2a7d10b1093a0de5e464752fd6cbca14588cc816b323478b428f`.
+**Accepted RAW SHA-256:** `68addbf384db8927b05eea36873bc46dc3409ccad998427ba9c43d19ae427bcc`.
+**Human act / final matrix:** `.local/validation/F002/closure-e1/acceptance-e1.md`
+y `final-results.json`; mensaje literal `owner-message.txt`, SHA-256 `f1962760af832eba101d2e91b5ad20b922bbff6fa1a653d31893bde1d3af886d`.
+**Closure manifest SHA-256:** `f62462818dca0fba677d1d7aeef5c02927d6a3398e2e7a6d7c6626072e007367` (`closure-e1.sha256`).
+
+### Palabras reales de Raúl
+
+> Confirmo que en frame-030s.png la vista está erguida y correctamente
+> presentada en vertical.
+>
+> Entiendo y acepto la distinción entre raster almacenado 3840×2160 y
+> presentación vertical derivada 2160×3840 mediante la transformación de
+> orientación, así como que el reloj source-presentation-v1 comienza en el
+> primer PTS presentado del vídeo y no representa fecha ni timecode de cámara.
+>
+> Confirmo la vista erguida/vertical y acepto F002, evidencia e1 identificada
+> en validation.md, conforme al bundle r1 ae36327 y la implementación 3e53205.
+> Acepto sus límites y autorizo HUMAN_REVIEW → DONE.
+>
+> No autorizo F003 ni declaro un vídeo PRODUCTION_APPROVED.
+
+### Matriz final V / AC
+
+| Checks | Resultado final | Evidencia |
+| --- | --- | --- |
+| V-01/02/03/05/06/07/08/09/10/11/12/13 | PASS | Técnica e1 congelada; matriz por check en acta e1 anterior. |
+| V-04 | PASS | Raúl confirma frame-030s.png erguido/vertical y entiende raster/display/transformation; acta literal arriba. |
+| V-14 | PASS | Raúl acepta e1/r1/implementación exactos, reloj y límites, y autoriza cierre; acta literal arriba. |
+| AC-01–AC-10 | PASS | Matriz técnica e1 + V-04/V-14 humanos; final-results.json identifica cada criterio. |
+
+Comprobación de cierre: 394 hashes e1 intactos; código idéntico a 3e53205;
+guard fresco READY. Se mantienen 43 tests y 15 escenarios de fallo PASS,
+NO_OP/regeneración y preservación de F001; no nueva ejecución de inspección/media.
+**Lifecycle:** HUMAN_REVIEW → DONE, registrado en plan.md. Ningún check pendiente.
+No se modifica el paquete e1 congelado, el r1 aprobado, RAW ni F001.
+Los límites aceptados persisten; F003 y PRODUCTION_APPROVED no autorizados.

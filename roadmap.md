@@ -110,6 +110,10 @@ against real input.
 
 **Depends on:** Phase 1.
 
+**Status:** DONE via F002 r1/e1, explicitly accepted by Raúl on 2026-10-04;
+V-01–V-14 and AC-01–AC-10 PASS. [F002 plan](specs/features/F002-content-project-ingestion/plan.md)
+records the acceptance and identity. This does not authorize Phase 3/F003 or production.
+
 **Goal:** turn the RAW into a recoverable Content Project.
 
 Identify media; probe stream/container metadata, dimensions and rotation,
@@ -414,6 +418,8 @@ only. [F002 plan](specs/features/F002-content-project-ingestion/plan.md) owns it
 actual lifecycle. Phase 1/F001 remains DONE; the earlier unapproved F002 statements
 are historical. Phase 3 and all later implementation require their own human gates.
 
-F002 technical delivery e1 is in HUMAN_REVIEW (2026-10-04), with 43 passing tests
-and 15 retained failure cases. Phase 2 is not marked DONE: V-04/V-14 and final
-owner acceptance remain pending. F001 stays DONE; Phase 3 remains unauthorized.
+Raúl explicitly accepted F002 e1/r1 ae36327/implementation 3e53205 on 2026-10-04,
+confirmed view/raster/display/clock and limits, and authorized HUMAN_REVIEW → DONE.
+V-01–V-14 and AC-01–AC-10 PASS; Phase 2/F002 is DONE. e1 remains frozen with its
+exact hashes; the final human act and closure are retained separately. F001 stays
+DONE and intact; Phase 3/F003 and PRODUCTION_APPROVED remain unauthorized.
