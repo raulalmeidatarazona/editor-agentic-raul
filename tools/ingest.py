@@ -248,6 +248,8 @@ def ingest(source, project_id, projects_root=DEFAULT_ROOT, profile="UNKNOWN", li
                 while chunk := src.read(4 * 1024 * 1024):
                     dst.write(chunk)
                     call_hook(hook, "during_copy", source=source, root=stage, owned=owned)
+                    if stat_identity(source) != initial["stat"]:
+                        raise ContractError("SOURCE_CHANGED", "Original changed during copy; stop before reading more bytes.", "source")
                 dst.flush(); os.fsync(dst.fileno())
             call_hook(hook, "after_copy", source=source, root=stage, owned=owned)
             final = {"stat": stat_identity(source), "sha256": hash_file(source)}

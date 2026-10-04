@@ -184,6 +184,18 @@ class IngestTests(unittest.TestCase):
         self.assertEqual(out["status"], "BLOCKED")
         self.assertEqual(out["reasons"][0]["code"], "SOURCE_CHANGED")
 
+    def test_continuously_growing_source_stops_after_first_copy_chunk(self):
+        calls = []
+        def grow(point, ctx):
+            if point == "during_copy":
+                calls.append(point)
+                with self.source.open("ab") as f: f.write(b"synthetic growth")
+        with self.assertRaises(contract.ContractError) as e:
+            self.ingest(hook=grow)
+        self.assertEqual(e.exception.code, "SOURCE_CHANGED")
+        self.assertEqual(len(calls), 1)
+        self.assertFalse((self.projects / "test-project").exists())
+
     def test_real_process_kill_keeps_blocked_pointer_and_stale_lock(self):
         root = Path(self.ingest()["project_path"])
         before = contract.hash_file(root / "raw/source")
