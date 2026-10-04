@@ -337,3 +337,52 @@ Checkpoint vigente: implementación `be2a8233724fe4f94cfaf22aabb39bdcc0ef72fc`, 
 paquete/plantillas entregados, contenido y bordes humanos UNKNOWN. V-02 requiere
 también comparación dirigida con original antes del envío. Resultado global
 BLOCKED/VERIFYING y0/1 solicitudes; acta/manifest/hash en validation.md.
+
+## Continuación humana y preflight-p3 (2026-10-04)
+
+Raúl aporta confirmación directa en adjunto20aac15c: escucha y comparación del
+audio con el texto presentado, español/términos, presencia/orden de Again/try again,
+concordancia acústica a precisión humana normal e identidad C0216 autoritativa.
+Se registra USER_VERIFIED/HUMAN_VERIFIED, método listen-and-compare, sin atribuir
+autoría manual nueva ni fabricar precisión. Mensaje literal/acta recuperables en
+`.local/validation/F003/preflight-p3/owner-message.txt` y `human-verification.json`.
+La comparación dirigida fuente/material queda confirmada; V-02 PASS junto con
+la preparación y escucha completa1× ya verificadas. No se repide ese juicio.
+
+R1 human-reference gate sigue **BLOCKED**: cinco ventanas con texto UNKNOWN,
+0 palabras retenidas en ellas; recuento del texto exacto realmente revisado UNKNOWN.
+Los39 controles carecen de intervalos numéricos, mínimo30/≤50ms aún no demostrado;
+tres pausas también sin bounds. No afirmar que Raúl escuchó0 palabras ni calcular
+el déficit de un texto no recuperado. No adoptar automáticamente citas antiguas
+de reconocimiento provisional F001 como texto exacto revisado ni timing oracle.
+
+Raúl responde: «madre mia no los tengo ahora mismo, ejecute un script de python y
+eso devolvio todo con exactitud nada complicado. y si quieres esta vez manten el
+documento en el proyecto porque realmente lo vamos a usar bastante».
+Script/salida exactos no localizados en búsquedas de código/artefactos del proyecto.
+Se conserva [documento reutilizable](../../../docs/F003-human-reference.md) con
+procedencia, clips y pendientes; no se exige volver a escribir el texto revisado.
+
+Raúl pide ubicación exacta para poner valores de producción. Se prepara archivo
+externo vacío `/Users/raulalmeida/.config/editor-agentic-raul/F003.env`,0600,
+F003_QWEN_WORKSPACE/DASHSCOPE_API_KEY/F003_AUDIO_URL. El adaptador existente lee
+el entorno; workspace del config local permanece null para resolución por env.
+Instrucciones en docs/F003-transcription.md. Ningún secreto en proyecto/Git,
+ninguna carga automática/ejecución STT por completar el archivo. Confirmaciones
+API metered Singapore/model-enabled/CodingPlan=false y OSS privado preexistente/
+owner upload/cleanup≤24h siguen UNKNOWN. Variables no cargadas en el proceso
+auditado; key existente sigue USER-REPORTED, no se niega su existencia en máquina.
+
+Guard F002 fresco READY, muestras/hash/ledger del WAV válidos;1207 archivos
+protegidos0 cambios hash/stat. P2 verificado67 archivos+6 artefactos externos,
+sin cambios;76 tests offline PASS retenidos, sin nueva suite ni cambios de código.
+Modelo/opciones/límites/snapshot de aprobación/budget local PASS. Documentación
+oficial endpoint/precio reconsultada, dentro de tarifas aprobadas; cuenta real
+no probada. No requests/attempts/stale lock ni red provider/transport/upload.
+
+Snapshot p3 readonly, manifest SHA
+`b2b76fd3b89e341e5b8d725c7ab4b3c803c3a24805570dd09bdaaf6b5d3a24dd`.
+**Lifecycle VERIFYING; global BLOCKED; STT0/1.** Aprobación r1 existente permite
+la única llamada si pasan todos los gates; no nuevo permiso inmediato requerido.
+V-16 final todavía no procede: falta resultado/evidencia real. Sin DONE/F004/
+PRODUCTION_APPROVED; F001/F002 permanecen intactos.

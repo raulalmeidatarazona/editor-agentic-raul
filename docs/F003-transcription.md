@@ -42,6 +42,43 @@ Los secretos se cargan mediante el almacén local/entorno del proceso; no se peg
 en chat ni se guardan con esta documentación. No se imprime el entorno, no se
 copia ninguna key al código y no se instala SDK, modelo o dependencia.
 
+### Archivo concreto para los valores de producción
+
+Preparado para Raúl, fuera del proyecto y con permisos0600:
+[/Users/raulalmeida/.config/editor-agentic-raul/F003.env](/Users/raulalmeida/.config/editor-agentic-raul/F003.env).
+Completar únicamente los valores vacíos entre comillas simples:
+
+```sh
+F003_QWEN_WORKSPACE=''
+DASHSCOPE_API_KEY=''
+F003_AUDIO_URL=''
+```
+
+Workspace es el ID del workspace Singapore; la key corresponde a su API metered,
+fuera de Coding Plan. F003_AUDIO_URL es la URL GET firmada del WAV canal1 en el
+objeto privado OSS Singapore preexistente. No es una ruta de vídeo ni una URL pública.
+La config local del proyecto `.local/validation/F003/work-e1/config.json` mantiene
+`workspace: null` para que el adaptador lo resuelva desde F003_QWEN_WORKSPACE.
+También admite un workspace no secreto en ese campo, con precedencia sobre env.
+Modelo/región/canal/opciones aprobados ya están configurados; no cambiarlos.
+
+El adaptador lee el entorno del proceso, no carga automáticamente el archivo.
+Después de editarlo, el operador lo carga únicamente en el proceso de preflight
+o ejecución, desde la raíz del proyecto, sin imprimir valores:
+
+```sh
+set +x
+set -a
+source /Users/raulalmeida/.config/editor-agentic-raul/F003.env
+set +a
+```
+
+Este paso no envía audio ni STT. No copiar F003.env al proyecto ni añadir valores
+a config.json, docs, argv o chat. Un archivo vacío o una key presente no prueban
+elegibilidad/cuenta/storage: las confirmaciones reales y todos los gates r1 siguen
+siendo necesarios. La URL se genera cerca del envío para conservar su TTL.
+Si el archivo ya existía, se conserva sin reemplazar ni mostrar su contenido.
+
 ## Comandos
 
 Desde la raíz del repositorio, con config local fuera de Git:
@@ -77,6 +114,10 @@ READY o NO_OP verificado;2 NEEDS_REVIEW;3 BLOCKED;4 INVALID. La evaluación num�
 puede fallar o quedar HUMAN_REVIEW_REQUIRED; nunca firma aceptación humana.
 
 ## Escucha y referencia antes del STT
+
+[Documento reutilizable de referencia humana](F003-human-reference.md): método,
+material retenido, procedencia y pendientes, sin atribuir autoría manual ficticia
+ni exigir volver a escribir material ya revisado.
 
 El paquete local contiene WAV completo por canal, las cinco ventanas fijas,
 buffers de eventos y una pausa candidata, cada clip con sample offsets/SHA,

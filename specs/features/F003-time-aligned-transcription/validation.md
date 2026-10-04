@@ -298,3 +298,34 @@ sintéticas retenidas≤2MiB por archivo y agregado845139bytes≤20MiB.
 
 **STT consumidos0/1; lifecycle VERIFYING; F001/F002 intactos; aceptación F003
 NOT GRANTED.** Esperar referencia humana/preflight de cuenta y OSS dentro de r1.
+
+## Continuación verificada — preflight-p3 (2026-10-04)
+
+Acta humana adjunto20aac15c retenida literalmente, junto con respuestas sobre
+script no disponible ahora y ubicación de configuración. Evidencia readonly
+`.local/validation/F003/preflight-p3/`, manifest SHA
+`b2b76fd3b89e341e5b8d725c7ab4b3c803c3a24805570dd09bdaaf6b5d3a24dd`.
+Implementación be2a823 intacta; aprobación r1/74aaa0b intacta. P1/P2 sin cambios.
+
+| Parte evaluada | Resultado / evidencia actual |
+| --- | --- |
+| Juicios humanos presentados | USER_VERIFIED/HUMAN_VERIFIED: listen-and-compare por Raúl; fidelidad/contexto/orden/palabras y fuente confirmados. No autoría manual independiente ficticia. |
+| V-02 | PASS: preparación/PCM/ledger/preservación/canal1/full1× previos más confirmación nueva de revisión dirigida del material fuente. Exactitud de word boundaries se evalúa aparte. |
+| Referencia pre-candidato V-08 | BLOCKED:5 textos de ventanas siguen null;0 palabras retenidas en esas ventanas; ≥200 requeridas. Recuento del texto exacto que el humano revisó UNKNOWN, no0. Script/salida/identidad no recuperados; no requerir reescritura manual. |
+| Bordes V-09/V-10 | BLOCKED:0 de39 controles preparados con intervalos numéricos; mínimo30 y≤50ms exigidos.3 pausas sin bounds. Confirmación humana cualitativa aceptada sin fabricar milisegundos. |
+| V-01 / V-15 preservación | PASS fresco: guard F002 READY/WAV válido;1207 archivos protegidos0 diferencias hash/stat. |
+| Aprobación/modelo/config/budget local | PASS: snapshot exacto; modelo/región/scope/opciones/límites correctos;0 attempts y0 stale lock. Documentación oficial endpoint/precio reconsultada dentro de tarifas aprobadas. |
+| V-03 cuenta/OSS | BLOCKED:eligibilidad API metered Singapore/model-enabled/CodingPlan=false/workspace/OSS privado existente y gestión≤24h UNKNOWN. Key/workspace/URL no cargados en proceso auditado; no prueba de ausencia en máquina. Plantilla externa0600 preparada, sin valores. |
+| Suite y checkpoints |76 tests offline PASS retenidos; p2 integridad67 archivos+6 artefactos externos PASS. No código de producto nuevo ni rerun de suite. |
+| V-04/05/08/09/10/12/13/16 real | BLOCKED: resultado real/transcript/replay/WER/timing/usage/billing/aceptación final ausentes. Juicio nuevo no los sustituye. |
+
+V-06/07/11/14 conservan los PASS offline p2 y sus límites. No F004/semántica,
+no red provider/transport/upload; STT consumidos0/1. Coste total/min/hora real
+UNKNOWN, no USD0. Documento reutilizable solicitado por Raúl en
+[docs/F003-human-reference.md](../../../docs/F003-human-reference.md), sin
+transcripción generada atribuida al revisor ni cambio de aceptación/tolerancias.
+
+**Global BLOCKED; lifecycle VERIFYING; final owner acceptance NOT GRANTED.**
+R1 ya autoriza la única ejecución condicionada; aún faltan datos de referencia y
+cuenta/transporte, no una nueva autorización genérica. V-16 requiere evidencia
+real congelada y aceptación distinta antes de DONE; todavía no corresponde pedirla.
