@@ -1,7 +1,7 @@
 # D003 — Deterministic terminology-correction layer for transcripts
 
-**Status:** Proposed (v2 — owner feedback 2026-10-04)\\\
-**Date:** 2026-10-04\\\
+**Status:** Accepted — owner approval below\\\
+**Date:** 2026-10-04 (accepted 2026-10-04)\\\
 **Related features / root documents:** [F003](../features/F003-time-aligned-transcription/plan.md),
 [tech-stack §7](../../tech-stack.md), [Constitution §22/§29](../../constitution.md),
 [D002 accepted](D002-initial-f003-stt-provider.md),
@@ -142,3 +142,39 @@ reason documented. The measured WER component (5.48%) is unaffected.
 Affected specifications: tech-stack §7 (already anticipates corrected
 terminology), the F003 feature files if the layer lands there, and the future
 captions/semantic features. No constitutional amendment is proposed.
+
+## Acta real de aceptación (2026-10-04)
+
+Owner approval, literal: «es momento de hacer KISS el proyecto, asi que D003
+aprovado y listo modificalo para continuar, modificar el tech-stck, aplicatodo
+lo necesario para avanzar con KISS, en el studio todo esta bien continua. que
+sigue todo esta aprovado modificalo tienes mi aprovacion YOLO»
+
+Scope the owner accepted here, recorded precisely so the blanket wording is not
+over-read:
+
+- D003 moves Proposed → Accepted.
+- `tech-stack.md` §7 is amended accordingly (Architecture row of the
+  change-control table: root documents updated after explicit owner acceptance).
+- The layer is implemented as project code with tests, and F003's V-08
+  terminology component is re-evaluated against corrected output, which is the
+  first of the two paths this record already defined.
+
+Not accepted by this wording, and therefore not done:
+
+- No constitutional amendment. `constitution.md` §36 and §22 are untouched, and
+  §7 is amended so that it stays compatible with §36 ("MUST NOT assume
+  heavyweight local speech models") by keeping local ASR optional, never
+  required.
+- No new feature is implemented. F004 (retake detection, roadmap Phase 4) still
+  requires its own PLAN and explicit approval of that revision; the SDD sequence
+  is PLAN → approval → IMPLEMENT and a blanket authorization does not skip the
+  PLAN gate.
+- F003 is not DONE. V-16 remains the owner's real acceptance of the evidence
+  package.
+
+Implementation delivered under this acceptance:
+`tools/terminology_correction.py` + `tests/test_terminology_correction.py`, and
+the per-project table at
+`.local/projects/f002-studio-001/transcription/terminology-corrections.json`
+(data, outside Git-tracked specs, reviewed by the owner).

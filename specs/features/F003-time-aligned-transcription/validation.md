@@ -370,6 +370,49 @@ ni con otro submit (1/1 consumido; nueva configuración cambiaría el fingerprin
 una segunda ejecución con configuración mejorada. Sin DONE, sin F004, sin
 PRODUCTION_APPROVED; F001/F002 intactos.
 
+## Checkpoint p10 — D003 aceptada; V-08 terminología re-evaluada sobre salida corregida (2026-10-04)
+
+El owner aceptó D003 literalmente («D003 aprovado y listo modificalo para
+continuar, modificar el tech-stck, aplicatodo lo necesario para avanzar con
+KISS»). Se ejecuta la vía (i)/(ii) que D003 ya definía: **re-evaluar V-08 contra
+la salida corregida**, sin tocar el transcript canónico ni reenviar nada.
+
+**Capa entregada:** `tools/terminology_correction.py` + 12 tests
+(`tests/test_terminology_correction.py`), provider-independent (un test verifica
+que el módulo no contiene vocabulario de vendor/credencial/transporte). Tabla de
+datos del proyecto en
+`.local/projects/f002-studio-001/transcription/terminology-corrections.json`
+(1 entrada sembrada: `en potencia`→`idempotencia`, con reason+reviewer).
+Garantías verificadas por tests y por corrida real: nunca muta el transcript
+canónico, nunca mueve timing, nunca inventa ni borra palabras (la palabra
+absorbida conserva su row, texto reconocido y timing, marcada `absorbed_by`);
+una entrada que no matchea o es ambigua FALLA en vez de no-op silencioso.
+
+**Corrida real sobre el transcript de F003** (`.local/validation/F003/p10-d003/corrected-view.json`):
+- Transcript canónico SHA `8251cdda…` **idéntico antes y después** (no mutado).
+- 1 corrección aplicada en `w000273` (absorbe `w000274`), auditada con reason y
+  reviewer; `timing_unchanged: true`.
+- **V-08 terminología sobre salida corregida: los 4 términos PASS** (monolito 1,
+  microservicios 1, eventos 4, idempotencia 1). Sobre la salida cruda del
+  proveedor idempotencia sigue ausente (FAIL) — ambos estados quedan registrados,
+  no se sobrescribe el FAIL real del proveedor.
+- WER 5,48% (p8) no cambia: la corrección es de texto, no de reconocimiento.
+
+**Detalle de honestidad registrado, no auto-corregido:** el ASR reconoció
+«reintentos **y** en potencia **y** fallos», así que la salida corregida lee
+«reintentos y idempotencia y fallos». El «y» sobrante es una segunda decisión
+editorial que pertenece al owner (otra entrada de tabla si la quiere); la capa no
+lo borra por su cuenta porque eso sería inventar/alterar habla reconocida.
+
+**V-08 corregido:** FAIL sobre proveedor crudo (idempotencia) → la vía D003 lo
+resuelve en la capa de corrección; el criterio de terminología se satisface en la
+salida corregida. V-09/V-10 siguen BLOCKED (referencia con bounds y decisión del
+owner). V-16 sigue pendiente de aceptación humana del paquete. Lifecycle
+VERIFYING. Suite completa **91/91 OK** en Python 3.14.7 exacto (el keg de
+Homebrew subió a 3.14.8 a mitad de sesión; se usa el binario 3.14.7 con
+`sys.executable` correcto, no se toca el guard de F002). Sin DONE, sin F004, sin
+PRODUCTION_APPROVED; F001/F002 intactos.
+
 ## Checkpoint preflight-p8 — corrección del acta p7c y oráculo independiente gratuito (2026-10-04)
 
 Dos afirmaciones del acta p7c eran **FALSAS por errores de medición del agente**

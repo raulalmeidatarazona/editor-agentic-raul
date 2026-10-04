@@ -1,9 +1,9 @@
 # Raúl Almeida Agentic Video Studio — Tech Stack
 
-**Version:** 0.1  
+**Version:** 0.2  
 **Status:** OWNER_APPROVED architectural direction; runtime unvalidated  
 **Owner:** Raúl Almeida  
-**Documentation checked:** 2026-10-02  
+**Documentation checked:** 2026-10-04  
 **Target environment:** macOS, approximately 16 GB RAM
 
 ## 1. Responsibility and authority
@@ -169,21 +169,64 @@ frame-rate policy, codec settings, and mappings belong in feature specifications
 
 ## 7. Speech-to-text
 
-Cloud STT is required for the baseline; no local Whisper installation or
-heavyweight speech model is required. The initial provider candidate is scoped
-by F003/D002; the provider remains replaceable through a small adapter around
-normalized transcript artifacts.
+**Amended 2026-10-04** under the Architecture row of the change-control table,
+after explicit owner acceptance (see the amendment record at the end of this
+document and [D003](specs/decisions/D003-terminology-correction-layer.md)).
 
-F003 initially evaluates qwen-audio-3.1-asr-flash-filetrans in Alibaba Model
-Studio Singapore / International through a replaceable adapter. Selection is
-conditional on the approved F003 real-fixture validation. The source-transcript
-v1 contract and source-presentation-v1 mapping belong to F003, not to Alibaba.
-One approved fixture request, private owner-managed audio transport, retained
-sanitized provider responses, and usage/cost reconciliation are defined in the
-F003 bundle and D002. No permanent provider, correction model or F004 policy is
-selected.
+No STT engine is a baseline *requirement*. The baseline requirement is the
+provider-independent contract: `source-transcript v1` plus the
+`source-presentation-v1` clock, reached through a small replaceable adapter, so
+no downstream consumer parses a vendor. Which engine produced a given
+transcript is recorded per Content Project and is a configuration choice, never
+an architectural assumption. This keeps Constitution §35 (provider independence)
+and §36 (never assume heavyweight local speech models) both satisfied: a machine
+without any local speech model still works through the cloud adapter, and a
+machine that already has one is not forced to pay or to transport audio.
 
-The future normalized format must support:
+Engine selection is by measured evidence on the real fixture, not by price tier
+or by novelty. The comparison recorded for the C0216 fixture (232.8 s, F003
+preflight-p8) is the reference case:
+
+| | local Whisper (mlx, large-v3-turbo) | cloud qwen-audio-3.1-asr-flash-filetrans |
+| --- | --- | --- |
+| cost | 0 | USD 0.00113 |
+| wall time | 11.6 s | ~10 s job, plus private object transport and its gates |
+| words | 468 | 470 after deterministic sub-word reconstruction |
+| mutual WER | 5.48% global across the five r1 windows | — |
+| `idempotencia` | missed (`impotencia`) | missed (`en potencia`) |
+
+Both engines miss the same rare technical term, so neither buys terminology
+accuracy. Local ASR, when already installed, is therefore the preferred path for
+iteration, preview and cross-checking, because it removes paid transport,
+signed-URL TTL windows, account activation and per-call authorization from the
+inner loop. Cloud STT remains fully supported and is the recorded provider for
+the F003 canonical transcript, whose request, sanitized response, usage and cost
+are retained for audit.
+
+Terminology correctness is never expected from the engine. It is produced by the
+deterministic, human-reviewed correction layer defined in D003, applied after
+normalization and before any consumer. Corrections are data owned by a reviewer,
+they change text only, and they never move a boundary, invent a word or delete
+one; the recognized text and its timing stay recoverable. This is how
+`tech-stack` §7's existing requirement — "corrected technical terminology while
+preserving what was spoken" — is actually met.
+
+The review that produces those corrections is visual, not transcript-reading:
+the owner plays an assembled preview with per-word karaoke in the browser
+timeline, reads and listens at once, and states corrections in natural language
+with approximate time. No final render is required for that review.
+
+F003 initially evaluated qwen-audio-3.1-asr-flash-filetrans in Alibaba Model
+Studio Singapore / International through a replaceable adapter. Selection was
+conditional on the approved F003 real-fixture validation; that validation is
+recorded in the F003 plan. The `source-transcript v1` contract and the
+`source-presentation-v1` mapping belong to F003, not to Alibaba. One approved
+fixture request, private owner-managed audio transport, retained sanitized
+provider responses, and usage/cost reconciliation are defined in the F003 bundle
+and D002. No permanent provider is selected, and no F004 policy is selected
+here.
+
+The normalized format must support:
 
 - segment timestamps and text;
 - word timestamps when available;
@@ -192,17 +235,26 @@ The future normalized format must support:
 - corrected technical terminology while preserving what was spoken;
 - a recoverable relationship to the original source timing and provider result.
 
-Select a provider through a real-fixture comparison of technical vocabulary,
+Select an engine through a real-fixture comparison of technical vocabulary,
 language accuracy, word timestamps, price, latency, and API simplicity. Recording
 language is not assumed from the language of these documents. Corrections to
-recognized terminology must not manufacture speech or conceal uncertain timing.
+recognized terminology must not manufacture speech or conceal uncertain timing;
+they are applied by the D003 layer, never by editing the canonical transcript or
+by asking the model to "get it right".
 
-**Integration finding:** HyperFrames' documented transcription command uses
-local Parakeet when installed and falls back to Whisper; it also documents
-import of subtitle/transcript files. That default is unsuitable as this project's
-baseline STT path. Use independent cloud transcription and validate its conversion
-into timed captions/composition input. The domain transcript must remain richer
-than any renderer-specific import format. [HyperFrames audio/transcription guide](https://hyperframes.heygen.com/guides/voice-and-audio).
+**Integration finding (amended 2026-10-04):** HyperFrames' documented
+transcription command uses local Parakeet when installed and falls back to
+Whisper, and it also documents import of subtitle/transcript files. Two points
+still hold and one is corrected. Still holding: renderer-specific import formats
+are lossy, so the domain transcript must remain richer than any of them, and the
+renderer's default engine must not become this project's canonical provider by
+accident. Corrected: the earlier claim that a local engine is "unsuitable as the
+baseline STT path" is withdrawn. The measured C0216 comparison (preflight-p8)
+shows a local Whisper run matching the paid cloud transcript at 5.48% mutual WER
+at zero cost and zero transport, and both engines miss the same rare term. Local
+ASR is therefore suitable for iteration, preview and cross-check; the canonical
+transcript records whichever engine was actually used.
+[HyperFrames audio/transcription guide](https://hyperframes.heygen.com/guides/voice-and-audio).
 
 ## 8. Brand configuration and studio capture calibration
 
@@ -362,3 +414,36 @@ component APIs, QA tolerances, reviewer access mechanism, and platform variants.
 
 No evidence currently justifies a different personal-brand mission or a broader
 platform. Runtime suitability of the chosen stack remains to be demonstrated.
+
+---
+
+## Amendment record — 0.2 (2026-10-04)
+
+Approved by Raúl Almeida, literal: «es momento de hacer KISS el proyecto, asi que
+D003 aprovado y listo modificalo para continuar, modificar el tech-stck,
+aplicatodo lo necesario para avanzar con KISS». Recorded under the Architecture
+row of the change-control table in `specs/README.md`, which requires explicit
+owner acceptance before root documents change and requires affected plans to be
+reapproved.
+
+- §7 rewritten. Cloud STT is no longer the baseline requirement; the baseline
+  requirement is the provider-independent transcript contract. Engine choice
+  becomes measured configuration per Content Project. The prior claim that a
+  local engine is unsuitable is withdrawn on measured evidence.
+- Grounding evidence: F003 preflight-p8 real-fixture comparison on C0216
+  (232.8 s). Local Whisper 0 EUR / 11.6 s / 468 words vs cloud qwen filetrans
+  USD 0.00113 / 470 words; mutual WER 5.48% global across the five r1 windows;
+  both engines miss `idempotencia`.
+- §7 now names the D003 correction layer as the mechanism that actually delivers
+  "corrected technical terminology while preserving what was spoken", and the
+  visual review over an assembled browser preview as the way corrections are
+  produced.
+- Constitution untouched. §7 was worded so local ASR stays optional and never a
+  requirement, keeping §36 ("MUST NOT assume heavyweight local speech models")
+  intact, and §35 (provider independence) is reinforced rather than relaxed.
+- §12 unchanged: no new dependency is added to the baseline, and nothing here
+  authorizes installing a speech model on a machine that lacks one.
+
+Not authorized by this amendment: any new feature implementation, F004
+(retake detection), semantic storyboarding, captions or rendering. Those follow
+their own PLAN → approval → IMPLEMENT gates.
